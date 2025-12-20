@@ -243,11 +243,11 @@ Technical SEO Optimizations:
                         </svg>
                     </a>
                     <a 
-                        href="#pricing"
+                        href="/contact"
                         class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-transparent border-2 border-border text-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:bg-muted"
-                        data-gtm-id="windows-vps.hero.view-plans.click"
+                        data-gtm-id="windows-vps.hero.contact.click"
                     >
-                        View plans
+                        Contact Sales
                     </a>
                 </div>
 
@@ -476,83 +476,6 @@ Technical SEO Optimizations:
             <div class="p-6 bg-card border border-border rounded-2xl animate-fade-up hover:-translate-y-1 transition-transform" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
                 <h3 class="text-lg font-bold text-foreground mb-2">{{ use_case.title }}</h3>
                 <p class="text-sm text-muted-foreground">{{ use_case.description }}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-{# ========================================================================== #}
-{# PRICING SECTION #}
-{# Semantic: Pricing with structured offer data #}
-{# ========================================================================== #}
-<section id="pricing" class="py-20 md:py-32" aria-labelledby="pricing-heading" role="region">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16 animate-fade-up">
-            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
-                Pricing
-            </span>
-            <h2 id="pricing-heading" class="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                Simple, <span class="text-gradient">transparent pricing</span>
-            </h2>
-            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Windows license included. No hidden fees. Pay hourly or monthly.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {% set plans = [
-                {'name': 'Starter', 'vcpu': '2 vCPU', 'ram': '4 GB RAM', 'storage': '80 GB NVMe', 'price': '$15', 'period': '/mo'},
-                {'name': 'Professional', 'vcpu': '4 vCPU', 'ram': '8 GB RAM', 'storage': '160 GB NVMe', 'price': '$30', 'period': '/mo', 'popular': true},
-                {'name': 'Business', 'vcpu': '8 vCPU', 'ram': '16 GB RAM', 'storage': '320 GB NVMe', 'price': '$60', 'period': '/mo'},
-                {'name': 'Enterprise', 'vcpu': '16 vCPU', 'ram': '32 GB RAM', 'storage': '640 GB NVMe', 'price': '$120', 'period': '/mo'}
-            ] %}
-            
-            {% for plan in plans %}
-            <div class="relative p-6 bg-card border-2 {{ 'border-primary' if plan.popular else 'border-border' }} rounded-2xl animate-fade-up hover:-translate-y-1 transition-transform" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
-                {% if plan.popular %}
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span class="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">POPULAR</span>
-                </div>
-                {% endif %}
-                <h3 class="text-xl font-bold text-foreground mb-4">{{ plan.name }}</h3>
-                <div class="mb-4">
-                    <span class="text-3xl font-black text-foreground">{{ plan.price }}</span>
-                    <span class="text-muted-foreground">{{ plan.period }}</span>
-                </div>
-                <ul class="space-y-2 mb-6 text-sm text-muted-foreground">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        {{ plan.vcpu }}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        {{ plan.ram }}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        {{ plan.storage }}
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        Windows License Included
-                    </li>
-                </ul>
-                <a 
-                    href="/download-mobile-app"
-                    class="block w-full text-center px-4 py-3 {{ 'bg-primary text-primary-foreground' if plan.popular else 'bg-muted text-foreground' }} font-semibold rounded-lg transition-colors hover:opacity-90"
-                    data-gtm-id="windows-vps.pricing.{{ plan.name | lower }}.click"
-                >
-                    Get Started
-                </a>
             </div>
             {% endfor %}
         </div>

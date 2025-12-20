@@ -57,12 +57,17 @@ Analytics tracking applied to all links.
             
             {# Logo & Description #}
             <div class="lg:col-span-2">
-                {# Logo #}
+                {# Logo - decorative image since text is adjacent #}
                 <a href="/" class="flex items-center gap-3 group" data-gtm-id="footer.logo.click">
                     <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
                         <img 
                             src="/images/logo/readyserver-logo.jpeg" 
-                            alt="Ready Server" 
+                            alt=""
+                            aria-hidden="true"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
                             class="w-full h-full object-cover"
                         >
                     </div>
@@ -95,10 +100,10 @@ Analytics tracking applied to all links.
                 </div>
             </div>
 
-            {# Footer Link Columns #}
+            {# Footer Link Columns - using h2 for proper heading hierarchy #}
             {% for category, links in footer_links.items() %}
                 <div>
-                    <h4 class="text-foreground font-semibold mb-4">{{ category }}</h4>
+                    <h2 class="text-foreground font-semibold text-base mb-4">{{ category }}</h2>
                     <ul class="space-y-3">
                         {% for link in links %}
                             <li>

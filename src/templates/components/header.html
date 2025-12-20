@@ -42,12 +42,16 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
         {# Logo - 10% larger #}
         <a href="/" class="flex items-center gap-3 group" data-gtm-id="nav.logo.click">
             <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                {# Logo with srcset for proper sizing - source is 225x225, displayed at 44x44 (88x88 @2x) #}
                 <img 
                     src="/images/logo/readyserver-logo.jpeg" 
-                    alt="Ready Server" 
+                    srcset="/images/logo/readyserver-logo.jpeg 1x, /images/logo/readyserver-logo.jpeg 2x"
+                    alt=""
+                    aria-hidden="true"
                     width="44"
                     height="44"
                     fetchpriority="high"
+                    decoding="async"
                     class="w-full h-full object-cover"
                 >
             </div>
