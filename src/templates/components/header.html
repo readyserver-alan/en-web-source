@@ -39,8 +39,8 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
 >
     <div class="container mx-auto px-6 py-5 flex items-center justify-between relative">
         
-        {# Logo - 10% larger #}
-        <a href="/" class="flex items-center gap-3 group" data-gtm-id="nav.logo.click">
+        {# Logo - 10% larger, aria-label for accessibility when text is hidden on mobile #}
+        <a href="/" class="flex items-center gap-3 group" data-gtm-id="nav.logo.click" aria-label="Ready Server - Home">
             <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
                 {# Logo with srcset for proper sizing - source is 225x225, displayed at 44x44 (88x88 @2x) #}
                 <img 
@@ -55,7 +55,7 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
                     class="w-full h-full object-cover"
                 >
             </div>
-            <span class="font-bold text-[1.375rem] hidden sm:block text-foreground">
+            <span class="font-bold text-[1.375rem] hidden sm:block text-foreground" aria-hidden="true">
                 Ready Server
             </span>
         </a>

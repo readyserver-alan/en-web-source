@@ -62,23 +62,23 @@ Features:
                 Technical Specs
             </span>
 
-            {# Title #}
-            <h2 class="text-3xl md:text-5xl font-black text-white mb-4">
+            {# Title - using design system tokens for proper contrast #}
+            <h2 class="text-3xl md:text-5xl font-black text-foreground mb-4">
                 Enterprise hardware,
                 <span class="text-gradient">simple pricing</span>
             </h2>
 
-            {# Description #}
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+            {# Description - using muted-foreground for proper contrast ratio #}
+            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Every VPS includes the features you'd expect from premium infrastructure.
             </p>
         </div>
 
-        {# Features Grid - 4 columns on desktop #}
+        {# Features Grid - 4 columns on desktop, using design system tokens #}
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {% for feature in features %}
                 <div 
-                    class="group relative p-6 bg-slate-900/80 border border-slate-800 rounded-2xl transition-all duration-300 hover:bg-slate-800/80 hover:border-slate-700 animate-fade-up"
+                    class="group relative p-6 bg-card border border-border rounded-2xl transition-all duration-300 hover:bg-muted hover:border-primary/30 animate-fade-up"
                     style="animation-delay: {{ loop.index0 * 0.05 }}s;"
                 >
                     <div class="flex items-start gap-4">
@@ -124,13 +124,13 @@ Features:
 
                         {# Text content #}
                         <div>
-                            {# Title #}
-                            <h3 class="text-base font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                            {# Title - using foreground for proper contrast #}
+                            <h3 class="text-base font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                                 {{ feature.title }}
                             </h3>
 
-                            {# Description #}
-                            <p class="text-slate-400 text-sm">
+                            {# Description - using muted-foreground for AA contrast #}
+                            <p class="text-muted-foreground text-sm">
                                 {{ feature.description }}
                             </p>
                         </div>
