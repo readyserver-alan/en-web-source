@@ -48,13 +48,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    {# Preconnect to third-party domains for faster connection #}
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://t.contentsquare.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
     {# Preload critical CSS for faster FCP #}
     <link rel="preload" href="/css/styles.css" as="style">
     
     {# Tailwind CSS (compiled) #}
     <link rel="stylesheet" href="/css/styles.css">
     
-    {# Google Tag Manager #}
+    {# Google Tag Manager - optimized loading #}
     <script>
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -63,10 +68,7 @@
         })(window,document,'script','dataLayer','{{ site.gtm_id }}');
     </script>
     
-    {# Hotjar / ContentSquare Tracking #}
-    <script src="https://t.contentsquare.net/uxa/4c222aceaa5e8.js"></script>
-    
-    {# Theme initialization (prevent flash) #}
+    {# Theme initialization (prevent flash) - inline for immediate execution #}
     <script>
         (function() {
             const stored = localStorage.getItem('theme');
@@ -76,18 +78,6 @@
             }
         })();
     </script>
-    
-    {# Custom Application JS - MUST load before Alpine to register alpine:init listener #}
-    <script src="/js/app.js"></script>
-    
-    {# Alpine.js Collapse Plugin (MUST be before Alpine.js core) #}
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    
-    {# Alpine.js Core #}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    {# Analytics Compatibility Layer #}
-    <script defer src="/js/analytics.js"></script>
     
     {# Structured Data #}
     {% block structured_data %}
@@ -140,6 +130,22 @@
     
     {# Footer #}
     {% include 'components/footer.html' %}
+    
+    {# Non-critical scripts loaded at end of body for better performance #}
+    {# Custom Application JS - MUST load before Alpine to register alpine:init listener #}
+    <script defer src="/js/app.js"></script>
+    
+    {# Alpine.js Collapse Plugin (MUST be before Alpine.js core) #}
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    {# Alpine.js Core #}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    {# Analytics Compatibility Layer #}
+    <script defer src="/js/analytics.js"></script>
+    
+    {# Hotjar / ContentSquare Tracking - deferred to prevent render-blocking #}
+    <script defer src="https://t.contentsquare.net/uxa/4c222aceaa5e8.js"></script>
     
     {# Additional scripts #}
     {% block scripts %}{% endblock %}
