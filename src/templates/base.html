@@ -44,11 +44,11 @@
     <link rel="apple-touch-icon" href="/images/logo/readyserver-logo.jpeg">
     
     {# Preconnect to third-party domains for faster connection #}
+    {# Note: cdn.jsdelivr.net removed - Alpine.js now self-hosted for better caching #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://t.contentsquare.net">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     
     {# Preload critical CSS for faster FCP #}
     <link rel="preload" href="/css/styles.css" as="style">
@@ -147,11 +147,12 @@
     {# Custom Application JS - MUST load before Alpine to register alpine:init listener #}
     <script defer src="/js/app.js"></script>
     
-    {# Alpine.js Collapse Plugin (MUST be before Alpine.js core) #}
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    {# Alpine.js - self-hosted for 1-year cache (vs 7-day from CDN) #}
+    {# Collapse Plugin (MUST be before Alpine.js core) #}
+    <script defer src="/js/alpine-collapse.min.js"></script>
     
-    {# Alpine.js Core #}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {# Alpine.js Core v3.14.8 #}
+    <script defer src="/js/alpine.min.js"></script>
     
     {# Analytics and third-party scripts - loaded via requestIdleCallback for minimal main thread impact #}
     <script>

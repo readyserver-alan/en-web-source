@@ -10,34 +10,53 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://t.contentsquare.net https://*.contentsquare.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://analytics.google.com https://googleads.g.doubleclick.net https://*.contentsquare.net; frame-src 'self' https://www.google.com https://www.googletagmanager.com https://maps.google.com
 
-# Cache CSS files (1 year, immutable)
-/css/*
-  Cache-Control: public, max-age=31536000, immutable
+# ============================================================================
+# EFFICIENT CACHE LIFETIMES
+# Using long cache times + immutable for hashed/versioned assets
+# stale-while-revalidate allows serving stale content while fetching fresh
+# ============================================================================
 
-# Cache JavaScript files (1 year, immutable)
+# Cache CSS files (1 year, immutable with stale-while-revalidate fallback)
+/css/*
+  Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=86400
+
+# Cache JavaScript files (1 year, immutable - includes self-hosted Alpine.js)
 /js/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=86400
 
 # Cache images (1 year, immutable)
 /images/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=86400
 
 # Cache OG images (1 year, immutable)
 /og/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=86400
 
 # Cache fonts (1 year, immutable)
 /fonts/*
+  Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=86400
+
+# Cache favicon (1 year)
+/favicon.ico
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache HTML pages (1 hour, must revalidate)
+# Cache HTML pages (10 minutes with stale-while-revalidate for 1 day)
+# Shorter max-age ensures fresh content, stale-while-revalidate improves UX
 /*.html
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400
+
+# Cache root HTML (10 minutes with stale-while-revalidate)
+/
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400
+
+# Cache blog pages (1 hour with stale-while-revalidate)
+/blog/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 # Cache sitemap and robots (1 day)
 /sitemap.xml
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 
 /robots.txt
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 
