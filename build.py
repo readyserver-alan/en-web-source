@@ -309,13 +309,19 @@ def copy_static_files():
     if og_src.exists():
         shutil.copytree(og_src, og_dest, dirs_exist_ok=True)
     
-    # Copy favicon if it exists in parent
+    # Copy favicon from static/images/logo to root for backwards compatibility
+    favicon_src = STATIC_DIR / "images" / "logo" / "favicon.ico"
+    if favicon_src.exists():
+        shutil.copy2(favicon_src, DIST_DIR / "favicon.ico")
+        print("  [OK] favicon.ico (from static/images/logo)")
+    
+    # Also try parent public folder as fallback
     parent_public = BASE_DIR.parent / "public"
     if parent_public.exists():
         favicon = parent_public / "favicon.ico"
-        if favicon.exists():
+        if favicon.exists() and not (DIST_DIR / "favicon.ico").exists():
             shutil.copy2(favicon, DIST_DIR / "favicon.ico")
-            print("  [OK] favicon.ico")
+            print("  [OK] favicon.ico (from parent/public)")
     
     # Copy Cloudflare Pages configuration files
     cloudflare_files = ['_headers', '_redirects']
