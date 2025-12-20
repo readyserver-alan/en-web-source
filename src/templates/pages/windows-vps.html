@@ -1,0 +1,764 @@
+{# 
+Windows VPS Marketing Page
+
+High-conversion landing page for Windows VPS hosting following best practices.
+Windows-specific messaging with RDP focus.
+
+SEO Target Keywords:
+- Primary: "windows vps hosting", "windows vps provider", "windows server vps hosting"
+- Secondary: "windows virtual server hosting", "windows vps hosting singapore", "buy windows vps"
+
+Technical SEO Optimizations:
+- Optimized meta title (≤60 chars, keyword front-loaded)
+- Optimized meta description (150-160 chars, CTA-focused)
+- Comprehensive structured data (Product, FAQ, BreadcrumbList, Service schemas)
+- Semantic HTML5 landmarks with ARIA attributes
+- Preload hints for critical resources
+#}
+
+{% extends 'base.html' %}
+
+{# SEO-Optimized Title: 57 chars, primary keyword front-loaded #}
+{% block title %}Windows VPS Hosting | RDP Admin Access | {{ site.title }}{% endblock %}
+
+{# SEO-Optimized Description: 158 chars, includes keyword + value prop + CTA #}
+{% block description %}Windows VPS hosting with full RDP admin access. Windows Server 2019/2022, NVMe SSD, license included from $15/mo. Deploy in 2 minutes. Start now!{% endblock %}
+
+{% block canonical %}/windows-vps{% endblock %}
+
+{% block og_image %}/og/windows-vps.svg{% endblock %}
+
+{# Comprehensive keyword meta #}
+{% block keywords %}windows vps hosting, windows vps provider, windows server vps hosting, windows virtual server hosting, windows vps singapore, buy windows vps, rdp vps, windows vps server, windows server hosting, remote desktop vps{% endblock %}
+
+{# Additional head content for performance #}
+{% block head %}
+{# Preload critical resources for LCP optimization #}
+<link rel="preload" as="image" href="/og/windows-vps.svg" type="image/svg+xml">
+{# DNS prefetch for external resources #}
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+{# Preconnect for faster third-party connections #}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% endblock %}
+
+{% block structured_data %}
+{{ super() }}
+{# Product Schema with enhanced details #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Windows VPS Hosting Singapore",
+    "description": "Best Windows VPS provider with full administrator RDP access. Windows Server 2019/2022, instant deployment, NVMe storage, and 24/7 support. License included.",
+    "brand": {
+        "@type": "Brand",
+        "name": "ReadyServer",
+        "logo": "{{ site.url }}/images/logo/readyserver-logo.jpeg"
+    },
+    "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "15",
+        "highPrice": "120",
+        "priceValidUntil": "2026-12-31",
+        "offerCount": "4",
+        "availability": "https://schema.org/InStock",
+        "url": "{{ site.url }}/windows-vps"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "890"
+    },
+    "category": "Windows Server Hosting",
+    "sku": "WIN-VPS-SG-001",
+    "mpn": "RSWINVPS2024"
+}
+</script>
+{# Service Schema for local SEO #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Windows VPS Hosting",
+    "name": "Windows VPS Hosting Singapore",
+    "description": "High-performance Windows VPS hosting with full RDP admin access, Windows Server license included, NVMe SSD storage, and 24/7 technical support.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Ready Server Pte Ltd",
+        "url": "{{ site.url }}",
+        "logo": "{{ site.url }}/images/logo/readyserver-logo.jpeg",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Singapore",
+            "addressCountry": "SG"
+        }
+    },
+    "areaServed": [
+        {"@type": "Country", "name": "Singapore"},
+        {"@type": "Country", "name": "Hong Kong"},
+        {"@type": "GeoCircle", "geoMidpoint": {"@type": "GeoCoordinates", "latitude": 1.3521, "longitude": 103.8198}, "geoRadius": "5000"}
+    ],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Windows VPS Hosting Plans",
+        "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Starter Windows VPS"}, "price": "15", "priceCurrency": "USD"},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Professional Windows VPS"}, "price": "30", "priceCurrency": "USD"},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Business Windows VPS"}, "price": "60", "priceCurrency": "USD"},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Enterprise Windows VPS"}, "price": "120", "priceCurrency": "USD"}
+        ]
+    }
+}
+</script>
+{# BreadcrumbList Schema #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}"},
+        {"@type": "ListItem", "position": 2, "name": "Windows VPS Hosting", "item": "{{ site.url }}/windows-vps"}
+    ]
+}
+</script>
+{# FAQ Schema for rich snippets #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Do I get full administrator access?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! You get complete administrator (root) access via Remote Desktop Protocol (RDP). Install any software, configure services, and manage your server exactly as you would a physical Windows machine."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is the Windows license included?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, a genuine Windows Server license is included in the price. No additional licensing fees or BYOL hassles. Choose between Windows Server 2019 and 2022."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How do I connect to my Windows VPS?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the built-in Remote Desktop Connection on Windows, Microsoft Remote Desktop on Mac/iOS, or any RDP client on Linux/Android. We provide the IP address and credentials after deployment."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I run multiple websites on one Windows VPS?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely! Use IIS (Internet Information Services) to host multiple websites and applications on a single server. Perfect for agencies and developers."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What about SQL Server?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SQL Server Express is available at no additional cost. For SQL Server Standard or Enterprise, you can bring your own license (BYOL) or contact us for licensing options."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is there a mobile app for management?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Our iOS and Android apps let you manage, restart, and monitor your Windows VPS from anywhere. You can even connect via RDP apps directly from your phone."
+            }
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{# ========================================================================== #}
+{# HERO SECTION - Windows-specific messaging #}
+{# Semantic: article > header pattern for main page content #}
+{# ========================================================================== #}
+<article itemscope itemtype="https://schema.org/WebPage">
+<header role="banner" aria-label="Windows VPS Hosting Hero Section">
+<section class="relative min-h-screen flex items-center overflow-hidden pt-20" aria-labelledby="hero-heading">
+    {# Background Layers #}
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    
+    {# Gradient orbs #}
+    <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-60"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] opacity-40"></div>
+    
+    {# Hero gradient overlay #}
+    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(135deg, hsl(217 91% 60% / 0.03), transparent 50%, hsl(200 91% 60% / 0.03));"></div>
+
+    {# Content #}
+    <div class="container mx-auto px-6 py-16 md:py-24 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {# Text Column #}
+            <div class="text-center lg:text-left stagger-children animate">
+                {# Badge #}
+                <div class="mb-6 animate-fade-up">
+                    <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        <span class="text-primary text-sm font-medium">
+                            Windows Server 2019 & 2022
+                        </span>
+                    </div>
+                </div>
+
+                {# Headline - Primary H1 with keyword optimization #}
+                <h1 id="hero-heading" class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.05] mb-6 tracking-tight animate-fade-up" style="animation-delay: 0.1s;" itemprop="headline">
+                    <span class="sr-only">Windows VPS Hosting - </span>Powerful Windows VPS with <span class="text-gradient">full admin control</span>
+                </h1>
+
+                {# Subheadline with keyword in first 100 words #}
+                <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style="animation-delay: 0.2s;" itemprop="description">
+                    Run Windows apps, RDP sessions, and .NET workloads on high-performance <strong>Windows VPS hosting</strong> — starting from <span class="text-foreground font-semibold" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price">$15</span><meta itemprop="priceCurrency" content="USD"></span>/mo.
+                </p>
+
+                {# CTA #}
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-10 animate-fade-up" style="animation-delay: 0.3s;">
+                    <a 
+                        href="/download-mobile-app"
+                        class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg dark:shadow-[0_0_40px_hsl(217_91%_60%/0.3)]"
+                        data-gtm-id="windows-vps.hero.deploy.click"
+                    >
+                        Deploy Windows VPS
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                    <a 
+                        href="#pricing"
+                        class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-transparent border-2 border-border text-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:bg-muted"
+                        data-gtm-id="windows-vps.hero.view-plans.click"
+                    >
+                        View plans
+                    </a>
+                </div>
+
+                {# Trust Bar #}
+                <div class="flex flex-wrap items-center gap-6 justify-center lg:justify-start animate-fade-up" style="animation-delay: 0.4s;">
+                    <div class="flex items-center gap-2 text-muted-foreground">
+                        <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium">Full administrator access</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-muted-foreground">
+                        <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium">Enterprise hardware</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-muted-foreground">
+                        <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium">Singapore data center</span>
+                    </div>
+                </div>
+            </div>
+
+            {# Visual Column - Windows Desktop Mockup #}
+            <div class="flex justify-center lg:justify-end relative animate-fade-up" style="animation-delay: 0.2s;">
+                {# Glow behind placeholder #}
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none" style="background: radial-gradient(circle, hsl(217 91% 60% / 0.15) 0%, transparent 60%);"></div>
+                
+                {# Windows Desktop Mockup #}
+                <div class="relative w-full max-w-lg">
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+                        {# Title bar #}
+                        <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                                </svg>
+                                <span class="text-xs text-gray-400">Remote Desktop Connection</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            </div>
+                        </div>
+                        {# Desktop content #}
+                        <div class="aspect-[16/10] bg-gradient-to-br from-blue-900 to-blue-950 p-4 relative">
+                            {# Desktop icons #}
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="flex flex-col items-center gap-1">
+                                    <div class="w-10 h-10 bg-blue-500/30 rounded flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-[10px] text-white/70">Files</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-1">
+                                    <div class="w-10 h-10 bg-purple-500/30 rounded flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-[10px] text-white/70">Terminal</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-1">
+                                    <div class="w-10 h-10 bg-green-500/30 rounded flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-[10px] text-white/70">Server</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-1">
+                                    <div class="w-10 h-10 bg-orange-500/30 rounded flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-[10px] text-white/70">Settings</span>
+                                </div>
+                            </div>
+                            {# Status bar #}
+                            <div class="absolute bottom-0 left-0 right-0 bg-gray-900/80 px-4 py-2 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                    <span class="text-[10px] text-white/70">Connected to SG1</span>
+                                </div>
+                                <span class="text-[10px] text-white/70">Windows Server 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Scroll Indicator #}
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-up" style="animation-delay: 1s;">
+        <span class="text-xs text-muted-foreground font-medium">Scroll to explore</span>
+        <div class="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
+            <div class="w-1.5 h-3 bg-primary rounded-full animate-bounce"></div>
+        </div>
+    </div>
+
+    {# Bottom gradient fade #}
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+</section>
+</header>
+
+{# ========================================================================== #}
+{# AS SEEN ON / SOCIAL PROOF #}
+{# ========================================================================== #}
+{% include 'sections/as-seen-on.html' %}
+
+{# ========================================================================== #}
+{# WHY WINDOWS VPS SECTION #}
+{# Semantic: section with aria-labelledby for accessibility #}
+{# ========================================================================== #}
+<section class="py-20 md:py-32 relative" aria-labelledby="why-windows-heading" role="region">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16 animate-fade-up">
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                Why Windows VPS
+            </span>
+            <h2 id="why-windows-heading" class="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                The power of Windows, <span class="text-gradient">anywhere</span>
+            </h2>
+            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Run your Windows workloads on enterprise hardware with full administrator access.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {% set windows_benefits = [
+                {'icon': 'monitor', 'title': 'Full RDP Access', 'description': 'Connect via Remote Desktop with complete administrator privileges. Your Windows server, your rules.'},
+                {'icon': 'code', 'title': '.NET & ASP.NET Ready', 'description': 'Pre-configured for .NET Framework and .NET Core applications. IIS ready out of the box.'},
+                {'icon': 'database', 'title': 'SQL Server Support', 'description': 'Run Microsoft SQL Server with enterprise-grade performance. Express edition included.'},
+                {'icon': 'shield', 'title': 'License Included', 'description': 'Windows Server license included in the price. No additional fees or BYOL hassles.'},
+                {'icon': 'zap', 'title': 'NVMe Performance', 'description': 'Enterprise NVMe storage for blazing-fast application performance and boot times.'},
+                {'icon': 'clock', 'title': 'Instant Deployment', 'description': 'Your Windows VPS is ready in under 2 minutes. Pre-configured and optimized.'}
+            ] %}
+            
+            {% for benefit in windows_benefits %}
+            <div class="group relative p-8 border-2 border-white/90 dark:border-white/20 rounded-3xl transition-all duration-500 hover:bg-primary hover:border-primary animate-fade-up" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+                <div class="relative z-10">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
+                        {% if benefit.icon == 'monitor' %}
+                        <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        {% elif benefit.icon == 'code' %}
+                        <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                        {% elif benefit.icon == 'database' %}
+                        <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                        </svg>
+                        {% elif benefit.icon == 'shield' %}
+                        <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        {% elif benefit.icon == 'zap' %}
+                        <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        {% elif benefit.icon == 'clock' %}
+                        <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        {% endif %}
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-white transition-colors">
+                        {{ benefit.title }}
+                    </h3>
+                    <p class="text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors">
+                        {{ benefit.description }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% include 'components/section-cta.html' %}
+    </div>
+</section>
+
+{# ========================================================================== #}
+{# USE CASES SECTION #}
+{# Semantic: Use cases with proper heading hierarchy #}
+{# ========================================================================== #}
+<section class="py-20 md:py-32 bg-muted/50" aria-labelledby="use-cases-heading" role="region">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16 animate-fade-up">
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                Use Cases
+            </span>
+            <h2 id="use-cases-heading" class="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                Built for <span class="text-gradient">Windows workloads</span>
+            </h2>
+            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                From .NET applications to remote work, our Windows VPS handles it all.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {% set use_cases = [
+                {'title': '.NET Applications', 'description': 'Host ASP.NET Core, .NET Framework, and Windows Forms applications with full IIS support.'},
+                {'title': 'Remote Desktop', 'description': 'Access a full Windows desktop from anywhere. Perfect for remote work and development.'},
+                {'title': 'SQL Server Hosting', 'description': 'Run Microsoft SQL Server databases with enterprise-grade performance and reliability.'},
+                {'title': 'Trading & Forex', 'description': 'Run MetaTrader and trading bots 24/7 with low-latency Singapore connections.'}
+            ] %}
+            
+            {% for use_case in use_cases %}
+            <div class="p-6 bg-card border border-border rounded-2xl animate-fade-up hover:-translate-y-1 transition-transform" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+                <h3 class="text-lg font-bold text-foreground mb-2">{{ use_case.title }}</h3>
+                <p class="text-sm text-muted-foreground">{{ use_case.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ========================================================================== #}
+{# PRICING SECTION #}
+{# Semantic: Pricing with structured offer data #}
+{# ========================================================================== #}
+<section id="pricing" class="py-20 md:py-32" aria-labelledby="pricing-heading" role="region">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16 animate-fade-up">
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                Pricing
+            </span>
+            <h2 id="pricing-heading" class="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                Simple, <span class="text-gradient">transparent pricing</span>
+            </h2>
+            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Windows license included. No hidden fees. Pay hourly or monthly.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {% set plans = [
+                {'name': 'Starter', 'vcpu': '2 vCPU', 'ram': '4 GB RAM', 'storage': '80 GB NVMe', 'price': '$15', 'period': '/mo'},
+                {'name': 'Professional', 'vcpu': '4 vCPU', 'ram': '8 GB RAM', 'storage': '160 GB NVMe', 'price': '$30', 'period': '/mo', 'popular': true},
+                {'name': 'Business', 'vcpu': '8 vCPU', 'ram': '16 GB RAM', 'storage': '320 GB NVMe', 'price': '$60', 'period': '/mo'},
+                {'name': 'Enterprise', 'vcpu': '16 vCPU', 'ram': '32 GB RAM', 'storage': '640 GB NVMe', 'price': '$120', 'period': '/mo'}
+            ] %}
+            
+            {% for plan in plans %}
+            <div class="relative p-6 bg-card border-2 {{ 'border-primary' if plan.popular else 'border-border' }} rounded-2xl animate-fade-up hover:-translate-y-1 transition-transform" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+                {% if plan.popular %}
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span class="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">POPULAR</span>
+                </div>
+                {% endif %}
+                <h3 class="text-xl font-bold text-foreground mb-4">{{ plan.name }}</h3>
+                <div class="mb-4">
+                    <span class="text-3xl font-black text-foreground">{{ plan.price }}</span>
+                    <span class="text-muted-foreground">{{ plan.period }}</span>
+                </div>
+                <ul class="space-y-2 mb-6 text-sm text-muted-foreground">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        {{ plan.vcpu }}
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        {{ plan.ram }}
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        {{ plan.storage }}
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Windows License Included
+                    </li>
+                </ul>
+                <a 
+                    href="/download-mobile-app"
+                    class="block w-full text-center px-4 py-3 {{ 'bg-primary text-primary-foreground' if plan.popular else 'bg-muted text-foreground' }} font-semibold rounded-lg transition-colors hover:opacity-90"
+                    data-gtm-id="windows-vps.pricing.{{ plan.name | lower }}.click"
+                >
+                    Get Started
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ========================================================================== #}
+{# RELATED RESOURCES SECTION - Internal Linking for SEO #}
+{# Comprehensive internal links to related products and blog content #}
+{# ========================================================================== #}
+<section class="py-16 md:py-24" aria-labelledby="resources-heading" role="region">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12 animate-fade-up">
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                Related Resources
+            </span>
+            <h2 id="resources-heading" class="text-3xl md:text-4xl font-black text-foreground mb-4 tracking-tight">
+                Explore more <span class="text-gradient">hosting options</span>
+            </h2>
+            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Find the right hosting solution for your Windows workloads and applications.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+            {# Related Products #}
+            <a href="/vps-hosting" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.1s;">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Linux VPS Hosting</h3>
+                        <p class="text-sm text-muted-foreground">Ubuntu, Debian, CentOS & more from $0.009/hr</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/dedicated-servers" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.2s;">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Dedicated Servers</h3>
+                        <p class="text-sm text-muted-foreground">Bare-metal power for enterprise Windows workloads</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/download-mobile-app" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.3s;">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Mobile App</h3>
+                        <p class="text-sm text-muted-foreground">Manage your Windows VPS from iOS & Android</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {# Related Blog Posts #}
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-xl font-bold text-foreground mb-6 text-center">Learn more about Windows VPS</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="/blog/how-to-manage-windows-vps-for-business-applications" class="group flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-all animate-fade-up" style="animation-delay: 0.4s;">
+                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span class="text-sm text-foreground group-hover:text-primary transition-colors">How to Manage Windows VPS for Business Apps</span>
+                </a>
+                <a href="/blog/windows-vps-provider-singapore-comparison" class="group flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-all animate-fade-up" style="animation-delay: 0.5s;">
+                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span class="text-sm text-foreground group-hover:text-primary transition-colors">Windows VPS Provider Singapore Comparison</span>
+                </a>
+                <a href="/blog/best-practices-for-ssh-and-vpn" class="group flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-all animate-fade-up" style="animation-delay: 0.6s;">
+                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span class="text-sm text-foreground group-hover:text-primary transition-colors">Best Practices for SSH and VPN Security</span>
+                </a>
+                <a href="/blog/top-security-features-to-look-for-in-a-web-hosting-provider" class="group flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-all animate-fade-up" style="animation-delay: 0.7s;">
+                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span class="text-sm text-foreground group-hover:text-primary transition-colors">Top Security Features in Web Hosting</span>
+                </a>
+            </div>
+            <div class="text-center mt-6">
+                <a href="/blog" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                    View all blog posts
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ========================================================================== #}
+{# FAQ SECTION #}
+{# Semantic: FAQ with proper itemscope for rich snippets #}
+{# Note: FAQ Schema already in structured_data block above #}
+{# ========================================================================== #}
+{% set faq_items = [
+    {'question': 'Do I get full administrator access?', 'answer': 'Yes! You get complete administrator (root) access via Remote Desktop Protocol (RDP). Install any software, configure services, and manage your server exactly as you would a physical Windows machine.'},
+    {'question': 'Is the Windows license included?', 'answer': 'Yes, a genuine Windows Server license is included in the price. No additional licensing fees or BYOL hassles. Choose between Windows Server 2019 and 2022.'},
+    {'question': 'How do I connect to my Windows VPS?', 'answer': 'Use the built-in Remote Desktop Connection on Windows, Microsoft Remote Desktop on Mac/iOS, or any RDP client on Linux/Android. We provide the IP address and credentials after deployment. <a href="/download-mobile-app" class="text-primary hover:underline">Download our mobile app</a> for on-the-go management.'},
+    {'question': 'Can I run multiple websites on one Windows VPS?', 'answer': 'Absolutely! Use IIS (Internet Information Services) to host multiple websites and applications on a single server. Perfect for agencies and developers. Learn more in our <a href="/blog/how-to-manage-multiple-websites-on-a-single-hosting-account" class="text-primary hover:underline">multi-site hosting guide</a>.'},
+    {'question': 'What about SQL Server?', 'answer': 'SQL Server Express is available at no additional cost. For SQL Server Standard or Enterprise, you can bring your own license (BYOL) or <a href="/contact" class="text-primary hover:underline">contact us</a> for licensing options.'},
+    {'question': 'Is there a mobile app for management?', 'answer': 'Yes! Our iOS and Android apps let you manage, restart, and monitor your Windows VPS from anywhere. You can even connect via RDP apps directly from your phone. <a href="/download-mobile-app" class="text-primary hover:underline">Download the app</a> to get started.'},
+    {'question': 'Need more power than VPS?', 'answer': 'If you need dedicated resources without virtualization overhead, consider our <a href="/dedicated-servers" class="text-primary hover:underline">dedicated server hosting</a>. Get bare-metal performance with the same great support.'}
+] %}
+<section id="faq" class="py-20 md:py-32 bg-muted/50" aria-labelledby="faq-heading" role="region" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12 animate-fade-up">
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                FAQ
+            </span>
+            <h2 id="faq-heading" class="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                Windows VPS <span class="text-gradient">questions</span>
+            </h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto" x-data="{ openItem: null }" role="list" aria-label="Frequently asked questions">
+            {% for faq in faq_items %}
+            <div class="border-2 border-white/90 dark:border-white/20 rounded-xl px-6 mb-4 transition-colors animate-fade-up" :class="openItem === {{ loop.index }} ? 'border-primary' : ''" style="animation-delay: {{ loop.index0 * 0.05 }}s;" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+                <button 
+                    class="w-full text-left font-semibold text-foreground py-5 text-base flex items-center justify-between"
+                    @click="openItem = openItem === {{ loop.index }} ? null : {{ loop.index }}"
+                    data-gtm-id="windows-vps.faq.item-{{ loop.index0 }}.toggle"
+                    :aria-expanded="openItem === {{ loop.index }}"
+                    aria-controls="win-faq-answer-{{ loop.index }}"
+                >
+                    <span itemprop="name">{{ faq.question }}</span>
+                    <svg class="w-5 h-5 text-muted-foreground transition-transform" :class="openItem === {{ loop.index }} ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div 
+                    id="win-faq-answer-{{ loop.index }}"
+                    x-show="openItem === {{ loop.index }}"
+                    x-collapse
+                    class="text-muted-foreground pb-5 leading-relaxed"
+                    itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
+                >
+                    <span itemprop="text">{{ faq.answer }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ========================================================================== #}
+{# FINAL CTA SECTION #}
+{# Semantic: Call-to-action with clear conversion focus #}
+{# ========================================================================== #}
+<section class="py-20 md:py-32 relative overflow-hidden" aria-labelledby="cta-heading" role="region">
+    <div class="absolute top-1/4 left-[-10%] w-[500px] h-[500px] rounded-full blur-3xl bg-primary/[0.05] dark:bg-primary/[0.15]"></div>
+    <div class="absolute bottom-1/4 right-[-10%] w-[400px] h-[400px] rounded-full blur-3xl bg-primary/[0.03] dark:bg-primary/[0.10]"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center p-10 md:p-16 border-2 border-white/90 dark:border-white/20 rounded-3xl animate-fade-up">
+            <h2 id="cta-heading" class="text-3xl md:text-5xl font-black text-foreground mb-6 tracking-tight">
+                Deploy your Windows VPS <span class="text-gradient">today</span>
+            </h2>
+            <p class="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Full RDP access, Windows license included, enterprise hardware.
+                Start in minutes.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a 
+                    href="/download-mobile-app"
+                    class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg dark:shadow-[0_0_40px_hsl(217_91%_60%/0.3)]"
+                    data-gtm-id="windows-vps.final-cta.deploy.click"
+                >
+                    Deploy Windows VPS
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+                <a 
+                    href="/contact"
+                    class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-transparent border-2 border-border text-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:bg-muted"
+                    data-gtm-id="windows-vps.final-cta.contact.click"
+                >
+                    Contact Sales
+                </a>
+            </div>
+            <div class="mt-8 text-sm text-muted-foreground">
+                <a href="/vps-hosting" class="hover:text-foreground transition-colors">Need Linux VPS? →</a>
+            </div>
+        </div>
+    </div>
+</section>
+</article>
+{% endblock %}

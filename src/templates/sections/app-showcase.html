@@ -1,0 +1,393 @@
+{# 
+App Showcase Section
+
+Showcases the mobile app with screenshots and key features.
+#}
+
+<section 
+    class="py-16 md:py-24 relative overflow-hidden"
+    data-track-section="home-app-showcase"
+>
+    {# Background gradient #}
+    <div class="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            {# Text Content #}
+            <div class="text-center lg:text-left order-2 lg:order-1">
+                <span 
+                    class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block animate-fade-up"
+                >
+                    Mobile First
+                </span>
+                
+                <h2 
+                    class="text-3xl md:text-5xl font-black text-foreground mb-6 animate-fade-up"
+                    style="animation-delay: 0.1s;"
+                >
+                    Manage Your Servers
+                    <span class="text-gradient">From Anywhere</span>
+                </h2>
+                
+                <p 
+                    class="text-lg text-muted-foreground mb-8 animate-fade-up"
+                    style="animation-delay: 0.2s;"
+                >
+                    Our powerful mobile app gives you complete control over your VPS infrastructure. 
+                    Deploy new servers, monitor performance, manage domains, and more — all from your pocket.
+                </p>
+                
+                {# Feature list #}
+                <ul class="space-y-4 mb-8">
+                    {% set app_features = [
+                        'One-tap server deployment',
+                        'Real-time resource monitoring',
+                        'Push notifications for alerts',
+                        'Secure SSH terminal access',
+                        'Manage domains and SSL',
+                        'View billing and invoices'
+                    ] %}
+                    {% for feature in app_features %}
+                        <li 
+                            class="flex items-center gap-3 animate-fade-up"
+                            style="animation-delay: {{ 0.3 + loop.index0 * 0.05 }}s;"
+                        >
+                            <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-foreground">{{ feature }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+                {# Download buttons #}
+                <div 
+                    class="animate-fade-up"
+                    style="animation-delay: 0.6s;"
+                >
+                    {% set gtm_prefix = 'home' %}
+                    {% set gtm_section = 'app-showcase' %}
+                    {% include 'components/app-store-badges.html' %}
+                </div>
+            </div>
+            
+            {# Server + Phone Remote Control Visual #}
+            <div class="order-1 lg:order-2 flex justify-center">
+                <div class="relative">
+                    {# Animated Glow #}
+                    <div 
+                        class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 animate-pulse"
+                        style="background: radial-gradient(circle, hsl(217 91% 60% / 0.4), transparent 70%);"
+                    ></div>
+                    
+                    {# Combined Server + Phone SVG #}
+                    <div class="relative z-10 animate-fade-up">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="500" height="450" viewBox="0 0 500 400" class="drop-shadow-2xl">
+                            <defs>
+                                {# Glow filters for lights #}
+                                <filter id="glow-red" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="glow-yellow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="glow-primary" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                
+                                {# Gradient for server front #}
+                                <linearGradient id="server-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3a3a3a"/>
+                                    <stop offset="100%" style="stop-color:#2a2a2a"/>
+                                </linearGradient>
+                                
+                                {# Gradient for top #}
+                                <linearGradient id="top-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#666"/>
+                                    <stop offset="100%" style="stop-color:#4a4a4a"/>
+                                </linearGradient>
+                                
+                                {# Phone gradient #}
+                                <linearGradient id="phone-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#1a1a1a"/>
+                                    <stop offset="100%" style="stop-color:#0d0d0d"/>
+                                </linearGradient>
+                                
+                                {# Phone screen gradient #}
+                                <linearGradient id="screen-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#1e3a5f"/>
+                                    <stop offset="100%" style="stop-color:#0f1f33"/>
+                                </linearGradient>
+                                
+                                {# Connection line gradient #}
+                                <linearGradient id="connection-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#3b82f6"/>
+                                    <stop offset="50%" style="stop-color:#60a5fa"/>
+                                    <stop offset="100%" style="stop-color:#3b82f6"/>
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- ============================================ -->
+                            <!-- SERVER RACK (positioned on the right) -->
+                            <!-- ============================================ -->
+                            <g transform="translate(250,50) scale(1.3)">
+                                <!-- Top with gradient -->
+                                <path d="M30 0 L130 0 L160 30 L60 30 Z" fill="url(#top-gradient)"/>
+                                <!-- Side -->
+                                <path d="M130 0 L160 30 L160 230 L130 200 Z" fill="#444"/>
+                                <!-- Front with gradient -->
+                                <rect x="30" y="30" width="130" height="200" fill="url(#server-gradient)"/>
+                                
+                                <!-- Server divisions -->
+                                <line x1="30" y1="80" x2="160" y2="80" stroke="#1a1a1a" stroke-width="2"/>
+                                <line x1="30" y1="130" x2="160" y2="130" stroke="#1a1a1a" stroke-width="2"/>
+                                <line x1="30" y1="180" x2="160" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+                                
+                                <!-- Ventilation slots -->
+                                <g opacity="0.3">
+                                    <rect x="80" y="40" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="47" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="54" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="90" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="97" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="104" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="140" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="147" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="154" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="190" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="197" width="60" height="3" rx="1" fill="#222"/>
+                                    <rect x="80" y="204" width="60" height="3" rx="1" fill="#222"/>
+                                </g>
+                                
+                                <!-- Animated Lights -->
+                                <circle cx="50" cy="55" r="5" fill="#ff3333" filter="url(#glow-red)">
+                                    <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="65" cy="55" r="5" fill="#33ff33" filter="url(#glow-green)">
+                                    <animate attributeName="opacity" values="1;0.6;1" dur="1.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="105" r="5" fill="#33ff33" filter="url(#glow-green)">
+                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="65" cy="105" r="5" fill="#33ff33" filter="url(#glow-green)">
+                                    <animate attributeName="opacity" values="1;0.7;1" dur="0.8s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="155" r="5" fill="#3399ff" filter="url(#glow-blue)">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="65" cy="155" r="5" fill="#33ff33" filter="url(#glow-green)">
+                                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="205" r="5" fill="#ffcc00" filter="url(#glow-yellow)">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="65" cy="205" r="5" fill="#33ff33" filter="url(#glow-green)">
+                                    <animate attributeName="opacity" values="1;0.8;1" dur="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Activity lights -->
+                                <g>
+                                    <rect x="145" y="50" width="8" height="4" rx="1" fill="#00ff00" opacity="0.8">
+                                        <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite"/>
+                                    </rect>
+                                    <rect x="145" y="100" width="8" height="4" rx="1" fill="#00ff00" opacity="0.8">
+                                        <animate attributeName="opacity" values="0;1;0" dur="0.2s" repeatCount="indefinite" begin="0.1s"/>
+                                    </rect>
+                                    <rect x="145" y="150" width="8" height="4" rx="1" fill="#00ff00" opacity="0.8">
+                                        <animate attributeName="opacity" values="0;1;0" dur="0.25s" repeatCount="indefinite" begin="0.05s"/>
+                                    </rect>
+                                    <rect x="145" y="200" width="8" height="4" rx="1" fill="#00ff00" opacity="0.8">
+                                        <animate attributeName="opacity" values="0;1;0" dur="0.15s" repeatCount="indefinite" begin="0.15s"/>
+                                    </rect>
+                                </g>
+                            </g>
+                            
+                            <!-- ============================================ -->
+                            <!-- MOBILE PHONE (positioned on the left) -->
+                            <!-- ============================================ -->
+                            <g transform="translate(20,100)">
+                                <!-- Phone body with subtle animation -->
+                                <g>
+                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur="3s" repeatCount="indefinite"/>
+                                    
+                                    <!-- Phone outer frame -->
+                                    <rect x="0" y="0" width="100" height="180" rx="16" fill="url(#phone-gradient)" stroke="#333" stroke-width="2"/>
+                                    
+                                    <!-- Phone screen -->
+                                    <rect x="6" y="12" width="88" height="156" rx="8" fill="url(#screen-gradient)"/>
+                                    
+                                    <!-- Screen content - Server control UI -->
+                                    <g transform="translate(12, 20)">
+                                        <!-- Status bar -->
+                                        <text x="0" y="8" font-size="6" fill="#888">9:41</text>
+                                        <circle cx="70" cy="5" r="3" fill="#33ff33"/>
+                                        
+                                        <!-- App header -->
+                                        <text x="10" y="25" font-size="8" fill="#fff" font-weight="bold">ReadyServer</text>
+                                        
+                                        <!-- Server status cards -->
+                                        <rect x="0" y="35" width="76" height="30" rx="4" fill="#1a3a5a"/>
+                                        <text x="5" y="48" font-size="6" fill="#60a5fa">Server Status</text>
+                                        <circle cx="65" cy="50" r="4" fill="#33ff33" filter="url(#glow-green)">
+                                            <animate attributeName="opacity" values="1;0.6;1" dur="1s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <text x="5" y="58" font-size="7" fill="#fff" font-weight="bold">Running</text>
+                                        
+                                        <!-- Control buttons -->
+                                        <rect x="0" y="72" width="36" height="24" rx="4" fill="#3b82f6"/>
+                                        <text x="6" y="87" font-size="6" fill="#fff">Restart</text>
+                                        
+                                        <rect x="40" y="72" width="36" height="24" rx="4" fill="#22c55e"/>
+                                        <text x="48" y="87" font-size="6" fill="#fff">Scale</text>
+                                        
+                                        <!-- Stats -->
+                                        <rect x="0" y="102" width="76" height="35" rx="4" fill="#1a3a5a"/>
+                                        <text x="5" y="115" font-size="6" fill="#60a5fa">CPU</text>
+                                        <rect x="25" y="110" width="45" height="4" rx="2" fill="#333"/>
+                                        <rect x="25" y="110" width="30" height="4" rx="2" fill="#3b82f6">
+                                            <animate attributeName="width" values="30;35;28;30" dur="2s" repeatCount="indefinite"/>
+                                        </rect>
+                                        <text x="5" y="130" font-size="6" fill="#60a5fa">RAM</text>
+                                        <rect x="25" y="125" width="45" height="4" rx="2" fill="#333"/>
+                                        <rect x="25" y="125" width="20" height="4" rx="2" fill="#22c55e">
+                                            <animate attributeName="width" values="20;25;18;20" dur="3s" repeatCount="indefinite"/>
+                                        </rect>
+                                    </g>
+                                    
+                                    <!-- Home indicator -->
+                                    <rect x="35" y="172" width="30" height="4" rx="2" fill="#555"/>
+                                </g>
+                                
+                                <!-- Wifi signal icon on phone -->
+                                <g transform="translate(75, 18)">
+                                    <path d="M0 8 L4 4 L8 8" stroke="#60a5fa" stroke-width="1.5" fill="none" opacity="0.5">
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+                                    </path>
+                                    <path d="M1 6 L4 3 L7 6" stroke="#60a5fa" stroke-width="1.5" fill="none" opacity="0.7">
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" repeatCount="indefinite" begin="0.2s"/>
+                                    </path>
+                                    <circle cx="4" cy="9" r="1" fill="#60a5fa"/>
+                                </g>
+                            </g>
+                            
+                            <!-- ============================================ -->
+                            <!-- CONNECTION LINE (dotted, animated) -->
+                            <!-- ============================================ -->
+                            <g>
+                                <!-- Main connection path (curved dotted line) -->
+                                <path 
+                                    d="M 120 190 Q 180 150 240 180 Q 280 200 280 180" 
+                                    fill="none" 
+                                    stroke="url(#connection-gradient)" 
+                                    stroke-width="3" 
+                                    stroke-dasharray="8 6"
+                                    stroke-linecap="round"
+                                    opacity="0.8"
+                                >
+                                    <animate attributeName="stroke-dashoffset" values="0;28" dur="1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Glow effect for the line -->
+                                <path 
+                                    d="M 120 190 Q 180 150 240 180 Q 280 200 280 180" 
+                                    fill="none" 
+                                    stroke="#3b82f6" 
+                                    stroke-width="8" 
+                                    stroke-dasharray="8 6"
+                                    stroke-linecap="round"
+                                    opacity="0.2"
+                                    filter="url(#glow-primary)"
+                                >
+                                    <animate attributeName="stroke-dashoffset" values="0;28" dur="1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Data packets moving along the line -->
+                                <circle r="5" fill="#60a5fa" filter="url(#glow-blue)">
+                                    <animateMotion dur="1.5s" repeatCount="indefinite">
+                                        <mpath href="#dataPath"/>
+                                    </animateMotion>
+                                    <animate attributeName="opacity" values="1;0.5;1" dur="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle r="4" fill="#3b82f6">
+                                    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.5s">
+                                        <mpath href="#dataPath"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle r="3" fill="#93c5fd">
+                                    <animateMotion dur="1.5s" repeatCount="indefinite" begin="1s">
+                                        <mpath href="#dataPath"/>
+                                    </animateMotion>
+                                </circle>
+                                
+                                <!-- Hidden path for animation -->
+                                <path id="dataPath" d="M 120 190 Q 180 150 240 180 Q 280 200 280 180" fill="none" stroke="none"/>
+                                
+                                <!-- Reverse data packets (server to phone) -->
+                                <circle r="4" fill="#22c55e" filter="url(#glow-green)">
+                                    <animateMotion dur="1.8s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1">
+                                        <mpath href="#dataPath"/>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                            
+                            <!-- ============================================ -->
+                            <!-- LABELS -->
+                            <!-- ============================================ -->
+                            <g font-family="system-ui, sans-serif">
+                                <!-- "Remote Control" label -->
+                                <text x="150" y="130" font-size="11" fill="#60a5fa" font-weight="600" text-anchor="middle" opacity="0.9">
+                                    Remote Control
+                                    <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+                                </text>
+                                
+                                <!-- Connection indicator -->
+                                <g transform="translate(175, 155)">
+                                    <circle r="4" fill="#22c55e" filter="url(#glow-green)">
+                                        <animate attributeName="r" values="4;5;4" dur="1s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <text x="10" y="4" font-size="8" fill="#22c55e">Connected</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    {# Floating particles #}
+                    <div class="absolute inset-0 pointer-events-none">
+                        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/60 rounded-full animate-ping" style="animation-duration: 2s;"></div>
+                        <div class="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-green-400/60 rounded-full animate-ping" style="animation-duration: 3s; animation-delay: 0.5s;"></div>
+                        <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-400/60 rounded-full animate-ping" style="animation-duration: 2.5s; animation-delay: 1s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

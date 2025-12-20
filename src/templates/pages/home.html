@@ -1,0 +1,75 @@
+{# 
+Home Page (Marketing Landing)
+
+The main landing page for Ready Server.
+Composed of multiple section components.
+#}
+
+{% extends 'base.html' %}
+
+{% block title %}{{ site.title }} - {{ site.tagline }}{% endblock %}
+
+{% block description %}{{ site.description }}{% endblock %}
+
+{% block og_image %}/og/home.svg{% endblock %}
+
+{% block structured_data %}
+{{ super() }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}/blog?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Ready Server Mobile App",
+    "operatingSystem": ["iOS", "Android"],
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "SGD"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "156"
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+    {# Hero Section - Dramatic with interactive phone #}
+    {% include 'sections/hero-dramatic.html' %}
+
+    {# As Seen On - Social proof with scrolling logos #}
+    {% include 'sections/as-seen-on.html' %}
+
+    {# Features Section #}
+    {% include 'sections/features.html' %}
+
+    {# App Showcase Section #}
+    {% include 'sections/app-showcase.html' %}
+
+    {# Blog Highlights #}
+    {% include 'sections/blog-highlights.html' %}
+
+    {# FAQ Section #}
+    {% include 'sections/faq.html' %}
+
+    {# CTA Section #}
+    {% include 'sections/cta.html' %}
+{% endblock %}
+

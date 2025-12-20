@@ -1,0 +1,16 @@
+{#
+Section CTA Component
+
+A centered CTA that appears at the bottom of major sections.
+Includes App Store badges and encourages mobile app download.
+#}
+
+<div class="text-center mt-16 animate-fade-up" style="animation-delay: 0.3s;">
+    <p class="text-muted-foreground mb-6">
+        Download our app to deploy and manage your servers anywhere
+    </p>
+    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center">
+        {% include 'components/app-store-badges.html' %}
+    </div>
+</div>
+

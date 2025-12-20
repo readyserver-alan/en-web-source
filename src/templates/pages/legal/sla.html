@@ -1,0 +1,103 @@
+{# 
+Service Level Agreement (SLA) Page
+
+Full SLA content matching the production Ready Server website.
+#}
+
+{% extends 'base.html' %}
+
+{% block title %}SLA - {{ site.title }}{% endblock %}
+
+{% block description %}Ready Server Virtual Private Server (VPS) Hosting Services Service Level Agreement. This SLA sets out the service level commitments in connection with our VPS service offering.{% endblock %}
+
+{% block canonical %}/sla{% endblock %}
+{% block og_image %}/og/home.svg{% endblock %}
+
+{% block structured_data %}
+{{ super() }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "SLA - Ready Server Singapore",
+    "description": "Ready Server Virtual Private Server (VPS) Hosting Services Service Level Agreement",
+    "url": "{{ site.url }}/sla",
+    "datePublished": "2025-01-22T08:15:39+00:00",
+    "dateModified": "2025-05-05T11:12:50+00:00"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Page Header #}
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black text-foreground mb-4">SLA</h1>
+            </div>
+            
+            {# Content #}
+            <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-p:mb-4 prose-a:text-primary">
+                
+                <p class="text-lg">READY SERVER VIRTUAL PRIVATE SERVER (VPS) HOSTING SERVICES – SERVICE LEVEL AGREEMENT</p>
+                
+                <p>This Service Level Agreement ("SLA") sets out the service level commitments of Ready Server Pte Ltd ("Ready Server", "we" or "us") in connection with our VPS service offering, and the relevant terms and conditions.</p>
+                
+                <p>This SLA must be read in conjunction with the Terms of Use for VPS Services available on our Website.</p>
+                
+                <p>Any capitalised terms used in this SLA, such as "Website", "Mobile Application" and "Services", have the same meaning as per the Terms of Use unless another definition is provided in this SLA.</p>
+                
+                <h2>1. DEFINITIONS</h2>
+                
+                <p>"<strong>Billing Hour</strong>" refers to the one-hour periods where Fees are payable for the Services as set out in the Mobile Application.</p>
+                
+                <p>"<strong>Downtime</strong>" means a period during which the Services are completely inaccessible due to network or server-related issues that are the fault of Ready Server, but excludes circumstances where the Services are partly, intermittently, or wholly inaccessible because of:</p>
+                
+                <p class="pl-6">(a) Any circumstances outside our reasonable control, including but not limited to acts of God, flood, drought, earthquake or other natural disaster; pandemic or epidemic; terrorist attack, civil war, riots, war, armed conflict, imposition of sanctions, embargo, breaking off of diplomatic relations, threat of or preparation for war; nuclear, chemical or biological contamination; fire, explosion or other accident of a similar nature; disruptions to the Internet and/or telecommunication services; any law or other action taken by a government or public authority;</p>
+                
+                <p class="pl-6">(b) Any of your acts and/or omissions (e.g., incorrect configurations, breach of the Terms of Use); or</p>
+                
+                <p class="pl-6">(c) Maintenance.</p>
+                
+                <h2>2. SERVICE LEVEL COMMITMENT FOR NETWORK</h2>
+                
+                <p>We will use commercially reasonable efforts to provide a 99.9% monthly network uptime for the VPS Services.</p>
+                
+                <h2>3. REQUIREMENT TO REPORT DOWNTIME</h2>
+                
+                <p><strong>3.1.</strong> If you are affected by Downtime, you must report the same using the in-app chat support function on the Mobile Application. We may require you to provide additional information about the Downtime incident at our request.</p>
+                
+                <p><strong>3.2.</strong> Upon receipt of your report and any additional information requested by us, we will log and verify the same and determine, at our discretion, whether the reported incident is Downtime. In the event we determine that you were affected by Downtime that qualifies for billing adjustments set out in Clause 4, we will reflect the same for the affected periods in the next billing cycle.</p>
+                
+                <p><strong>3.3.</strong> If we determine that the reported incident is not Downtime, you are not entitled to any billing adjustments, refund or waiver of any Fees. The limitations of liability in Clause 14 of the Terms of Use will apply.</p>
+                
+                <h2>4. BILLING ADJUSTMENTS FOR DOWNTIME</h2>
+                
+                <p><strong>4.1.</strong> We will waive the Fees payable only where there has been Downtime for at least a full and continuous Billing Hour.</p>
+                
+                <p><strong>4.2.</strong> Fees shall continue to be payable where:</p>
+                
+                <p class="pl-6">(a) The duration of Downtime was less than a Billing Hour; or</p>
+                
+                <p class="pl-6">(b) Where the duration of Downtime is across more than one Billing Hour but there was no Downtime for a full and continuous Billing Hour (notwithstanding that the total Downtime may cumulatively add up to a full hour).</p>
+                
+                <p><strong>4.3.</strong> The remedies set out in this Clause 4 shall be the exclusive and sole remedy available to you for Downtime. No other remedies shall be available to you for any Downtime or unavailability of the Services for any reason whatsoever.</p>
+                
+                <h2>5. BACK-END HARDWARE FAILURES</h2>
+                
+                <p><strong>5.1.</strong> If you believe the VPS Services have been adversely impacted by any back-end hardware failures, you must report the same using the in-app chat support function on the Mobile Application. We may require you to provide additional information about the matter at our request.</p>
+                
+                <p><strong>5.2.</strong> Upon receipt of your report and any additional information requested by us, we will log and verify the same and determine, at our discretion, whether any back-end hardware requires repair and/or replacement. If we determine that the hardware does require repair and/or replacement, we shall use commercially reasonable efforts to repair or replace (at our discretion) the faulty hardware by the next working day.</p>
+                
+                <p><strong>5.3.</strong> If we determine that the back-end hardware does not require repair and/or replacement, you are not entitled to any billing adjustments, refund or waiver of any Fees. The limitations of liability in Clause 14 of the Terms of Use will apply.</p>
+                
+                <div class="mt-10 pt-6 border-t border-border">
+                    <p class="text-muted-foreground">Version 1.0<br>Dated 15 January 2025</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

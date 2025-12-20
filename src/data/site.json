@@ -1,0 +1,27 @@
+{
+  "name": "Ready Server",
+  "title": "Ready Server",
+  "tagline": "Singapore's #1 VPS & Dedicated Hosting",
+  "description": "Enterprise-grade VPS and dedicated server hosting in Singapore. 99.99% uptime, NVMe SSD, 24/7 support, and ISO 27001 certified data centers.",
+  "url": "https://readyserver.sg",
+  "locale": "en-SG",
+  "twitter": "@readyserversg",
+  "og_image": "/og/home.svg",
+  "gtm_id": "GTM-P5CRWLDZ",
+  "social": {
+    "twitter": "@readyserversg",
+    "facebook": "https://www.facebook.com/readyserver/",
+    "linkedin": "https://www.linkedin.com/company/ready-server-pte-ltd/",
+    "instagram": "https://www.instagram.com/readyserver.sg/"
+  },
+  "contact": {
+    "email": "support@readyserver.sg",
+    "phone": "+65 6123 4567"
+  },
+  "company": {
+    "name": "Ready Server Pte Ltd",
+    "address": "Singapore",
+    "founded": 2015
+  }
+}
+

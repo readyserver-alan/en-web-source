@@ -1,0 +1,366 @@
+{# 
+Terms of Use Page
+
+Full Terms of Use content matching the production Ready Server website.
+#}
+
+{% extends 'base.html' %}
+
+{% block title %}Terms of Use - {{ site.title }}{% endblock %}
+
+{% block description %}Ready Server Virtual Private Server (VPS) Hosting Services Terms of Use. Please read these Terms of Use carefully before accessing or using the Services.{% endblock %}
+
+{% block canonical %}/terms-of-service{% endblock %}
+{% block og_image %}/og/home.svg{% endblock %}
+
+{% block structured_data %}
+{{ super() }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms of Use - Ready Server Singapore",
+    "description": "Ready Server Virtual Private Server (VPS) Hosting Services Terms of Use",
+    "url": "{{ site.url }}/terms-of-service",
+    "datePublished": "2025-01-22T08:14:58+00:00",
+    "dateModified": "2025-05-05T11:13:56+00:00"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Page Header #}
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black text-foreground mb-4">Terms of Use</h1>
+            </div>
+            
+            {# Content #}
+            <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-p:mb-4 prose-a:text-primary prose-table:w-full prose-th:text-left prose-th:p-3 prose-td:p-3 prose-table:border prose-th:border prose-td:border prose-th:bg-muted">
+                
+                <p class="font-bold text-lg">READY SERVER VIRTUAL PRIVATE SERVER (VPS) HOSTING SERVICES – TERMS OF USE</p>
+                
+                <p class="font-bold">Please read these Terms of Use carefully before accessing or using the Services.</p>
+                
+                <p><strong>I.</strong> These Terms of Use ("<strong>Terms of Use</strong>") form a legally binding agreement between you ("<strong>you</strong>") and Ready Server Pte Ltd ("<strong>Ready Server</strong>", "<strong>we</strong>" or "<strong>us</strong>"). These Terms of Use apply to the Services and set out the terms and conditions for your use of the Services.</p>
+                
+                <p><strong>II.</strong> Ready Server Pte Ltd is a company incorporated in Singapore (UEN 201500017K) and its registered address is at 192 Waterloo Street, #05-01 Skyline, Singapore 187966.</p>
+                
+                <p><strong>III.</strong> By accessing, using or signing up for an account with us (including but not limited to accessing the Website and/or downloading a copy of the Mobile Application), you agree to these Terms of Use. If you do not agree to these Terms of Use, you must not access, use or sign up for an Account.</p>
+                
+                <p>You should keep a copy of these Terms of Use for your reference.</p>
+                
+                <h2>1. DEFINITIONS & INTERPRETATION</h2>
+                
+                <p><strong>1.1.</strong> In these Terms of Use, the following words shall have the meaning set out below:</p>
+                
+                <p>"<strong>Account</strong>" refers to the user account required to access or use certain Services. You may sign up for an Account via the Website or Mobile Application.</p>
+                
+                <p>"<strong>Affiliates</strong>" means any entity that, directly or indirectly through one or more intermediaries, controls, is controlled by, or is under common control with Ready Server. This includes, but is not limited to, subsidiaries, holding companies and/or ultimate holding companies of Ready Server.</p>
+                
+                <p>"<strong>Beta Services</strong>" means any service, product, software and/or feature which are designated as beta or pre-release versions.</p>
+                
+                <p>"<strong>Business Hours</strong>" means 9AM to 6PM Singapore time (GMT + 8) on any day which is not a government-gazetted holiday in Singapore.</p>
+                
+                <p>"<strong>Content</strong>" means software, data, text, audio, video, and/or images. Your Content includes, but is not limited to, any Content that you or any User submits or transfers to us, or is received by us from you or any User, for the purposes of your access and use of the Services in connection with your Account.</p>
+                
+                <p>"<strong>Intellectual Property</strong>" refers to all full global intellectual property and similar related rights in the broadest sense of the term, including copyrights, trademarks, trading name rights, database rights, patents, design rights, know-how and domain names, (or entitlement to same), as well as any future intellectual property rights and applications to acquire the aforementioned or similar rights.</p>
+                
+                <p>"<strong>Fees</strong>" refers to the fees and charges payable to Ready Server for the Services, which are set out in the Mobile Application.</p>
+                
+                <p>"<strong>Mobile Application</strong>" refers to the Ready Server mobile application software.</p>
+                
+                <p>"<strong>Personal Data</strong>" refers to the information set out in Section 2 of the Privacy Policy.</p>
+                
+                <p>"<strong>Points</strong>" refer to the billing units for the VPS Services.</p>
+                
+                <p>"<strong>Privacy Policy</strong>" refers to the privacy policy applicable to the Services, which is accessible on the Website, as may be updated from time to time.</p>
+                
+                <p>"<strong>Prohibited Content</strong>" refers to any of the following Content, and any Content that is unlawful, abusive, or otherwise legally, socially, morally and/or ethically unacceptable. This includes, but is not limited to:</p>
+                
+                <p class="pl-6">(a) Any Content which infringes or amounts to passing off of any Intellectual Property;</p>
+                <p class="pl-6">(b) Any Content which is sexual in nature, including but not limited to pornography, obscene or erotic materials;</p>
+                <p class="pl-6">(c) Any Content which promotes child sexual exploitation or abuse;</p>
+                <p class="pl-6">(d) Warez, including but not limited to any software which is pirated, illegally copied or which has its anti-piracy or copy protection measures deactivated or circumvented;</p>
+                <p class="pl-6">(e) Any Content which can be used for, or aids in any hacking, spam or cracking activities;</p>
+                <p class="pl-6">(f) Any Content which will be distributed or disseminated in a manner that requires an unusually high amount of bandwidth, such as the commercial distribution MP3s, audio files, video files, software or any other types of Content.</p>
+                
+                <p>"<strong>Service Level Agreement</strong>" or "<strong>SLA</strong>" refers to the service level agreement offered by Ready Server in connection with the VPS Services, which is accessible on the Website, as may be updated from time to time.</p>
+                
+                <p>"<strong>Services</strong>" refers to the services made available by Ready Server and/or its Affiliates, but does not include any Content made available by any third party via the Website, Mobile Application or in conjunction with the Services. The Services include:</p>
+                
+                <p class="pl-6">(a) The VPS Services;</p>
+                <p class="pl-6">(b) The Website and the Mobile Application;</p>
+                <p class="pl-6">(c) The services provided via the Website and Mobile Application and any software which is usable or otherwise available through the same;</p>
+                <p class="pl-6">(d) All Content, information, images, data, audio, video, graphics, text and other materials or content which is available by us related to the Services, on the Website and the Mobile Application;</p>
+                <p class="pl-6">(e) Any fixes, updates, modifications and enhancements (if any) as may, from time to time, be implemented onto the Website and/or Mobile Application;</p>
+                <p class="pl-6">(f) Any customer support services provided in relation to the VPS Services, Website or Mobile Application;</p>
+                <p class="pl-6">(g) Any Beta Services.</p>
+                
+                <p>"<strong>Website</strong>" refers to <a href="https://www.readyserver.sg/" target="_blank" rel="noopener">https://www.readyserver.sg/</a>.</p>
+                
+                <p>"<strong>Users</strong>" refers to any person or entity that directly or indirectly accesses or uses the Services in association with your Account, or accesses or uses your Content. This includes but is not limited to your employees, contractors, agents or any other third party.</p>
+                
+                <p>"<strong>VPS Services</strong>" refers to the virtual private server ("<strong>VPS</strong>") hosting services provided by Ready Server and/or its Affiliates and all other incidental and related services.</p>
+                
+                <p><strong>1.2.</strong> In the event of any conflict or inconsistency between the Terms of Use, the Service Level Agreement and/or the Privacy Policy, the provisions of these Terms of Use will prevail.</p>
+                
+                <h2>2. LICENCE TO USE THE SERVICES</h2>
+                
+                <p><strong>2.1.</strong> On the condition that you comply with these Terms of Use, we grant you a non-exclusive, non-sublicensable, revocable and non-transferable right to access and use the Services.</p>
+                
+                <p><strong>2.2.</strong> You must be at least 18 years of age to accept these Terms of Use and access, use and/or open an Account.</p>
+                
+                <h2>3. CONDITIONS & RESTRICTIONS</h2>
+                
+                <p><strong>3.1.</strong> You must comply, and ensure that all Users comply with:</p>
+                
+                <p class="pl-6">(a) These Terms of Use;</p>
+                <p class="pl-6">(b) The terms and conditions and/or licence requirements of any software you run; and</p>
+                <p class="pl-6">(c) All laws and regulations applicable to your use of the Services and the Content. If any of your Content comprises personal data or if you collect, use, disclose and/or process any personal data (howsoever defined under any law anywhere in the world, and includes but is not limited to Personal Data), you shall ensure that you and all Users comply with all applicable laws applicable to protection of that personal data, including but not limited to publishing the necessary privacy notice, obtaining all necessary consents and only collecting, using, disclosing and/or otherwise processing that personal data according to applicable law.</p>
+                
+                <p><strong>3.2.</strong> You must not use, facilitate or allow others to use the Services in a manner or for any purposes which are unlawful, fraudulent, harmful, tortious, unconscionable, misleading, deceptive, abusive, defamatory or otherwise legally, socially, morally and/or ethically unacceptable. This includes, but is not limited to:</p>
+                
+                <p class="pl-6">(a) Uploading, hosting, referencing, dealing in or linking to any Prohibited Content;</p>
+                <p class="pl-6">(b) Distributing, publishing, sending or facilitating the sending of spam, unsolicited mass email or other messages, promotions, advertising, or solicitations. This includes, but is not limited to the practice of "spamvertising" (i.e., using spam for advertising purposes, including but not limited to the sending of spam emails to advertise a website, vandalising a website with hyperlinks, or any other equivalent or similar practice);</p>
+                <p class="pl-6">(c) Any acts or omissions against any person or entity that are malicious, threatening or amount to the violation of rights of others;</p>
+                <p class="pl-6">(d) Threatening, inciting, promoting or encouraging violence, terrorism or harm against any person or entity;</p>
+                <p class="pl-6">(e) Promoting or encouraging gambling in any form;</p>
+                <p class="pl-6">(f) Violating the security, integrity or availability or any user, network, computer or communications system, software application, or network or computing device.</p>
+                
+                <p><strong>3.3.</strong> You must not use the Services in a manner which amounts to unfair use of server resources or bandwidth. This includes but is not limited to any excessive or unusually high use of bandwidth or any use of server resources in a manner which adversely impacts other customers' use of the Services. Ready Server has sole discretion in deciding whether the use of Services amounts to unfair use.</p>
+                
+                <p><strong>3.4.</strong> You must not:</p>
+                
+                <p class="pl-6">(a) Copy the Services or the underlying software;</p>
+                <p class="pl-6">(b) Alter, adapt, translate or modify the whole or any part of the Services;</p>
+                <p class="pl-6">(c) Rent, re-sell, lease, sub-licence or loan the whole or any part of the Services;</p>
+                <p class="pl-6">(d) Use the Services in any manner that could, or potentially could, damage, disable, overburden, impair or compromise either the Services, the security of the Services or the ability of other users of the Services to access and use the Services;</p>
+                <p class="pl-6">(e) Use bots or other automated methods to access the Services or create Accounts;</p>
+                <p class="pl-6">(f) Disassemble, decompile, reverse-engineer or create derivative works based on the whole or any part of the Services and the underlying software.</p>
+                
+                <h2>4. ACCOUNT & SECURITY</h2>
+                
+                <p><strong>4.1.</strong> Most features of the Services can only be accessed or used if you register for an Account and are logged in. If you register for an Account, you agree that:</p>
+                
+                <p class="pl-6">(a) You will keep your login credentials, password and any device used for 2-step verification for your Account secure, which includes but is not limited to using a strong password and ensuring that your username and password cannot be discovered by other parties. If your login credentials or password are lost or stolen, or if you believe your Account has been compromised or otherwise accessed unauthorised, you must notify us immediately;</p>
+                <p class="pl-6">(b) You will keep your Personal Data (including contact information) associated with your Account up-to-date and if there are any changes to the relevant Personal Data, you must promptly update the relevant Personal Data via the Mobile Application;</p>
+                <p class="pl-6">(c) You will not sell, transfer or sub-licence your login credentials or password to any other person or entity;</p>
+                <p class="pl-6">(d) You are fully responsible for all acts and omissions associated with your Account, even if such acts or omissions were not done or authorised by you; and</p>
+                <p class="pl-6">(e) You will supervise and control the use of the Services by Users and ensure that they comply with these Terms of Use.</p>
+                
+                <p><strong>4.2.</strong> You agree that you are responsible for securing, protecting and backing up your Account and your Content in a manner which provides appropriate security and protection. This includes but is not limited to properly configuring the Services, using encryption to prevent your Content from being accessed unauthorised, and routinely archiving and creating backups of your Content.</p>
+                
+                <p><strong>4.3.</strong> You consent to the storage and transfer of your Content into our servers located in Singapore. We will not access, process or disclose your Content except as necessary to provide or maintain the Services, to comply with applicable law or a binding order of court or governmental authority. The Privacy Policy does not apply to your Content.</p>
+                
+                <h2>5. PAYMENT & POINTS</h2>
+                
+                <p><strong>5.1.</strong> Payment of Fees for chargeable Services is made by purchasing Points, which must be acquired prior to accessing or using any such Services:</p>
+                
+                <p class="pl-6">(a) You may purchase Points using one of the payment methods we support;</p>
+                <p class="pl-6">(b) Points are automatically deducted from your Account on an hourly basis for use of the relevant Services as set out in the Mobile Application and payment transactions are settled daily at 9.00AM SGT;</p>
+                <p class="pl-6">(c) If you do not hold a minimum number of Points in your Account as required by Ready Server (the minimum requirement is set out in the Mobile Application), your Account or the Services will be suspended or terminated in accordance with Clauses 11 and 12;</p>
+                <p class="pl-6">(d) Your Account can only hold a certain maximum number of Points as determined by Ready Server at its sole discretion;</p>
+                <p class="pl-6">(e) Points can only be used to purchase the relevant Services from Ready Server and have no value outside of the relevant Services;</p>
+                <p class="pl-6">(f) Points are associated with your Account and are non-transferable and non-refundable under any circumstances.</p>
+                
+                <p><strong>5.2.</strong> We may refuse the purchase of Points for any reason at our discretion.</p>
+                
+                <h2>6. SERVICE LEVEL AGREEMENT</h2>
+                
+                <p>The Service Level Agreement applies to the VPS Services. We may modify or discontinue the Service Level Agreement at our discretion and will notify you of any adverse modifications or discontinuation.</p>
+                
+                <h2>7. BETA SERVICES</h2>
+                
+                <p><strong>7.1.</strong> We may provide Beta Services to you and accordingly grant you a non-exclusive, non-sublicensable, revocable and non-transferable licence to use the Beta Services solely for the purposes of testing and for our research and evaluation purposes. The Beta Services may be terminated at any time at our discretion.</p>
+                
+                <p><strong>7.2.</strong> The provision of Beta Services may also be subject to additional terms and conditions to be determined at our discretion; for example, we may require you to participate in surveys and/or to provide certain feedback regarding the functionality and performance of the Beta Services from time to time as reasonably requested by us.</p>
+                
+                <p><strong>7.3.</strong> The Service Level Agreement does not apply to any Beta Services.</p>
+                
+                <p><strong>7.4.</strong> You acknowledge and accept that the Beta Services are subject to the limitations in Clause 14. Additionally, we do not guarantee that any publicly available version of the Beta Services will be released.</p>
+                
+                <h2>8. INTELLECTUAL PROPERTY</h2>
+                
+                <p class="underline font-semibold">Intellectual Property in the Services</p>
+                
+                <p><strong>8.1.</strong> You acknowledge that all Intellectual Property in the Services anywhere in the world belong to and continue to belong to us and our Affiliates exclusively and that you have no rights in, or to, the Services save as provided for in these Terms of Use.</p>
+                
+                <p><strong>8.2.</strong> You are only allowed to use the Intellectual Property referred to in Clause 8.1 to the extent necessary for the use of the Services and in accordance with these Terms of Use, under a non-exclusive, non-sublicensable, non-transferrable, royalty-free and revocable licence granted by us to you for this purpose. This permission will immediately cease if your access to the Services is restricted, suspended and/or terminated under Clause 11 and/or as soon as the non-exclusive right to use the Services ends according to Clause 13.</p>
+                
+                <p><strong>8.3.</strong> You shall not do or omit to do anything that infringes or invalidates our Intellectual Property. You shall not remove any indications regarding our Intellectual Property.</p>
+                
+                <p class="underline font-semibold">Intellectual Property in your Content</p>
+                
+                <p><strong>8.4.</strong> You consent to our use of your Content to provide the Services to you and any Users.</p>
+                
+                <p class="underline font-semibold">Feedback Provided to Us</p>
+                
+                <p><strong>8.5.</strong> If you provide any feedback about the Services to us, you agree that such feedback may be used by us and our Affiliates for any purposes, including but not limited to improving or enhancing the Services and/or our other products and services. Accordingly, you grant us a non-exclusive, perpetual, irrevocable, transferable, sub-licensable and royalty-free licence to use your feedback for any purposes at our discretion.</p>
+                
+                <h2>9. PRIVACY & PERSONAL DATA</h2>
+                
+                <p><strong>9.1.</strong> You consent to and grant us the right to collect, use or disclose Personal Data as permitted by the Privacy Policy.</p>
+                
+                <p><strong>9.2.</strong> You must ensure that Personal Data you submit to us is accurate, up-to-date and complete. If any of your Personal Data is inaccurate, out of date or incomplete, we may be unable to provide the Services to you and/or you may be unable to access or use all or part of the Services.</p>
+                
+                <p><strong>9.3.</strong> If you use a pseudonym, remain anonymous and/or do not provide identifiable information to us, we may be unable to provide the Services to you and/or you may be unable to access or use all or part of the Services.</p>
+                
+                <h2>10. AMENDMENTS & UPDATES</h2>
+                
+                <p>We may change these Terms of Use at any time in our sole discretion and you will be notified of changes via a push notification to your mobile device, an in-app notification within the Mobile Application and/or an email sent to the email associated with your Account. You should ensure your mobile device settings enable you to receive push notifications. Your continued access or use of the Services constitutes your acceptance of the changed Terms of Use. If you do not wish to accept the changed Terms of Use you must immediately cease accessing or using the Services.</p>
+                
+                <h2>11. RESTRICTION, SUSPENSION & TERMINATION OF SERVICES</h2>
+                
+                <p><strong>11.1.</strong> Without any notice or liability to you, we may restrict, suspend or terminate your access or use of the Services, and/or take any other actions which we may deem necessary (including but not limited to throttling bandwidth), in any of the following circumstances:</p>
+                
+                <p class="pl-6">(a) Any breach of Clause 3.3;</p>
+                <p class="pl-6">(b) If the Points balance in your Account is below the required minimum in Clause 5 for three (3) consecutive calendar days;</p>
+                <p class="pl-6">(c) If a chargeback associated with your Account is initiated for any reason;</p>
+                <p class="pl-6">(d) Any use of the Services for any of the following activities:</p>
+                <p class="pl-12">i. Any anonymising, proxy or CDN (content delivery network or content distribution network) service;</p>
+                <p class="pl-12">ii. Any file-hosting, file-storage, file exchange, cloud-storage or cyberlocker service;</p>
+                <p class="pl-12">iii. Any content streaming service;</p>
+                <p class="pl-12">iv. Any download platform;</p>
+                <p class="pl-12">v. Any service which enables the restrictions of download platforms to be bypassed;</p>
+                <p class="pl-12">vi. Any VOD (video-on-demand) service;</p>
+                <p class="pl-12">vii. Any service for uploading, downloading and/or sharing files on a P2P (peer-to-peer) network, including but not limited to seedbox services.</p>
+                
+                <p><strong>11.2.</strong> If we restrict or suspend your access or use of all or part of the Services:</p>
+                
+                <p class="pl-6">(a) You remain responsible and liable for any fees and charges you incur during the period of suspension, including but not limited to payment for Services you used but for which you had insufficient Points balance for payment;</p>
+                <p class="pl-6">(b) You will not be entitled to any billing adjustments under the Service Level Agreement for any period of restriction or suspension.</p>
+                
+                <h2>12. DELETION & TERMINATION OF ACCOUNT</h2>
+                
+                <p><strong>12.1.</strong> You may terminate your Account and/or request for deletion of all associated Personal Data by selecting the relevant option in the Mobile Application. The deletion of your Account is processed immediately. If you request for deletion of Personal Data, we will process your request for deletion of Personal Data within seven (7) business days and will notify you within that period should more time be required to process your request. We shall not be liable for any damages incurred due to the actions taken by you or us if you choose to terminate your Account and/or request for deletion of Personal Data, including but not limited to any actions taken by us in accordance with Clause 13. You waive any and all claims based on any action taken by us.</p>
+                
+                <p><strong>12.2.</strong> Without any notice or liability to you, we may delete or terminate your Account in any of the following circumstances:</p>
+                
+                <p class="pl-6">(a) If the Points balance in your Account is below the required minimum in Clause 5 for seven (7) consecutive calendar days;</p>
+                <p class="pl-6">(b) Any actual or suspected breach of these Terms of Use. We may delete or terminate your Account if your previous Account was deleted or terminated for any actual or suspected breach of these Terms of Use (for e.g., if your previous Account was deleted or terminated due to actual or suspected fraud or for initiating a chargeback);</p>
+                <p class="pl-6">(c) Extended periods of inactivity on your Account, as determined at our sole discretion;</p>
+                <p class="pl-6">(d) Actual or suspected fraud, including but not limited to chargeback and friendly fraud;</p>
+                <p class="pl-6">(e) If you initiate a chargeback against us without first having gone through our dispute resolution process in Clause 18;</p>
+                <p class="pl-6">(f) Any use of the Services for any of the activities listed in Clause 11.1(d);</p>
+                <p class="pl-6">(g) If you withdraw your consent to collection, use and/or disclosure of your Personal Data in accordance with Clause 10 of the Privacy Policy, in a manner which results in us being unable to continue to provide the Services to you.</p>
+                
+                <h2>13. EFFECT OF TERMINATION OF THE SERVICES OR ACCOUNT</h2>
+                
+                <p><strong>13.1.</strong> On termination of the Services or your Account for any reason:</p>
+                
+                <p class="pl-6">(a) All rights granted to you under these Terms of Use shall automatically cease;</p>
+                <p class="pl-6">(b) All your Content and data associated with the Services will be deleted;</p>
+                <p class="pl-6">(c) You remain responsible and liable for any fees and charges you have incurred up to the date of termination and after the date of termination, including but not limited to payment for Services you used but for which you had insufficient Points balance for payment;</p>
+                <p class="pl-6">(d) Any remaining Points balance associated with your Account will be forfeited; and</p>
+                <p class="pl-6">(e) You must immediately cease all activities authorised by these Terms of Use.</p>
+                
+                <p><strong>13.2.</strong> Any clause which expressly or by implication is intended to survive termination, including but not limited to Clauses 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17 and 18, shall survive any termination and shall continue in full force and effect notwithstanding the termination of your Account, the Services and/or these Terms of Use.</p>
+                
+                <p><strong>13.3.</strong> If you access or use the Services after termination, or if you register for another Account, these Terms of Use will apply.</p>
+                
+                <p><strong>13.4.</strong> If your Account was previously terminated in accordance with Clause 12.2(e), we may at our discretion terminate any future Account(s), ban you from creating further Account(s), accessing and/or using the Services without any notice to you.</p>
+                
+                <h2>14. LIMITATION OF LIABILITY</h2>
+                
+                <p><strong>14.1.</strong> You acknowledge and accept that:</p>
+                
+                <p class="pl-6">(a) The Services have not been developed to meet your individual requirements, including any requirements you may be subject to under any applicable law or otherwise, and that it is therefore your responsibility to ensure that such requirements are met (including but not limited to your configuration of the Services);</p>
+                <p class="pl-6">(b) You are solely responsible for ensuring that the web browser software, operating system and any devices used to access the Services are kept up-to-date, including but not limited to ensuring that you download and install all updates such as security and functionality updates, and we will not be liable for any direct or indirect loss or damage you may suffer in connection with your failure to keep the foregoing up-to-date;</p>
+                <p class="pl-6">(c) The Services may undergo maintenance or be updated from time to time. During the maintenance period or when downloading and/or installing updates to the Mobile Application, you acknowledge and accept that you may be unable to access or use the Services and we will not be liable for any direct or indirect loss in connection with the same;</p>
+                <p class="pl-6">(d) You are solely responsible for ensuring that your contact information on your Account is kept up-to-date, and we will not be liable for any direct or indirect loss or damage you may suffer in connection with your failure to keep your contact information up-to-date;</p>
+                <p class="pl-6">(e) We make no warranty as to the ability to access or use the Services and the Services are provided on an "as is" and "as available" basis. We may upgrade, modify, suspend, discontinue or remove any part of or the whole of the Services at any time and for any reason without notice. Access or use of the Services may also be suspended due to circumstances outside of our control, including but not limited to acts of God, laws, acts of governmental authorities, war, riot, disruptions to the Internet or telecommunications and other causes of similar nature;</p>
+                <p class="pl-6">(f) We shall be entitled to transfer our rights and obligations deriving from these Terms of Use to a third party which would acquire the provision of the Services from us or as part of a partial or total transfer of Ready Server's business;</p>
+                <p class="pl-6">(g) We may engage any person, company or firm as a sub-contractor to perform all or any of our obligations under these Terms of Use.</p>
+                
+                <p><strong>14.2.</strong> We will not under any circumstances whatever be liable, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, arising under or in connection with:</p>
+                
+                <p class="pl-6">(a) Your failure to access or use the Services;</p>
+                <p class="pl-6">(b) Your failure or omission to keep access to your Account secure;</p>
+                <p class="pl-6">(c) Your failure or omission to ensure that your web browser and any devices you use to access the Services meet the technical requirements;</p>
+                <p class="pl-6">(d) Your failure or omission to keep your web browser and any devices you use to access the Services up-to-date;</p>
+                <p class="pl-6">(e) Your failure or omission to comply with Clause 3;</p>
+                <p class="pl-6">(f) Termination of your account under Clause 12;</p>
+                <p class="pl-6">(g) Any actions taken by us in accordance with Clause 13;</p>
+                <p class="pl-6">(h) Loss of profits, customers, sales, business, or revenue;</p>
+                <p class="pl-6">(i) Any business interruption;</p>
+                <p class="pl-6">(j) Any loss of anticipated savings;</p>
+                <p class="pl-6">(k) Any loss or corruption of Content, data or information;</p>
+                <p class="pl-6">(l) Any loss of business opportunity, goodwill or reputation;</p>
+                <p class="pl-6">(m) Any costs incurred by you to procure substitute goods or services resulting from any Content, goods, data, information or services that you purchase, obtain, access or receive or any transactions entered into via the Services;</p>
+                <p class="pl-6">(n) Any acts or omissions of any other customer of Ready Server, user of the Services or any third party;</p>
+                <p class="pl-6">(o) Any Content made available to you by any third party via the Website, Mobile Application or in conjunction with the Services;</p>
+                <p class="pl-6">(p) Any data breach; or</p>
+                <p class="pl-6">(q) Any special, indirect or consequential loss, damage, charges or expenses.</p>
+                
+                <p><strong>14.3.</strong> Notwithstanding Clause 14.2, our total aggregate liability in contract, tort (including negligence and breach of statutory duty howsoever arising), misrepresentation (whether innocent or negligent), restitution or otherwise, arising in connection with our performance or contemplated performance of the Services and these Terms of Use shall be limited to USD 100.00.</p>
+                
+                <p><strong>14.4.</strong> Nothing in these Terms of Use shall limit or exclude our liability for:</p>
+                
+                <p class="pl-6">(a) Death or personal injury resulting from negligence;</p>
+                <p class="pl-6">(b) Fraud or fraudulent misrepresentation; and</p>
+                <p class="pl-6">(c) Any other liability that cannot be excluded or limited by the laws of Singapore.</p>
+                
+                <p><strong>14.5.</strong> These Terms of Use sets out the full extent of our obligations and liabilities in respect of the Services. Except as expressly stated in these Terms of Use, there are no conditions, warranties, representations or other terms, express or implied, that are binding on us. Any condition, warranty, representation or other term concerning the supply of the Services which might otherwise be implied into, or incorporated in, these Terms of Use whether by statute, common law or otherwise, is excluded to the fullest extent permitted by law.</p>
+                
+                <p><strong>14.6.</strong> Nothing in this Clause 14 limits or affects your obligation to pay Ready Server for your use of the Services in accordance with Clause 5, or any other payment obligations you may have to Ready Server.</p>
+                
+                <h2>15. INDEMNITY</h2>
+                
+                <p>You agree that we shall have no liability whatsoever for any use of the Services by you, the Users and/or any third party. You hereby agree to fully and completely indemnify us from any and all claims, damages, losses, liability, costs, and expenses (including without limitation legal fees, disbursements and expenses), arising in any manner from your or the Users' use of the Services and your Content.</p>
+                
+                <h2>16. THIRD PARTY SERVICE PROVIDERS</h2>
+                
+                <p>Some functions of the Services are provided by our third party services providers (e.g. payment service gateway providers). Your access and use of such third party services shall be subject to the terms and conditions (e.g. terms of use, privacy policy) of the relevant third party service provider(s).</p>
+                
+                <h2>17. MISCELLANEOUS</h2>
+                
+                <p class="underline font-semibold">Entire Agreement</p>
+                
+                <p><strong>17.1.</strong> These Terms of Use constitute the entire agreement between you and Ready Server and supersedes and extinguishes any and all previous discussions, negotiations, correspondence, drafts, agreements, promises, assurances, warranties, representations and/or understandings between them, whether written or oral, relating to the subject matter of these Terms of Use.</p>
+                
+                <p class="underline font-semibold">Waiver</p>
+                
+                <p><strong>17.2.</strong> A waiver of any right or remedy under these Terms of Use is only effective if it is given in writing and signed by the party waiving such right or remedy. Any such waiver shall apply only to the circumstances for which it is given and shall not be deemed a waiver of any subsequent breach or default. A failure or delay by a party to exercise any right or remedy under these Terms of Use or by law shall not be deemed to constitute a waiver of that or any other right or remedy.</p>
+                
+                <p class="underline font-semibold">Notices</p>
+                
+                <p><strong>17.3.</strong> Any notice given to a party under or in connection with these Terms of Use shall be in writing and in the English language.</p>
+                
+                <p><strong>17.4.</strong> Notices to Ready Server shall be sent to feedback@readyserver.sg. Any notice to Ready Server that has not been sent to this email will not be deemed a notice to Ready Server. Notices to Ready Server shall be deemed received at the time of transmission, if sent during Business Hours; if sent outside Business Hours, notices shall be deemed received by Ready Server when Business Hours next recommence.</p>
+                
+                <p><strong>17.5.</strong> Notices to you shall be sent to the email to the email address associated with your Account, by post to last known address associated with your account, or through any print or electronic mass communication media (e.g. radio, newspaper, social media). Notices sent to you by email shall be deemed received at the time of transmission. Notices sent by post shall be deemed received by you on the day following the date of posting or on the recorded date of delivery (if using a tracked delivery service or registered post). Notices sent via print or electronic mass communication media shall be deemed received on the date of publication or broadcast.</p>
+                
+                <p><strong>17.6.</strong> These Clauses 17.3 to 17.5 do not apply to the service of any proceedings or other documents in any legal proceedings or any other method of dispute resolution.</p>
+                
+                <p class="underline font-semibold">Severance</p>
+                
+                <p><strong>17.7.</strong> If any term or part of a term of these Terms of Use is or becomes invalid, illegal or unenforceable, it shall be deemed modified to the minimum extent necessary to make it valid, legal and enforceable. If such modification is not possible, the relevant term or part of a term shall be deemed deleted. Any modification to or deletion of a term or part of a term under this clause shall not affect the validity and enforceability of the rest of these Terms of Use.</p>
+                
+                <p class="underline font-semibold">Exclusion of Third Party Rights</p>
+                
+                <p><strong>17.8.</strong> Third parties cannot derive any rights from the Services nor these Terms of Use, whether or not under the Contracts (Rights of Third Parties) Act 2001 or any other equivalent and/or similar law in any other jurisdiction.</p>
+                
+                <p class="underline font-semibold">Assignment, Novation, Etc.</p>
+                
+                <p><strong>17.9.</strong> You shall not assign, novate, transfer, mortgage, charge, subcontract, delegate, declare a trust over or otherwise deal with any or all of your rights and obligations under these Terms of Use.</p>
+                
+                <h2>18. GOVERNING LAW & DISPUTE RESOLUTION</h2>
+                
+                <p><strong>18.1.</strong> These Terms of Use, its subject matter and its formation (including any non-contractual disputes or claims) shall be governed by the laws of Singapore.</p>
+                
+                <p><strong>18.2.</strong> If you are dissatisfied with any aspect of the Services, these Terms of Use or any other aspect of our relationship ("<strong>Dispute</strong>"), you must first bring the Dispute to our attention by notifying us via email to feedback@readyserver.sg within thirty (30) days after the Dispute arose. Each of us will negotiate in good faith to resolve the Dispute.</p>
+                
+                <p><strong>18.3.</strong> If the Dispute is not resolved within thirty (30) days after the date of notification to us in Clause 18.2, the Dispute shall be submitted to the non-exclusive jurisdiction of the courts of Singapore.</p>
+                
+                <div class="mt-10 pt-6 border-t border-border">
+                    <p class="text-muted-foreground">Version 1.0<br>Dated 15 January 2025</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

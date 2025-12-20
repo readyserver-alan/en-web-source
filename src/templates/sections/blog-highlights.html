@@ -1,0 +1,106 @@
+{# 
+Blog Highlights Section
+
+Displays recent blog posts to encourage exploration.
+#}
+
+{% set featured_posts = posts[:3] if posts else [] %}
+
+<section 
+    class="py-16 md:py-24"
+    data-track-section="home-blog-highlights"
+>
+    <div class="container mx-auto px-6">
+        {# Section Header #}
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div class="animate-fade-up">
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                    From Our Blog
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black text-foreground">
+                    Latest <span class="text-gradient">Insights</span>
+                </h2>
+            </div>
+            
+            <a 
+                href="/blog"
+                class="inline-flex items-center gap-2 text-primary font-medium hover:underline animate-fade-up"
+                style="animation-delay: 0.1s;"
+                data-gtm-id="home.blog-highlights.view-all.click"
+            >
+                View all posts
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+        </div>
+
+        {# Blog Grid #}
+        {% if featured_posts %}
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for post in featured_posts %}
+                    <article 
+                        class="group bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-up"
+                        style="animation-delay: {{ loop.index0 * 0.1 }}s;"
+                    >
+                        {# Image #}
+                        <div class="aspect-video overflow-hidden">
+                            <img 
+                                src="{{ post.image }}" 
+                                alt="{{ post.title }}"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
+                            >
+                        </div>
+                        
+                        {# Content #}
+                        <div class="p-6">
+                            {# Category & Date #}
+                            <div class="flex items-center gap-4 mb-3">
+                                <span class="text-xs font-medium text-primary uppercase tracking-wider">
+                                    {{ post.category }}
+                                </span>
+                                <span class="text-xs text-muted-foreground">
+                                    {{ post.date | date('%b %d, %Y') }}
+                                </span>
+                            </div>
+                            
+                            {# Title #}
+                            <h3 class="text-lg font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                <a 
+                                    href="/blog/{{ post.slug }}"
+                                    data-gtm-id="home.blog-highlights.post.{{ post.slug }}.click"
+                                >
+                                    {{ post.title }}
+                                </a>
+                            </h3>
+                            
+                            {# Description #}
+                            <p class="text-muted-foreground text-sm line-clamp-2 mb-4">
+                                {{ post.description }}
+                            </p>
+                            
+                            {# Read more #}
+                            <a 
+                                href="/blog/{{ post.slug }}"
+                                class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                                data-gtm-id="home.blog-highlights.read-more.{{ post.slug }}.click"
+                            >
+                                Read more
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            {# Placeholder when no posts #}
+            <div class="text-center py-12">
+                <p class="text-muted-foreground">No blog posts available yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+

@@ -1,0 +1,70 @@
+{# 
+Accordion Component
+
+FAQ-style accordion with:
+- Single item open at a time (by default)
+- Smooth collapse animation via Alpine.js collapse plugin
+- Analytics tracking for each expansion
+- Accessible keyboard navigation
+
+Usage:
+{% set faq_items = [
+    {'question': 'What is VPS?', 'answer': 'A VPS is...'},
+    {'question': 'How do I start?', 'answer': 'Simply...'}
+] %}
+{% include 'components/accordion.html' with context %}
+#}
+
+<div 
+    class="space-y-4"
+    x-data="{ 
+        activeItem: null,
+        toggle(id) {
+            this.activeItem = this.activeItem === id ? null : id;
+        }
+    }"
+>
+    {% for item in faq_items %}
+        {% set item_id = loop.index %}
+        <div 
+            class="border border-border rounded-2xl overflow-hidden transition-all duration-200"
+            :class="activeItem === {{ item_id }} ? 'bg-card shadow-lg' : 'bg-card/50 hover:bg-card'"
+        >
+            {# Accordion Header (Trigger) #}
+            <button
+                class="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
+                @click="toggle({{ item_id }})"
+                :aria-expanded="activeItem === {{ item_id }}"
+                aria-controls="accordion-content-{{ item_id }}"
+                data-gtm-id="faq.item.{{ item_id }}.toggle"
+            >
+                <span class="font-semibold text-foreground text-lg pr-4">
+                    {{ item.question }}
+                </span>
+                
+                {# Chevron Icon #}
+                <svg 
+                    class="w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-200"
+                    :class="activeItem === {{ item_id }} ? 'rotate-180 text-primary' : ''"
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            
+            {# Accordion Content (Collapsible) #}
+            <div 
+                id="accordion-content-{{ item_id }}"
+                x-show="activeItem === {{ item_id }}"
+                x-collapse
+            >
+                <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
+                    {{ item.answer | safe }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+

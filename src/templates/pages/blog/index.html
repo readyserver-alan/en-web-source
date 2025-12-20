@@ -1,0 +1,457 @@
+{# 
+Blog Listing Page
+
+Displays all blog posts with search and category filtering.
+Design matches the Next.js Velocity-inspired blog layout.
+#}
+
+{% extends 'base.html' %}
+
+{% block title %}Blog - {{ site.title }}{% endblock %}
+
+{% block description %}Deep dives into engineering, product updates, and the future of cloud hosting. Join thousands of developers staying ahead of the curve.{% endblock %}
+
+{% block canonical %}/blog{% endblock %}
+
+{% block og_image %}/og/blog.svg{% endblock %}
+
+{% block structured_data %}
+{{ super() }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "The Ready Server Blog",
+    "description": "Deep dives into engineering, product updates, and the future of cloud hosting",
+    "url": "{{ site.url }}/blog"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{# Hero Section #}
+<section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+    {# Background gradient #}
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent"></div>
+    
+    {# Subtle grid pattern #}
+    <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 1px, transparent 0); background-size: 24px 24px;"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center animate-fade-up">
+            {# Badge #}
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border mb-8 animate-fade-up" style="animation-delay: 0.1s;">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span class="text-sm text-muted-foreground font-medium">
+                    Engineering & Product Updates
+                </span>
+            </div>
+
+            {# Title with gradient #}
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 animate-fade-up" style="animation-delay: 0.2s;">
+                <span class="text-foreground">The </span>
+                <span class="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Ready Server
+                </span>
+                <br class="hidden md:block">
+                <span class="text-foreground"> Blog</span>
+            </h1>
+
+            {# Subtitle #}
+            <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-up" style="animation-delay: 0.3s;">
+                Deep dives into engineering, product updates, and the future of cloud hosting.
+                Join thousands of developers staying ahead of the curve.
+            </p>
+        </div>
+    </div>
+</section>
+
+{# Content Section #}
+<section class="pb-16 md:pb-24" x-data="blogFilter()">
+    <div class="container mx-auto px-6">
+        {# Search Button #}
+        <div class="flex justify-center mb-8 animate-fade-up" style="animation-delay: 0.35s;">
+            <button
+                @click="searchOpen = true"
+                class="group relative px-6 py-3 rounded-full border-2 bg-background/50 backdrop-blur-sm hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 shadow-sm hover:shadow-md"
+                data-gtm-id="blog.search.open.click"
+            >
+                <svg class="w-4 h-4 mr-2 inline-block group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <span class="font-medium">Search posts...</span>
+                <kbd class="ml-4 hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100">
+                    <span class="text-xs">⌘</span>K
+                </kbd>
+            </button>
+        </div>
+
+        {# Category Filter #}
+        <div class="flex justify-center mb-12 md:mb-16 animate-fade-up" style="animation-delay: 0.4s;">
+            <div class="inline-flex flex-wrap justify-center gap-2 p-1.5 rounded-full bg-muted/30 border border-border">
+                {% set categories = [
+                    {'label': 'All Posts', 'value': 'all'},
+                    {'label': 'Engineering', 'value': 'engineering'},
+                    {'label': 'Product', 'value': 'product'},
+                    {'label': 'Design', 'value': 'design'},
+                    {'label': 'Company', 'value': 'company'}
+                ] %}
+                {% for cat in categories %}
+                    <button
+                        class="relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300"
+                        :class="activeCategory === '{{ cat.value }}' 
+                            ? 'text-foreground bg-background border border-border shadow-sm' 
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="setCategory('{{ cat.value }}')"
+                        data-gtm-id="blog.category.{{ cat.value }}.click"
+                    >
+                        {{ cat.label }}
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+
+        {# Section Title #}
+        <h2 class="text-2xl md:text-3xl font-bold text-foreground mb-8" x-text="sectionTitle">
+            Latest Articles
+        </h2>
+
+        {# Blog Grid #}
+        {% if posts %}
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" x-ref="postsGrid">
+                {% for post in posts %}
+                    <article 
+                        class="group animate-fade-up"
+                        data-post
+                        data-category="{{ post.category | lower }}"
+                        data-title="{{ post.title | lower }}"
+                        data-description="{{ post.description | lower }}"
+                        x-show="shouldShowPost($el)"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform translate-y-4"
+                        x-transition:enter-end="opacity-100 transform translate-y-0"
+                        style="animation-delay: {{ loop.index0 * 0.05 }}s;"
+                    >
+                        <a 
+                            href="/blog/{{ post.slug }}" 
+                            class="block h-full"
+                            data-gtm-id="blog.card.{{ post.slug }}.click"
+                            data-gtm-category="{{ post.category }}"
+                        >
+                            <div class="h-full rounded-2xl border-2 overflow-hidden transition-all duration-500 bg-card/50 border-white/90 dark:border-white/20 hover:bg-primary hover:border-primary group-hover:shadow-xl">
+                                {# Image Container #}
+                                <div class="relative aspect-[16/10] overflow-hidden">
+                                    <img 
+                                        src="{{ post.image }}" 
+                                        alt="{{ post.title }}"
+                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                        onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop'"
+                                    >
+                                    
+                                    {# Category Badge #}
+                                    <div class="absolute top-4 left-4">
+                                        {% set category_colors = {
+                                            'Engineering': 'bg-blue-500/90 text-white',
+                                            'Product': 'bg-purple-500/90 text-white',
+                                            'Design': 'bg-pink-500/90 text-white',
+                                            'Company': 'bg-green-500/90 text-white'
+                                        } %}
+                                        <span class="px-3 py-1.5 text-xs font-semibold rounded-full backdrop-blur-sm transition-all duration-300 {{ category_colors.get(post.category, 'bg-blue-500/90 text-white') }} group-hover:bg-white/20 group-hover:text-white">
+                                            {{ post.category }}
+                                        </span>
+                                    </div>
+
+                                    {# Hover overlay #}
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+                                </div>
+
+                                {# Content #}
+                                <div class="p-5 md:p-6">
+                                    {# Title #}
+                                    <h3 class="text-lg md:text-xl font-bold mb-3 line-clamp-2 transition-colors duration-300 text-foreground group-hover:text-white">
+                                        {{ post.title }}
+                                    </h3>
+
+                                    {# Excerpt #}
+                                    <p class="text-muted-foreground text-sm leading-relaxed mb-5 line-clamp-2 transition-colors duration-300 group-hover:text-white/80">
+                                        {{ post.description }}
+                                    </p>
+
+                                    {# Footer: Author and Meta #}
+                                    <div class="flex items-center justify-between pt-4 border-t border-border/50 group-hover:border-white/20 transition-colors duration-300">
+                                        <div class="flex items-center gap-2.5">
+                                            {# Author Avatar #}
+                                            <div class="relative w-8 h-8 rounded-full overflow-hidden bg-muted group-hover:bg-white/20 transition-colors duration-300">
+                                                <div class="w-full h-full bg-gradient-to-br from-primary to-purple-500 group-hover:from-white/30 group-hover:to-white/10 flex items-center justify-center text-white font-semibold text-xs transition-all duration-300">
+                                                    {{ post.author[0] if post.author else 'R' }}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs font-medium text-foreground group-hover:text-white transition-colors duration-300">
+                                                    {{ post.author }}
+                                                </p>
+                                                <p class="text-xs text-muted-foreground group-hover:text-white/70 transition-colors duration-300">
+                                                    {{ post.date | date('%b %d, %Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        {# Read time and arrow #}
+                                        <div class="flex items-center gap-3">
+                                            <div class="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-white/70 transition-colors duration-300">
+                                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                                    <path stroke-linecap="round" stroke-width="2" d="M12 6v6l4 2"/>
+                                                </svg>
+                                                <span>{{ post.reading_time }} min</span>
+                                            </div>
+                                            <div class="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-all duration-300">
+                                                <svg class="w-4 h-4 text-muted-foreground group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+            
+            {# No results message #}
+            <div 
+                x-show="visibleCount === 0" 
+                x-transition
+                class="text-center py-16"
+            >
+                <svg class="w-16 h-16 mx-auto text-muted-foreground mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="text-muted-foreground text-lg">No posts found matching your criteria.</p>
+                <button 
+                    @click="resetFilters()"
+                    class="mt-4 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                    Clear filters
+                </button>
+            </div>
+        {% else %}
+            <div class="text-center py-16">
+                <p class="text-muted-foreground text-lg">No blog posts available yet.</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    {# Search Modal #}
+    <div 
+        x-show="searchOpen" 
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+        @click="searchOpen = false"
+        @keydown.escape.window="searchOpen = false"
+    >
+        <div 
+            class="fixed left-1/2 top-1/4 -translate-x-1/2 w-full max-w-2xl p-4"
+            @click.stop
+        >
+            <div class="bg-background border border-border rounded-2xl shadow-2xl overflow-hidden">
+                {# Search Input #}
+                <div class="flex items-center gap-3 px-4 py-3 border-b border-border">
+                    <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input 
+                        type="text"
+                        x-model="searchQuery"
+                        x-ref="searchInput"
+                        @input="performSearch()"
+                        placeholder="Search blog posts by title, content, tags, or category..."
+                        class="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground"
+                        autofocus
+                    >
+                    <kbd class="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium">
+                        ESC
+                    </kbd>
+                </div>
+                
+                {# Search Results #}
+                <div class="max-h-96 overflow-y-auto">
+                    <template x-if="searchQuery.length >= 2 && searchResults.length > 0">
+                        <div class="p-2">
+                            <p class="text-xs text-muted-foreground px-2 py-1" x-text="searchResults.length + ' result' + (searchResults.length !== 1 ? 's' : '') + ' found'"></p>
+                            <template x-for="post in searchResults" :key="post.slug">
+                                <a 
+                                    :href="'/blog/' + post.slug"
+                                    class="flex flex-col gap-1 px-4 py-3 rounded-lg hover:bg-muted transition-colors cursor-pointer"
+                                    @click="searchOpen = false"
+                                >
+                                    <h4 class="font-semibold text-sm text-foreground line-clamp-1" x-text="post.title"></h4>
+                                    <p class="text-xs text-muted-foreground line-clamp-2" x-text="post.description"></p>
+                                    <div class="flex items-center gap-3 text-xs text-muted-foreground mt-1">
+                                        <span x-text="post.category"></span>
+                                        <span>•</span>
+                                        <span x-text="post.reading_time + ' min read'"></span>
+                                    </div>
+                                </a>
+                            </template>
+                        </div>
+                    </template>
+                    
+                    <template x-if="searchQuery.length >= 2 && searchResults.length === 0">
+                        <div class="flex flex-col items-center gap-2 py-8">
+                            <svg class="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <p class="text-sm text-muted-foreground">
+                                No posts found matching "<span x-text="searchQuery"></span>"
+                            </p>
+                        </div>
+                    </template>
+                    
+                    <template x-if="searchQuery.length < 2">
+                        <div class="flex flex-col items-center gap-2 py-8">
+                            <svg class="w-10 h-10 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <p class="text-sm text-muted-foreground">
+                                Start typing to search blog posts...
+                            </p>
+                            <p class="text-xs text-muted-foreground mt-2">
+                                Search by title, content, tags, or category
+                            </p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Alpine.js Blog Filter Component #}
+<script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('blogFilter', () => ({
+        activeCategory: 'all',
+        searchOpen: false,
+        searchQuery: '',
+        searchResults: [],
+        visibleCount: {{ posts | length }},
+        
+        // All posts data for search
+        allPosts: [
+            {% for post in posts %}
+            {
+                slug: "{{ post.slug }}",
+                title: "{{ post.title | replace('"', '\\"') }}",
+                description: "{{ post.description | replace('"', '\\"') | truncate(200) }}",
+                category: "{{ post.category }}",
+                reading_time: {{ post.reading_time }},
+                tags: {{ post.tags | tojson if post.tags else '[]' }}
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ],
+        
+        get sectionTitle() {
+            if (this.activeCategory === 'all') {
+                return 'Latest Articles';
+            }
+            return this.activeCategory.charAt(0).toUpperCase() + this.activeCategory.slice(1) + ' Articles';
+        },
+        
+        setCategory(category) {
+            this.activeCategory = category;
+            this.updateVisibility();
+            
+            // Track category click
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    event: 'blog_category_click',
+                    category: category
+                });
+            }
+        },
+        
+        shouldShowPost(el) {
+            if (this.activeCategory === 'all') return true;
+            const postCategory = el.dataset.category;
+            return postCategory === this.activeCategory;
+        },
+        
+        updateVisibility() {
+            this.$nextTick(() => {
+                const posts = this.$refs.postsGrid?.querySelectorAll('[data-post]') || [];
+                let count = 0;
+                posts.forEach(post => {
+                    if (this.shouldShowPost(post)) {
+                        count++;
+                    }
+                });
+                this.visibleCount = count;
+            });
+        },
+        
+        resetFilters() {
+            this.activeCategory = 'all';
+            this.searchQuery = '';
+            this.updateVisibility();
+        },
+        
+        performSearch() {
+            if (this.searchQuery.length < 2) {
+                this.searchResults = [];
+                return;
+            }
+            
+            const query = this.searchQuery.toLowerCase();
+            this.searchResults = this.allPosts.filter(post => {
+                return post.title.toLowerCase().includes(query) ||
+                       post.description.toLowerCase().includes(query) ||
+                       post.category.toLowerCase().includes(query) ||
+                       (post.tags && post.tags.some(tag => tag.toLowerCase().includes(query)));
+            }).slice(0, 10); // Limit to 10 results
+            
+            // Track search
+            if (window.dataLayer && this.searchQuery.length >= 2) {
+                clearTimeout(this._searchTrackTimeout);
+                this._searchTrackTimeout = setTimeout(() => {
+                    window.dataLayer.push({
+                        event: 'blog_search',
+                        search_query: this.searchQuery,
+                        results_count: this.searchResults.length
+                    });
+                }, 1000);
+            }
+        },
+        
+        init() {
+            // Keyboard shortcut for search (Cmd/Ctrl + K)
+            document.addEventListener('keydown', (e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    this.searchOpen = true;
+                    this.$nextTick(() => {
+                        this.$refs.searchInput?.focus();
+                    });
+                }
+            });
+            
+            // Focus search input when modal opens
+            this.$watch('searchOpen', (value) => {
+                if (value) {
+                    this.$nextTick(() => {
+                        this.$refs.searchInput?.focus();
+                    });
+                }
+            });
+        }
+    }));
+});
+</script>
+{% endblock %}

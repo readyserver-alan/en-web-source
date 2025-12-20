@@ -1,0 +1,74 @@
+{# 
+FAQ Section
+
+Frequently asked questions with expandable accordion.
+Uses the accordion component for interactivity.
+#}
+
+{% set faq_items = faq_items | default([
+    {
+        'question': 'How do I get started with Ready Server VPS?',
+        'answer': 'Getting started is easy! Download our mobile app from the App Store or Google Play, create an account, and you can deploy your first VPS in under a minute. Our intuitive interface guides you through selecting your plan, choosing your operating system, and configuring your server.'
+    },
+    {
+        'question': 'What operating systems do you support?',
+        'answer': 'We support a wide range of operating systems including Ubuntu, Debian, CentOS, AlmaLinux, Rocky Linux, Windows Server, and more. You can also upload custom ISO images for specialized deployments.'
+    },
+    {
+        'question': 'Is there a money-back guarantee?',
+        'answer': 'Yes! We offer a 7-day money-back guarantee for all new customers. If you\'re not satisfied with our service, contact our support team within 7 days for a full refund. We believe in our service quality and want you to try it risk-free.'
+    },
+    {
+        'question': 'Can I upgrade or downgrade my plan?',
+        'answer': 'Absolutely! You can scale your resources up or down at any time directly from the mobile app or web dashboard. Upgrades are instant, and downgrades take effect at the start of your next billing cycle.'
+    },
+    {
+        'question': 'What payment methods do you accept?',
+        'answer': 'We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and various local payment methods in Singapore. All payments are processed securely through our PCI-compliant payment system.'
+    }
+]) %}
+
+<section 
+    id="faq" 
+    class="py-16 md:py-24 relative"
+    data-track-section="home-faq"
+    data-track-section-name="FAQ Section"
+>
+    <div class="container mx-auto px-6">
+        {# Section Header #}
+        <div class="text-center mb-16 animate-fade-up">
+            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
+                Got Questions?
+            </span>
+            <h2 class="text-3xl md:text-5xl font-black text-foreground mb-4">
+                Frequently Asked <span class="text-gradient">Questions</span>
+            </h2>
+            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Find answers to common questions about our VPS hosting services.
+            </p>
+        </div>
+
+        {# FAQ Accordion #}
+        <div class="max-w-3xl mx-auto animate-fade-up" style="animation-delay: 0.2s;">
+            {% include 'components/accordion.html' %}
+        </div>
+
+        {# Contact CTA #}
+        <div class="text-center mt-12 animate-fade-up" style="animation-delay: 0.4s;">
+            <p class="text-muted-foreground mb-6 text-lg">
+                Still have questions? We're here to help.
+            </p>
+            <a 
+                href="/contact"
+                class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-full text-base transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-lg dark:shadow-[0_0_40px_hsl(217_91%_60%/0.3)]"
+                data-gtm-id="home.faq.contact.click"
+            >
+                Reach us
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+

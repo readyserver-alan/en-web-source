@@ -1,0 +1,45 @@
+{# 
+Coming Soon Page
+
+Placeholder page for features not yet available.
+#}
+
+{% extends 'base.html' %}
+
+{% block title %}Coming Soon - {{ site.title }}{% endblock %}
+{% block description %}This feature is coming soon. Stay tuned for updates from Ready Server.{% endblock %}
+{% block canonical %}/coming-soon{% endblock %}
+{% block og_image %}/og/home.svg{% endblock %}
+
+{% block content %}
+<section class="min-h-[70vh] flex items-center justify-center py-20">
+    <div class="container mx-auto px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8">
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-black text-foreground mb-6">
+                Coming <span class="text-gradient">Soon</span>
+            </h1>
+            
+            <p class="text-lg text-muted-foreground mb-10">
+                We're working hard on this feature. Stay tuned for updates!
+            </p>
+            
+            <a 
+                href="/"
+                class="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

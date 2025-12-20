@@ -1,0 +1,56 @@
+{# Brand Guidelines Page #}
+{% extends 'base.html' %}
+
+{% block title %}Brand Guidelines - {{ site.title }}{% endblock %}
+{% block description %}Official brand guidelines for Ready Server. Download logos, colors, and usage guidelines.{% endblock %}
+{% block canonical %}/brand-guidelines{% endblock %}
+{% block og_image %}/og/home.svg{% endblock %}
+
+{% block content %}
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-black text-foreground mb-8">Brand Guidelines</h1>
+            
+            <div class="prose prose-lg dark:prose-invert">
+                <h2>Logo</h2>
+                <div class="p-8 bg-card border border-border rounded-2xl mb-8">
+                    <img src="/images/logo/readyserver-logo.jpeg" alt="Ready Server Logo" class="w-24 h-24 rounded-xl">
+                </div>
+                
+                <h2>Colors</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-xl mx-auto mb-2"></div>
+                        <p class="text-sm font-medium">Primary Blue</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-foreground rounded-xl mx-auto mb-2"></div>
+                        <p class="text-sm font-medium">Foreground</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-muted rounded-xl mx-auto mb-2"></div>
+                        <p class="text-sm font-medium">Muted</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-background border border-border rounded-xl mx-auto mb-2"></div>
+                        <p class="text-sm font-medium">Background</p>
+                    </div>
+                </div>
+                
+                <h2>Typography</h2>
+                <p>We use <strong>Inter</strong> as our primary typeface for all communications.</p>
+                
+                <h2>Usage Guidelines</h2>
+                <ul>
+                    <li>Always maintain clear space around the logo</li>
+                    <li>Do not alter or distort the logo</li>
+                    <li>Use approved color variations only</li>
+                    <li>Contact us for partnership logo usage</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

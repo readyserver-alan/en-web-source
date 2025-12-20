@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-SG" x-data x-bind:class="$store.theme.dark ? 'dark' : ''">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# Page Title - block allows override #}
+    <title>{% block title %}{{ site.title }} - {{ site.tagline }}{% endblock %}</title>
+    
+    {# SEO Meta Tags #}
+    <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Ready Server Singapore">
+    <link rel="canonical" href="{{ site.url }}{% block canonical %}{{ request_path | default('/') }}{% endblock %}">
+    
+    {# Open Graph / Facebook #}
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{{ site.url }}{% block og_url %}{{ request_path | default('/') }}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ self.description() }}{% endblock %}">
+    {% set og_image_url = self.og_image() | trim %}
+    {% if og_image_url.startswith('http') %}
+    <meta property="og:image" content="{{ og_image_url }}">
+    {% else %}
+    <meta property="og:image" content="{{ site.url }}{{ og_image_url if og_image_url else site.og_image }}">
+    {% endif %}
+    <meta property="og:locale" content="{{ site.locale }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ site.twitter }}">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ self.og_title() }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ self.og_description() }}{% endblock %}">
+    {% set twitter_img = self.og_image() | trim %}
+    {% if twitter_img.startswith('http') %}
+    <meta name="twitter:image" content="{{ twitter_img }}">
+    {% else %}
+    <meta name="twitter:image" content="{{ site.url }}{{ twitter_img if twitter_img != site.og_image else site.og_image }}">
+    {% endif %}
+    
+    {# Favicon #}
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/images/logo/readyserver-logo.jpeg">
+    
+    {# Fonts - Inter from Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    {# Tailwind CSS (compiled) #}
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    {# Google Tag Manager #}
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ site.gtm_id }}');
+    </script>
+    
+    {# Theme initialization (prevent flash) #}
+    <script>
+        (function() {
+            const stored = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'dark' || (!stored && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    {# Custom Application JS - MUST load before Alpine to register alpine:init listener #}
+    <script src="/js/app.js"></script>
+    
+    {# Alpine.js Collapse Plugin (MUST be before Alpine.js core) #}
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    {# Alpine.js Core #}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    {# Analytics Compatibility Layer #}
+    <script defer src="/js/analytics.js"></script>
+    
+    {# Structured Data #}
+    {% block structured_data %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ready Server",
+        "url": "{{ site.url }}",
+        "logo": "{{ site.url }}/images/logo/readyserver-logo.jpeg",
+        "description": "{{ site.description }}",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Singapore",
+            "addressCountry": "SG"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@readyserver.sg"
+        },
+        "sameAs": [
+            "https://www.facebook.com/readyserver/",
+            "https://www.linkedin.com/company/ready-server-pte-ltd/",
+            "https://x.com/readyserver",
+            "https://www.instagram.com/readyserver.sg/"
+        ]
+    }
+    </script>
+    {% endblock %}
+    
+    {# Additional head content #}
+    {% block head %}{% endblock %}
+</head>
+
+<body class="bg-background text-foreground antialiased min-h-screen flex flex-col">
+    {# Google Tag Manager (noscript) #}
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    
+    {# Header #}
+    {% include 'components/header.html' %}
+    
+    {# Main Content #}
+    <main class="flex-1 relative z-1">
+        {% block content %}{% endblock %}
+    </main>
+    
+    {# Footer #}
+    {% include 'components/footer.html' %}
+    
+    {# Additional scripts #}
+    {% block scripts %}{% endblock %}
+</body>
+</html>
+

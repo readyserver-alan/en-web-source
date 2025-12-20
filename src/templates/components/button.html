@@ -1,0 +1,59 @@
+{# 
+Button Component
+
+Reusable button component with variants.
+
+Usage:
+{% set button = {
+    'text': 'Get Started',
+    'href': '/vps-hosting',
+    'variant': 'primary',  # primary | secondary | outline | ghost
+    'size': 'default',     # sm | default | lg
+    'gtm_id': 'hero.cta.get-started'
+} %}
+{% include 'components/button.html' %}
+#}
+
+{% set variant = button.variant | default('primary') %}
+{% set size = button.size | default('default') %}
+
+{# Size classes #}
+{% set size_classes = {
+    'sm': 'px-4 py-2 text-sm',
+    'default': 'px-6 py-3 text-sm',
+    'lg': 'px-8 py-4 text-base'
+} %}
+
+{# Variant classes #}
+{% set variant_classes = {
+    'primary': 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl',
+    'secondary': 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+    'outline': 'border border-border bg-background hover:bg-muted text-foreground',
+    'ghost': 'hover:bg-muted text-foreground'
+} %}
+
+{% if button.href %}
+    <a
+        href="{{ button.href }}"
+        class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:scale-105 {{ size_classes[size] }} {{ variant_classes[variant] }}"
+        {% if button.gtm_id %}data-gtm-id="{{ button.gtm_id }}"{% endif %}
+        {% if button.target %}target="{{ button.target }}"{% endif %}
+        {% if button.target == '_blank' %}rel="noopener noreferrer"{% endif %}
+    >
+        {% if button.icon_before %}{{ button.icon_before | safe }}{% endif %}
+        {{ button.text }}
+        {% if button.icon_after %}{{ button.icon_after | safe }}{% endif %}
+    </a>
+{% else %}
+    <button
+        type="{{ button.type | default('button') }}"
+        class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:scale-105 {{ size_classes[size] }} {{ variant_classes[variant] }}"
+        {% if button.gtm_id %}data-gtm-id="{{ button.gtm_id }}"{% endif %}
+        {% if button.disabled %}disabled{% endif %}
+    >
+        {% if button.icon_before %}{{ button.icon_before | safe }}{% endif %}
+        {{ button.text }}
+        {% if button.icon_after %}{{ button.icon_after | safe }}{% endif %}
+    </button>
+{% endif %}
+

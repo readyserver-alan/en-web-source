@@ -1,0 +1,31 @@
+{
+  "name": "readyserver-static",
+  "version": "1.0.0",
+  "description": "Ready Server static site built with Jinja2, Alpine.js, and Tailwind CSS",
+  "scripts": {
+    "build:css": "tailwindcss -i src/static/css/globals.css -o dist/css/styles.css --minify",
+    "watch:css": "tailwindcss -i src/static/css/globals.css -o dist/css/styles.css --watch",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
+    "test:visual:report": "playwright show-report",
+    "test:seo": "python scripts/seo-parity-check.py",
+    "serve": "python -m http.server 8000 --directory dist",
+    "build": "python -m pip install --user -r requirements.txt && python build.py && npm run build:css",
+    "build:local": "pip install -r requirements.txt && python build.py && npm run build:css",
+    "build:cloudflare": "python -m pip install --user -r requirements.txt && python build.py && npm run build:css",
+    "dev": "concurrently \"python build.py --watch\" \"npm run watch:css\" \"npm run serve\"",
+    "clean": "rm -rf dist || rmdir /s /q dist 2>nul || true"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^8.2.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

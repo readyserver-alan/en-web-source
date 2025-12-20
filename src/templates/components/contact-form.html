@@ -1,0 +1,143 @@
+{# 
+Contact Form Component
+
+Uses FormSpree for backend processing.
+Plain HTML form with redirect - safest for static sites.
+
+Features:
+- Required field validation
+- Loading state on submit
+- Analytics tracking
+#}
+
+{% set formspree_id = formspree_id | default('YOUR_FORMSPREE_ID') %}
+
+<form 
+    action="https://formspree.io/f/{{ formspree_id }}"
+    method="POST"
+    class="space-y-6"
+    x-data="{ 
+        loading: false,
+        submitted: false 
+    }"
+    @submit="loading = true"
+    data-gtm-id="contact.form"
+>
+    {# Hidden field for redirect after submission #}
+    <input type="hidden" name="_next" value="{{ site.url }}/contact?submitted=true">
+    
+    {# Honeypot spam protection #}
+    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+    
+    {# Name Field #}
+    <div class="space-y-2">
+        <label for="name" class="block text-sm font-medium text-foreground">
+            Full Name <span class="text-destructive">*</span>
+        </label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+            placeholder="John Doe"
+            data-gtm-id="contact.form.field.name"
+        >
+    </div>
+    
+    {# Email Field #}
+    <div class="space-y-2">
+        <label for="email" class="block text-sm font-medium text-foreground">
+            Email Address <span class="text-destructive">*</span>
+        </label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+            placeholder="john@example.com"
+            data-gtm-id="contact.form.field.email"
+        >
+    </div>
+    
+    {# Company Field (Optional) #}
+    <div class="space-y-2">
+        <label for="company" class="block text-sm font-medium text-foreground">
+            Company <span class="text-muted-foreground text-xs">(Optional)</span>
+        </label>
+        <input
+            type="text"
+            id="company"
+            name="company"
+            class="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+            placeholder="Acme Inc."
+            data-gtm-id="contact.form.field.company"
+        >
+    </div>
+    
+    {# Subject Field #}
+    <div class="space-y-2">
+        <label for="subject" class="block text-sm font-medium text-foreground">
+            Subject <span class="text-destructive">*</span>
+        </label>
+        <select
+            id="subject"
+            name="subject"
+            required
+            class="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+            data-gtm-id="contact.form.field.subject"
+        >
+            <option value="">Select a topic</option>
+            <option value="sales">Sales Inquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="billing">Billing Question</option>
+            <option value="partnership">Partnership</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    
+    {# Message Field #}
+    <div class="space-y-2">
+        <label for="message" class="block text-sm font-medium text-foreground">
+            Message <span class="text-destructive">*</span>
+        </label>
+        <textarea
+            id="message"
+            name="message"
+            required
+            rows="5"
+            class="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+            placeholder="How can we help you?"
+            data-gtm-id="contact.form.field.message"
+        ></textarea>
+    </div>
+    
+    {# Submit Button #}
+    <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+        :disabled="loading"
+        data-gtm-id="contact.form.submit"
+    >
+        {# Loading Spinner #}
+        <svg 
+            x-show="loading"
+            class="animate-spin -ml-1 mr-2 h-5 w-5" 
+            fill="none" 
+            viewBox="0 0 24 24"
+        >
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        
+        <span x-text="loading ? 'Sending...' : 'Send Message'">Send Message</span>
+    </button>
+    
+    {# Privacy Note #}
+    <p class="text-xs text-muted-foreground text-center">
+        By submitting this form, you agree to our 
+        <a href="/privacy-policy" class="text-primary hover:underline">Privacy Policy</a>.
+    </p>
+</form>
+
