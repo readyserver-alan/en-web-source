@@ -8,9 +8,10 @@ A cinematic, high-impact hero section featuring:
 - Gradient glow effects (matching Next.js original)
 
 Uses CSS animations instead of Framer Motion.
+LCP Optimized: Hero headline is visible immediately for Lighthouse.
 #}
 
-<section class="relative min-h-screen flex items-center overflow-hidden" data-track-section="home-hero">
+<section class="relative min-h-screen flex items-center overflow-hidden hero-section" data-track-section="home-hero">
     {# Multi-layer background #}
     <div class="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95"></div>
     
@@ -33,12 +34,12 @@ Uses CSS animations instead of Framer Motion.
     <div class="container mx-auto px-6 py-20 md:py-32 relative z-10">
         <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             
-            {# Text Column #}
+            {# Text Column - removed stagger-children animate to prevent opacity:0 on LCP #}
             <div 
-                class="text-center lg:text-left order-2 lg:order-1 stagger-children animate"
+                class="text-center lg:text-left order-2 lg:order-1"
             >
-                {# Badge with pulse #}
-                <div class="mb-8 animate-fade-up">
+                {# Badge with pulse - visible immediately for LCP #}
+                <div class="mb-8">
                     <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 animate-subtle-scale">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -50,21 +51,21 @@ Uses CSS animations instead of Framer Motion.
                     </div>
                 </div>
 
-                {# Headline #}
-                <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.05] mb-8 tracking-tight animate-fade-up" style="animation-delay: 0.1s;">
+                {# Headline - LCP element, visible immediately (no opacity-0, no animation delay) #}
+                <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.05] mb-8 tracking-tight">
                     Effortlessly Create, Manage & Scale
                     <br>
                     Your <span class="text-gradient">VPS</span> 
                 </h1>
 
-                {# Subheadline #}
-                <p class="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style="animation-delay: 0.2s;">
+                {# Subheadline - visible immediately for LCP #}
+                <p class="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                     From setting up your first server to scaling enterprise infrastructure—manage
                     everything effortlessly from your pocket.
                 </p>
 
-                {# App Store Badges #}
-                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12 animate-fade-up" style="animation-delay: 0.3s;">
+                {# App Store Badges - visible immediately for LCP #}
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
                     {% include 'components/app-store-badges.html' %}
                 </div>
             </div>

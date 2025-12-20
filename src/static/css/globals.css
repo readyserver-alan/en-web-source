@@ -153,10 +153,16 @@
   /* 
    * Performance: content-visibility for off-screen sections
    * This dramatically reduces initial render time by skipping off-screen content
+   * IMPORTANT: Exclude hero section to ensure LCP element is rendered immediately
    */
-  section {
+  section:not(.hero-section) {
     content-visibility: auto;
     contain-intrinsic-size: auto 600px;
+  }
+  
+  /* Hero section must render immediately for LCP */
+  .hero-section {
+    content-visibility: visible;
   }
 
   /* Performance: Isolate sticky elements from main layout */
