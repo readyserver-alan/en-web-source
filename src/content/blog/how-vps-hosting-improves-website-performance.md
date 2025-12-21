@@ -132,6 +132,3 @@ If you’re serious about growing your online presence in Singapore, upgrading t
 It’s faster, more secure, scalable, and even helps your SEO rankings. Plus, with today’s affordable options, there’s really no reason to settle for slow-loading, unstable websites anymore.
 
 Give your website the VIP treatment it deserves — your visitors (and your business) will thank you!
-
-- [VPS Hosting](/vps-hosting)
-- [vps hosting](/vps-hosting)

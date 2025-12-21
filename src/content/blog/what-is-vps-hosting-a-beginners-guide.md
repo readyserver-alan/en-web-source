@@ -32,7 +32,9 @@ Web hosting companies use something called **virtualisation technology**. Think 
 
 - Your own CPU (processing power)
 - Your own RAM (memory)
-- Your own storage spaceWithout needing to fight for resources.
+- Your own storage space
+
+Without needing to fight for resources.
 
 ## Key Features of VPS Hosting
 
@@ -126,6 +128,3 @@ Just like maintaining your own home, a little regular upkeep goes a long way!
 [VPS hosting](https://www.readyserver.sg/) isn’t complicated once you get the hang of it. Think of it as having your own private condo space in a digital world — more room, better privacy, and lots of possibilities.
 
 If your business or personal project is growing, maybe it’s time to level up your hosting too. VPS could just be the boost you need for a smoother, faster, and more reliable online experience!
-
-- [VPS Hosting](/vps-hosting)
-- [vps hosting](/vps-hosting)

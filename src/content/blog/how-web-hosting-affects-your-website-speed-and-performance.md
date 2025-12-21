@@ -135,6 +135,3 @@ Too many plugins or bloated themes can drag your site down. Only install what yo
 ### Is It Time to Upgrade Your Hosting?
 
 If your site feels sluggish or crashes under pressure, your hosting might be the culprit. Speed isn’t just a tech detail—it’s your online reputation. Take a closer look at what’s powering your website. Investing in better hosting isn’t a luxury—it’s a smart move for speed, SEO, and user happiness.
-
-- Website Hosting
-- web hosting, web hosting speed

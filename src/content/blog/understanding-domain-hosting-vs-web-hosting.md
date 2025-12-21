@@ -53,14 +53,14 @@ You purchase the right to use a domain from a **registrar** (for a fixed period,
 
 #### Nameservers, DNS Records, and Propagation
 
-- Nameservers: tell the world where to fetch your DNS records.
-- DNS records: map your domain to services:
+- **Nameservers**: tell the world where to fetch your DNS records.
+- **DNS records**: map your domain to services:
+  - **A/AAAA** → your web server's IP
+  - **CNAME** → alias to another hostname
+  - **MX** → email provider
+  - **TXT** → verification, SPF, and security policies
 
-
-A/AAAA → your web server’s IP
-- CNAME → alias to another hostname
-- MX → email provider
-- TXT → verification, SPF, and security policiesWhen you change DNS, the update spreads worldwide within minutes to hours (called propagation).
+When you change DNS, the update spreads worldwide within minutes to hours (called propagation).
 
 ## What Is Web Hosting?
 
@@ -145,6 +145,3 @@ Domains are usually cheaper per year than hosting. Be mindful of **introductory 
 ## Conclusion
 
 **Domain hosting** and [**web hosting**](https://www.readyserver.sg/) are two halves of the same website puzzle—your **address** and your **building**. Get the pair right, and you’ll enjoy a smoother launch, fewer surprises, and better performance. Start with a solid registrar, pick hosting that fits your current needs (with room to grow), wire them together via DNS, and protect everything with SSL, backups, and sensible security. Do that, and your website will be set up on firm ground—ready to load fast, scale cleanly, and serve visitors with confidence.
-
-- Website Hosting
-- domain hosting, website hosting

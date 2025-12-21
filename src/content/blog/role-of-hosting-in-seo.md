@@ -34,9 +34,11 @@ Your choice of hosting provider can significantly impact your website's performa
 
 ### TTFB, Throughput, and Concurrent Connections
 
-- TTFB: Indicates server responsiveness.
-- Throughput: How much data your server can push quickly.
-- Concurrency: How well your host handles many users at once.If your host throttles resources, your site may feel fast in tests but slow under real traffic.
+- **TTFB**: Indicates server responsiveness.
+- **Throughput**: How much data your server can push quickly.
+- **Concurrency**: How well your host handles many users at once.
+
+If your host throttles resources, your site may feel fast in tests but slow under real traffic.
 
 ### Uptime and Status Codes
 
@@ -68,8 +70,10 @@ When bots encounter downtime, they reduce crawl frequency. Over time, this delay
 
 #### Serving 5xx vs 4xx: The SEO Difference
 
-- 5xx (Server Errors): Signals host or application failure; reduces trust.
-- 4xx (Client Errors): Still negative, but typically resolved via site fixes.Keep an eye on server logs and alerts; fix spikes fast.
+- **5xx (Server Errors)**: Signals host or application failure; reduces trust.
+- **4xx (Client Errors)**: Still negative, but typically resolved via site fixes.
+
+Keep an eye on server logs and alerts; fix spikes fast.
 
 ## Server Stack and Modern Protocols
 
@@ -85,6 +89,8 @@ These protocols improve multiplexing and reduce head-of-line blocking. In plain 
 #### PHP-FPM, Node, and Database I/O
 
 Whether you run PHP, Node, or something else, the slowest link is often **database I/O**. Choose hosts with NVMe SSDs, recent CPU generations, and configurable **OPCache/Redis** to minimise processing delays.
+
+
 
 ## Caching and CDNs
 
@@ -119,14 +125,18 @@ Marketing campaigns, launches, and seasonal peaks need headroom. Autoscaling pre
 
 ### Core Web Vitals Targets (LCP, INP, CLS)
 
-- LCP: ≤2.5 s for most visits
-- INP: ≤200 ms (interaction responsiveness)
-- CLS: ≤0.1 (layout stability)Hosting influences these via TTFB, asset delivery, and back-end processing.
+- **LCP**: ≤2.5 s for most visits
+- **INP**: ≤200 ms (interaction responsiveness)
+- **CLS**: ≤0.1 (layout stability)
+
+Hosting influences these via TTFB, asset delivery, and back-end processing.
 
 ### Real User Monitoring vs Lab Tests
 
-- RUM (field data): What your actual visitors experience—use analytics or performance platforms.
-- Lab tests (Lighthouse, WebPageTest): Great for diagnostics; complement, don’t replace, field data.Track TTFB, First Byte Latency by region, and Error Rates alongside Vitals.
+- **RUM (field data)**: What your actual visitors experience—use analytics or performance platforms.
+- **Lab tests (Lighthouse, WebPageTest)**: Great for diagnostics; complement, don't replace, field data.
+
+Track TTFB, First Byte Latency by region, and Error Rates alongside Vitals.
 
 ## Migrating Hosts Without SEO Loss
 
@@ -177,6 +187,3 @@ The trick: pay for predictable performance and support you’ll actually use, no
 ## Conclusion
 
 Your [web hosting](https://www.readyserver.sg/) is more than a place to park files—it’s the backbone of speed, stability, and trust. The right platform lowers TTFB, keeps uptime high, and helps your Core Web Vitals stay green, which in turn supports better rankings and happier users. Prioritise proximity to your audience, modern protocols (HTTP/2/3), smart caching (edge + object), and a stack tuned for your CMS or framework. Measure in the field, not just the lab, and choose a plan that scales before you need it. Do that, and your content won’t just be discoverable—it’ll feel instant.
-
-- Website Hosting
-- hosting for seo, [vps hosting](/vps-hosting), web hosting

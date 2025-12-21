@@ -226,6 +226,3 @@ Set per-token/API rate limits, use redundant DNS with health checks, keep offsit
 ## Conclusion
 
 DDoS defence isn’t one magic box—it’s layers working together: smart detection, big pipes, scrubbing at the edge, precise L7 controls, and a calm incident process. A capable [hosting provider](https://www.readyserver.sg/) will blend all of this behind the scenes so your users barely notice a wobble. Your job is to pick a host that’s transparent about its protections, choose the right tier for your risk, and add sensible best practices like caching, rate limits, and origin shielding. Get those pieces in place and a DDoS becomes a speed bump, not a roadblock.
-
-- Website Hosting
-- server security, website security

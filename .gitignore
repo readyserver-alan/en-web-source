@@ -40,6 +40,9 @@ playwright-report/
 *.temp
 .cache/
 
+# Documentation (internal only)
+doc/
+
 # OS files
 .DS_Store
 Desktop.ini

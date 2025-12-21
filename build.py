@@ -30,6 +30,9 @@ import frontmatter
 # YAML for data files
 import yaml
 
+# HTML formatting for blog content
+from scripts.html_formatter import format_blog_html
+
 # File watching (optional)
 try:
     from watchdog.observers import Observer
@@ -177,7 +180,11 @@ def process_blog_posts() -> List[Dict[str, Any]]:
             
             # Process content - also strip markdown links for clean rendering
             md.reset()
-            content_html = md.convert(post.content)
+            raw_html = md.convert(post.content)
+            
+            # Apply Tailwind styling classes to HTML elements
+            # This matches the victorium.xyz/readyserver.sg production styling
+            content_html = format_blog_html(raw_html)
             
             # Calculate reading time
             word_count = len(post.content.split())
