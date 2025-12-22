@@ -150,7 +150,15 @@ def _process_lists(soup: BeautifulSoup) -> None:
 def _process_links(soup: BeautifulSoup) -> None:
     """Add classes to anchor elements and ensure proper attributes."""
     for a in soup.find_all('a'):
-        _add_classes(a, TAILWIND_CLASSES['a'])
+        # Skip adding default link classes if this is a special button/CTA
+        # (e.g., blog-cta class which has its own styling)
+        existing_classes = a.get('class', [])
+        if isinstance(existing_classes, str):
+            existing_classes = existing_classes.split()
+        
+        # Only add default link styling if it's not a special component
+        if 'blog-cta' not in existing_classes:
+            _add_classes(a, TAILWIND_CLASSES['a'])
         
         # Add external link attributes for external URLs
         href = a.get('href', '')

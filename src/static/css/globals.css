@@ -219,6 +219,24 @@
     box-shadow: var(--shadow-glow);
   }
 
+  /* Blog CTA Button - used in markdown content */
+  /* Important: Uses !important to override prose-a:text-primary from Tailwind Typography */
+  .blog-cta {
+    @apply inline-flex items-center justify-center gap-2 bg-primary font-semibold px-6 py-3 rounded-full transition-all duration-300 no-underline;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  .blog-cta:hover {
+    @apply scale-105 no-underline;
+    box-shadow: var(--shadow-glow);
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  /* Blog CTA Container - centers the button */
+  .blog-cta-container {
+    @apply flex justify-center my-8;
+  }
+
   .phone-mockup {
     filter: drop-shadow(0 50px 100px hsl(217 91% 60% / 0.2));
   }
