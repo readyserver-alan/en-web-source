@@ -2,16 +2,16 @@
   "exportFormatVersion": 2,
   "exportTime": "2025-12-29 12:00:00",
   "containerVersion": {
-    "path": "accounts/6305789122/containers/GTM-P5CRWLDZ/versions/0",
+    "path": "accounts/6305789122/containers/225957793/versions/0",
     "accountId": "6305789122",
-    "containerId": "GTM-P5CRWLDZ",
+    "containerId": "225957793",
     "containerVersionId": "0",
     "name": "ReadyServer Tracking v1.2",
     "description": "GTM container for ReadyServer mobile app download tracking v1.2",
     "container": {
-      "path": "accounts/6305789122/containers/GTM-P5CRWLDZ",
+      "path": "accounts/6305789122/containers/225957793",
       "accountId": "6305789122",
-      "containerId": "GTM-P5CRWLDZ",
+      "containerId": "225957793",
       "name": "ReadyServer",
       "publicId": "GTM-P5CRWLDZ"
     },
@@ -29,7 +29,7 @@
     "variable": [
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "1",
         "name": "GA4 Measurement ID",
         "type": "c",
@@ -45,7 +45,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "2",
         "name": "DL - event",
         "type": "v",
@@ -71,7 +71,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "3",
         "name": "DL - cta_id",
         "type": "v",
@@ -102,7 +102,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "4",
         "name": "DL - placement",
         "type": "v",
@@ -133,7 +133,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "5",
         "name": "DL - section",
         "type": "v",
@@ -164,7 +164,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "6",
         "name": "DL - destination",
         "type": "v",
@@ -195,7 +195,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "7",
         "name": "DL - url",
         "type": "v",
@@ -226,7 +226,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "8",
         "name": "DL - variant",
         "type": "v",
@@ -257,7 +257,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "9",
         "name": "DL - page_key",
         "type": "v",
@@ -288,7 +288,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "10",
         "name": "DL - page_type",
         "type": "v",
@@ -319,7 +319,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "11",
         "name": "DL - link_type",
         "type": "v",
@@ -350,7 +350,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "12",
         "name": "DL - event_id",
         "type": "v",
@@ -381,7 +381,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "13",
         "name": "DL - faq_id",
         "type": "v",
@@ -412,7 +412,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "14",
         "name": "DL - faq_label",
         "type": "v",
@@ -443,7 +443,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "15",
         "name": "DL - scroll_percentage",
         "type": "v",
@@ -474,7 +474,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "16",
         "name": "DL - time_seconds",
         "type": "v",
@@ -505,7 +505,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "17",
         "name": "DL - section_label",
         "type": "v",
@@ -536,7 +536,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "18",
         "name": "DL - link_domain",
         "type": "v",
@@ -567,7 +567,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "19",
         "name": "DL - form_id",
         "type": "v",
@@ -598,7 +598,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "variableId": "20",
         "name": "DL - device_type",
         "type": "v",
@@ -631,7 +631,7 @@
     "trigger": [
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "1",
         "name": "All Pages",
         "type": "PAGEVIEW",
@@ -639,7 +639,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "2",
         "name": "Custom Event - page_view",
         "type": "CUSTOM_EVENT",
@@ -656,7 +656,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "3",
         "name": "Custom Event - store_outbound_click",
         "type": "CUSTOM_EVENT",
@@ -673,7 +673,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "4",
         "name": "Custom Event - cta_click",
         "type": "CUSTOM_EVENT",
@@ -690,7 +690,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "5",
         "name": "Custom Event - view_section",
         "type": "CUSTOM_EVENT",
@@ -707,7 +707,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "6",
         "name": "Custom Event - faq_open",
         "type": "CUSTOM_EVENT",
@@ -724,7 +724,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "7",
         "name": "Custom Event - scroll_depth",
         "type": "CUSTOM_EVENT",
@@ -741,7 +741,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "8",
         "name": "Custom Event - time_on_page",
         "type": "CUSTOM_EVENT",
@@ -758,7 +758,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "9",
         "name": "Custom Event - outbound_link_click",
         "type": "CUSTOM_EVENT",
@@ -775,7 +775,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "triggerId": "10",
         "name": "Custom Event - form_submit",
         "type": "CUSTOM_EVENT",
@@ -794,7 +794,7 @@
     "tag": [
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "1",
         "name": "GA4 Configuration",
         "type": "gaawc",
@@ -816,7 +816,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "2",
         "name": "GA4 Event - page_view",
         "type": "gaawe",
@@ -870,7 +870,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "3",
         "name": "GA4 Event - store_outbound_click (KEY CONVERSION)",
         "type": "gaawe",
@@ -966,7 +966,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "4",
         "name": "GA4 Event - cta_click",
         "type": "gaawe",
@@ -1055,7 +1055,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "5",
         "name": "GA4 Event - view_section",
         "type": "gaawe",
@@ -1109,7 +1109,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "6",
         "name": "GA4 Event - faq_open",
         "type": "gaawe",
@@ -1177,7 +1177,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "7",
         "name": "GA4 Event - scroll_depth (Diagnostic)",
         "type": "gaawe",
@@ -1224,7 +1224,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "8",
         "name": "GA4 Event - time_on_page (Diagnostic)",
         "type": "gaawe",
@@ -1271,7 +1271,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "9",
         "name": "GA4 Event - outbound_link_click",
         "type": "gaawe",
@@ -1332,7 +1332,7 @@
       },
       {
         "accountId": "6305789122",
-        "containerId": "GTM-P5CRWLDZ",
+        "containerId": "225957793",
         "tagId": "10",
         "name": "GA4 Event - form_submit",
         "type": "gaawe",
