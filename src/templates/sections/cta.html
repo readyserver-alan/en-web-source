@@ -15,7 +15,8 @@ Encourages users to download the app or get started.
 
 <section 
     class="py-16 md:py-24 relative overflow-hidden"
-    data-track-section="cta"
+    data-track-section="home.cta"
+    data-section-label="Final CTA"
 >
     {# Background gradient #}
     <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/10 to-primary/5"></div>
@@ -52,7 +53,9 @@ Encourages users to download the app or get started.
                 <a 
                     href="{{ cta_primary_href }}"
                     class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg glow-effect shadow-lg dark:shadow-[0_0_40px_hsl(217_91%_60%/0.3)]"
-                    data-gtm-id="{{ gtm_section }}.primary.click"
+                    data-gtm-id="{{ gtm_section }}.primary"
+                    data-gtm-placement="footer"
+                    data-gtm-section="{{ gtm_section }}"
                 >
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
@@ -64,7 +67,9 @@ Encourages users to download the app or get started.
                 <a 
                     href="{{ cta_secondary_href }}"
                     class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-background border-2 border-border text-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:bg-muted hover:scale-105"
-                    data-gtm-id="{{ gtm_section }}.secondary.click"
+                    data-gtm-id="{{ gtm_section }}.secondary"
+                    data-gtm-placement="footer"
+                    data-gtm-section="{{ gtm_section }}"
                 >
                     {{ cta_secondary_text }}
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

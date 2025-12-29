@@ -6,7 +6,8 @@ Showcases the mobile app with screenshots and key features.
 
 <section 
     class="py-16 md:py-24 relative overflow-hidden"
-    data-track-section="home-app-showcase"
+    data-track-section="home.app_showcase"
+    data-section-label="App Showcase"
 >
     {# Background gradient #}
     <div class="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background"></div>
@@ -65,7 +66,8 @@ Showcases the mobile app with screenshots and key features.
                     style="animation-delay: 0.6s;"
                 >
                     {% set gtm_prefix = 'home' %}
-                    {% set gtm_section = 'app-showcase' %}
+                    {% set gtm_section_key = 'home.app_showcase' %}
+                    {% set gtm_placement = 'mid' %}
                     {% include 'components/app-store-badges.html' %}
                 </div>
             </div>

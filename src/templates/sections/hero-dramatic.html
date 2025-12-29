@@ -11,7 +11,7 @@ Uses CSS animations instead of Framer Motion.
 LCP Optimized: Hero headline is visible immediately for Lighthouse.
 #}
 
-<section class="relative min-h-screen flex items-center overflow-hidden hero-section" data-track-section="home-hero">
+<section class="relative min-h-screen flex items-center overflow-hidden hero-section" data-track-section="home.hero" data-section-label="Hero Section">
     {# Multi-layer background #}
     <div class="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95"></div>
     
@@ -66,6 +66,9 @@ LCP Optimized: Hero headline is visible immediately for Lighthouse.
 
                 {# App Store Badges - visible immediately for LCP #}
                 <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
+                    {% set gtm_prefix = 'home' %}
+                    {% set gtm_section_key = 'home.hero' %}
+                    {% set gtm_placement = 'hero' %}
                     {% include 'components/app-store-badges.html' %}
                 </div>
             </div>

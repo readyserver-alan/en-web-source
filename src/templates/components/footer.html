@@ -110,7 +110,9 @@ Analytics tracking applied to all links.
                                 <a
                                     href="{{ link.href }}"
                                     class="text-muted-foreground hover:text-primary transition-colors"
-                                    data-gtm-id="footer.link.{{ link.href | replace('/', '-') | replace('#', '-') | trim('-') or 'home' }}.click"
+                                    data-gtm-id="footer.{{ link.href | replace('/', '_') | replace('#', '_') | trim('_') or 'home' }}"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
                                 >
                                     {{ link.label }}
                                 </a>

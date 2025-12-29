@@ -1,45 +1,207 @@
 /**
- * Analytics Compatibility Layer
+ * Analytics Tracking System v1.2
  * 
- * Preserves ALL existing GTM tracking during migration.
- * Matches the event structure from lib/analytics.ts (Next.js version).
- * 
- * This ensures zero analytics data loss during migration.
+ * Implements the GTM/GA4 tracking plan for ReadyServer mobile app download optimization.
+ * Core KPI: Mobile App Downloads (Store Outbound Clicks)
  * 
  * Event Categories:
- * - Conversion events (start_checkout, download_app_cta, form_submit)
- * - Navigation events (nav_click, nav_dropdown_open, nav_mobile_toggle)
- * - Engagement events (scroll_depth, time_on_page, section_view)
- * - UI events (accordion_expand, modal_open, modal_close)
- * - CTA events (cta_click, copy_to_clipboard)
+ * - Conversion: store_outbound_click (PRIMARY)
+ * - Navigation: cta_click (internal links)
+ * - Engagement: view_section, scroll_depth, time_on_page
+ * - UI: faq_open, outbound_link_click
+ * 
+ * Key Implementation Details:
+ * - Strict event precedence to prevent double firing
+ * - Store link detection by hostname (not substring)
+ * - event_id on all click events for de-duplication
+ * - Canonical section keys for consistency
  */
 
 // Initialize dataLayer
 window.dataLayer = window.dataLayer || [];
 
 // ============================================================================
+// CONFIGURATION
+// ============================================================================
+
+/**
+ * Page key mapping for funnel tracking
+ * Used in page_view, scroll_depth, and time_on_page events
+ */
+const PAGE_KEY_MAP = {
+  '/': 'home',
+  '/download-mobile-app': 'download_mobile_app',
+  '/vps-hosting': 'vps_hosting',
+  '/windows-vps': 'windows_vps',
+  '/dedicated-servers': 'dedicated_servers',
+  '/contact': 'contact',
+  '/blog': 'blog',
+  '/brand-guidelines': 'brand_guidelines',
+  '/privacy-policy': 'privacy_policy',
+  '/terms-of-service': 'terms_of_service',
+  '/sla': 'sla',
+};
+
+/**
+ * Page type mapping
+ */
+const PAGE_TYPE_MAP = {
+  '/': 'landing',
+  '/download-mobile-app': 'landing',
+  '/vps-hosting': 'product',
+  '/windows-vps': 'product',
+  '/dedicated-servers': 'product',
+  '/contact': 'support',
+  '/blog': 'blog',
+  '/brand-guidelines': 'other',
+  '/privacy-policy': 'legal',
+  '/terms-of-service': 'legal',
+  '/sla': 'legal',
+};
+
+/**
+ * Store hostnames for detection
+ */
+const STORE_HOSTS = [
+  'apps.apple.com',
+  'itunes.apple.com',
+  'play.google.com'
+];
+
+// ============================================================================
 // HELPER FUNCTIONS
 // ============================================================================
 
 /**
- * Get page category based on URL path
+ * Get page key from current URL path
+ * @returns {string} Stable page identifier
  */
-function getPageCategory() {
+function getPageKey() {
   const path = window.location.pathname;
   
-  if (path === '/') return 'marketing';
-  if (path === '/blog') return 'blog';
-  if (path.startsWith('/blog/')) return 'blog-post';
-  if (path.includes('vps') || path.includes('dedicated')) return 'product';
-  if (path === '/contact') return 'support';
-  if (path.includes('privacy') || path.includes('terms') || path.includes('sla')) return 'legal';
-  if (path === '/download-mobile-app') return 'marketing';
+  // Exact match first
+  if (PAGE_KEY_MAP[path]) {
+    return PAGE_KEY_MAP[path];
+  }
+  
+  // Blog post pattern
+  if (path.startsWith('/blog/') && path.length > 6) {
+    return 'blog_post';
+  }
   
   return 'other';
 }
 
 /**
+ * Get page type from current URL path
+ * @returns {string} Page category
+ */
+function getPageType() {
+  const path = window.location.pathname;
+  
+  // Exact match first
+  if (PAGE_TYPE_MAP[path]) {
+    return PAGE_TYPE_MAP[path];
+  }
+  
+  // Blog post pattern
+  if (path.startsWith('/blog/')) {
+    return 'blog';
+  }
+  
+  return 'other';
+}
+
+/**
+ * Check if URL is a store link (by hostname, NOT substring)
+ * @param {string} href - The URL to check
+ * @returns {boolean}
+ */
+function isStoreLink(href) {
+  try {
+    const url = new URL(href);
+    return STORE_HOSTS.includes(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Derive store destination from URL
+ * @param {string} href - Store URL
+ * @returns {string} 'app_store' | 'play_store' | 'unknown'
+ */
+function deriveDestination(href) {
+  try {
+    const url = new URL(href);
+    if (url.hostname.includes('apple.com')) return 'app_store';
+    if (url.hostname.includes('play.google.com')) return 'play_store';
+    return 'unknown';
+  } catch {
+    return 'unknown';
+  }
+}
+
+/**
+ * Check if URL is internal (same origin)
+ * @param {string} href - The URL to check
+ * @returns {boolean}
+ */
+function isInternalLink(href) {
+  try {
+    const url = new URL(href, window.location.origin);
+    return url.origin === window.location.origin;
+  } catch {
+    // Relative URLs are internal
+    return href.startsWith('/') || href.startsWith('#');
+  }
+}
+
+/**
+ * Generate unique event ID for de-duplication
+ * Format: timestamp_randomstring
+ * @returns {string}
+ */
+function generateEventId() {
+  return `${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+}
+
+/**
+ * Sanitize internal URL (keep only path and UTM params)
+ * @param {string} href - URL to sanitize
+ * @returns {string}
+ */
+function sanitizeUrl(href) {
+  try {
+    const url = new URL(href, window.location.origin);
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const newParams = new URLSearchParams();
+    
+    for (const param of utmParams) {
+      if (url.searchParams.has(param)) {
+        newParams.set(param, url.searchParams.get(param));
+      }
+    }
+    
+    return url.pathname + (newParams.toString() ? '?' + newParams.toString() : '');
+  } catch {
+    return href;
+  }
+}
+
+/**
+ * Get current A/B test variant
+ * @returns {string} Variant identifier, defaults to 'control'
+ */
+function getVariant() {
+  // Implement based on your A/B testing setup
+  // Example: return window.abTestVariant || sessionStorage.getItem('ab_variant') || 'control';
+  return 'control';
+}
+
+/**
  * Get device type based on screen width
+ * @returns {string} 'mobile' | 'tablet' | 'desktop'
  */
 function getDeviceType() {
   const width = window.innerWidth;
@@ -50,6 +212,7 @@ function getDeviceType() {
 
 /**
  * Get UTM parameters from URL
+ * @returns {Object}
  */
 function getUTMParams() {
   const params = new URLSearchParams(window.location.search);
@@ -65,7 +228,7 @@ function getUTMParams() {
 }
 
 /**
- * Store UTM parameters in session storage for later use
+ * Store UTM parameters in session storage for attribution
  */
 function storeAttribution() {
   const utms = getUTMParams();
@@ -83,6 +246,7 @@ function storeAttribution() {
 
 /**
  * Get stored attribution data
+ * @returns {Object}
  */
 function getStoredAttribution() {
   try {
@@ -98,28 +262,22 @@ function getStoredAttribution() {
 // ============================================================================
 
 /**
- * Track an event to GTM dataLayer
- * Matches the signature from lib/analytics.ts
+ * Push event to GTM dataLayer
+ * @param {string} event - Event name
+ * @param {Object} params - Event parameters
  */
 function trackEvent(event, params = {}) {
   const baseParams = {
     // Page context
     page_path: window.location.pathname,
-    page_title: document.title,
-    page_category: getPageCategory(),
-    page_referrer: document.referrer || null,
+    page_key: getPageKey(),
+    page_type: getPageType(),
     
     // Device info
     device_type: getDeviceType(),
-    screen_width: window.innerWidth,
-    screen_height: window.innerHeight,
     
     // Timestamp
     event_timestamp: new Date().toISOString(),
-    
-    // UTM parameters (current or stored)
-    ...getUTMParams(),
-    ...getStoredAttribution(),
   };
   
   const payload = {
@@ -132,164 +290,228 @@ function trackEvent(event, params = {}) {
   
   // Debug logging in development
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    console.log('[Analytics]', event, params);
+    console.log('[Analytics]', event, payload);
   }
 }
 
 // ============================================================================
-// AUTO-TRACKING: PAGE VIEW
+// PAGE VIEW TRACKING
 // ============================================================================
 
-// Track page view on load
+// Track page view on load with page_key and page_type
 trackEvent('page_view', {
-  page_type: getPageCategory(),
+  page_key: getPageKey(),
+  page_type: getPageType(),
+  page_referrer: document.referrer || null,
 });
 
 // Store attribution on first visit
 storeAttribution();
 
 // ============================================================================
-// AUTO-TRACKING: CLICKS (data-gtm-id)
+// CLICK EVENT TRACKING (with strict precedence rules)
 // ============================================================================
 
 document.addEventListener('click', (e) => {
+  // Find the closest element with data-gtm-id
   const target = e.target.closest('[data-gtm-id]');
   if (!target) return;
   
-  const gtmId = target.dataset.gtmId;
-  const parts = gtmId.split('.');
+  // Use getAttribute for robustness (handles nested SVG clicks, etc.)
+  const gtmId = target.getAttribute('data-gtm-id');
+  if (!gtmId) return;
   
-  // Parse GTM ID format: "page.section.action.label" or "section.action.label"
-  let page, section, action, label;
-  if (parts.length === 4) {
-    [page, section, action, label] = parts;
-  } else if (parts.length === 3) {
-    [section, action, label] = parts;
-    page = getPageCategory();
-  } else {
-    // Fallback
-    section = parts[0] || 'unknown';
-    action = parts[1] || 'click';
-    label = parts[2] || '';
-  }
+  const placement = target.getAttribute('data-gtm-placement') || 'unknown';
+  const section = target.getAttribute('data-gtm-section') || 'unknown';
+  const destination = target.getAttribute('data-gtm-destination');
+  const faqLabel = target.getAttribute('data-gtm-faq-label');
   
-  // Map to appropriate event type based on GTM ID patterns
+  // Get href from the element or closest anchor
+  const linkElement = target.tagName === 'A' ? target : target.closest('a');
+  const href = linkElement?.href;
   
-  // Conversion: Deploy buttons
-  if (action === 'deploy' || gtmId.includes('.deploy.')) {
-    trackEvent('start_checkout', {
-      button_id: gtmId,
-      plan: target.dataset.gtmPlan || null,
-      price: target.dataset.gtmPrice || null,
-      location: section,
+  // Generate unique event ID for de-duplication
+  const eventId = generateEventId();
+  
+  // =========================================================================
+  // PRECEDENCE RULE 1: Store links (App Store / Play Store)
+  // Fire ONLY store_outbound_click, nothing else
+  // =========================================================================
+  if (href && isStoreLink(href)) {
+    trackEvent('store_outbound_click', {
+      event_id: eventId,
+      cta_id: gtmId,
+      placement: placement,
+      section: section,
+      destination: destination || deriveDestination(href),
+      url: href,
+      link_type: 'store',
+      variant: getVariant(),
     });
-    return;
+    return; // STOP - do not fire other events
   }
   
-  // Conversion: App store buttons
-  if (gtmId.includes('.appstore.') || gtmId.includes('.googleplay.') || 
-      gtmId.includes('download-app') || gtmId.includes('download_app')) {
-    trackEvent('download_app_cta', {
-      button_id: gtmId,
-      platform: gtmId.includes('appstore') ? 'ios' : 
-                gtmId.includes('googleplay') ? 'android' : 'unknown',
-      location: section,
-    });
-    return;
-  }
-  
-  // Navigation: Desktop nav
-  if (gtmId.includes('.nav.') && gtmId.includes('.link.')) {
-    trackEvent('nav_click', {
-      nav_type: 'desktop',
-      nav_label: label,
-      nav_href: target.href || target.closest('a')?.href,
-    });
-    return;
-  }
-  
-  // Navigation: Mobile nav
-  if (gtmId.includes('.mobile.') && !gtmId.includes('.menu.toggle')) {
-    trackEvent('nav_click', {
-      nav_type: 'mobile',
-      nav_label: label,
-      nav_href: target.href || target.closest('a')?.href,
-    });
-    return;
-  }
-  
-  // Navigation: Mobile menu toggle
-  if (gtmId.includes('.menu.toggle')) {
-    trackEvent('nav_mobile_toggle', {
-      action: document.querySelector('[x-data]')?.__x?.$data?.mobileOpen ? 'close' : 'open',
-    });
-    return;
-  }
-  
-  // Navigation: Dropdown
-  if (gtmId.includes('.dropdown.')) {
-    trackEvent('nav_dropdown_open', {
-      dropdown_label: section,
-    });
-    return;
-  }
-  
-  // CTA buttons
-  if (gtmId.includes('.cta.')) {
+  // =========================================================================
+  // PRECEDENCE RULE 2: Internal links
+  // Fire ONLY cta_click
+  // =========================================================================
+  if (href && isInternalLink(href)) {
     trackEvent('cta_click', {
-      cta_label: label,
-      cta_location: section,
-      cta_destination: target.href || target.closest('a')?.href,
-      cta_variant: target.dataset.gtmVariant || 'default',
+      event_id: eventId,
+      cta_id: gtmId,
+      placement: placement,
+      section: section,
+      url: sanitizeUrl(href),
+      link_type: 'internal',
+      variant: getVariant(),
     });
-    return;
+    return; // STOP
   }
   
-  // FAQ accordion
-  if (gtmId.includes('.faq.') || gtmId.includes('faq.item')) {
-    trackEvent('accordion_expand', {
-      accordion_id: gtmId,
-      accordion_item: label || target.textContent?.slice(0, 50),
-    });
-    return;
+  // =========================================================================
+  // PRECEDENCE RULE 3: External links (non-store)
+  // Fire ONLY outbound_link_click
+  // =========================================================================
+  if (href && !isInternalLink(href)) {
+    try {
+      trackEvent('outbound_link_click', {
+        event_id: eventId,
+        url: href,
+        link_domain: new URL(href).hostname,
+        link_type: 'external',
+      });
+    } catch {
+      // Invalid URL, skip
+    }
+    return; // STOP
   }
   
-  // Form submit
-  if (gtmId.includes('.form.submit')) {
+  // =========================================================================
+  // PRECEDENCE RULE 4: FAQ toggles (non-link interactions)
+  // Fire ONLY faq_open
+  // =========================================================================
+  if (gtmId.includes('.faq.')) {
+    trackEvent('faq_open', {
+      event_id: eventId,
+      faq_id: gtmId,
+      faq_label: faqLabel || null,
+      section: section,
+    });
+    return; // STOP
+  }
+  
+  // =========================================================================
+  // PRECEDENCE RULE 5: Form submissions
+  // =========================================================================
+  if (gtmId.includes('.form.submit') || gtmId.includes('.form.')) {
     trackEvent('form_submit', {
-      form_id: section,
-      form_type: target.dataset.gtmForm || 'unknown',
+      event_id: eventId,
+      form_id: gtmId,
+      section: section,
     });
-    return;
+    return; // STOP
   }
   
-  // Email click
-  if (gtmId.includes('.email.')) {
-    trackEvent('email_click', {
-      email_address: target.href?.replace('mailto:', '') || null,
-      location: section,
-    });
-    return;
-  }
-  
-  // Generic UI interaction (fallback)
+  // =========================================================================
+  // Fallback: Generic UI interaction (for debugging unexpected clicks)
+  // =========================================================================
   trackEvent('ui_interaction', {
+    event_id: eventId,
     element_id: gtmId,
     element_type: target.tagName.toLowerCase(),
-    element_text: target.textContent?.slice(0, 50),
   });
 });
 
 // ============================================================================
-// AUTO-TRACKING: SCROLL DEPTH
+// OUTBOUND LINK TRACKING (for links without data-gtm-id)
+// Excludes store links to prevent double-tracking
 // ============================================================================
 
-let scrollMilestones = [25, 50, 75, 100];
-let scrollTracked = new Set();
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href]');
+  if (!link) return;
+  
+  // Skip if already tracked via data-gtm-id
+  if (link.closest('[data-gtm-id]')) return;
+  
+  const href = link.href;
+  
+  // Skip internal links
+  if (isInternalLink(href)) return;
+  
+  // Skip store links (they should have data-gtm-id)
+  if (isStoreLink(href)) return;
+  
+  // Track generic outbound link
+  try {
+    trackEvent('outbound_link_click', {
+      event_id: generateEventId(),
+      url: href,
+      link_domain: new URL(href).hostname,
+      link_type: 'external',
+    });
+  } catch {
+    // Invalid URL, skip
+  }
+});
+
+// ============================================================================
+// SECTION VIEW TRACKING
+// Uses 35% threshold for better hero section tracking on mobile
+// ============================================================================
+
+function setupSectionTracking() {
+  const sections = document.querySelectorAll('[data-track-section]');
+  
+  if (sections.length === 0) return;
+  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const section = entry.target;
+          const sectionKey = section.getAttribute('data-track-section');
+          const sectionLabel = section.getAttribute('data-section-label');
+          
+          trackEvent('view_section', {
+            section: sectionKey,
+            section_label: sectionLabel || null,
+          });
+          
+          // Unobserve after first view (fire once per page load)
+          observer.unobserve(section);
+        }
+      });
+    },
+    { 
+      threshold: 0.35,  // 35% visibility threshold
+      rootMargin: '0px'
+    }
+  );
+  
+  sections.forEach(section => observer.observe(section));
+}
+
+// Initialize section tracking after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupSectionTracking);
+} else {
+  setupSectionTracking();
+}
+
+// ============================================================================
+// SCROLL DEPTH TRACKING (diagnostic, not funnel gate)
+// ============================================================================
+
+const scrollMilestones = [25, 50, 75, 100];
+const scrollTracked = new Set();
 
 function trackScrollDepth() {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  
+  if (docHeight <= 0) return;
+  
   const scrollPercent = Math.round((scrollTop / docHeight) * 100);
   
   scrollMilestones.forEach(milestone => {
@@ -297,7 +519,7 @@ function trackScrollDepth() {
       scrollTracked.add(milestone);
       trackEvent('scroll_depth', {
         scroll_percentage: milestone,
-        scroll_direction: 'down',
+        page_key: getPageKey(),
       });
     }
   });
@@ -314,48 +536,12 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ============================================================================
-// AUTO-TRACKING: SECTION VIEWS
-// ============================================================================
-
-function setupSectionTracking() {
-  const sections = document.querySelectorAll('[data-track-section]');
-  
-  if (sections.length === 0) return;
-  
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const section = entry.target;
-          trackEvent('section_view', {
-            section_id: section.dataset.trackSection,
-            section_name: section.dataset.trackSectionName || section.dataset.trackSection,
-            section_index: section.dataset.trackSectionIndex || null,
-          });
-          observer.unobserve(section);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-  
-  sections.forEach(section => observer.observe(section));
-}
-
-// Initialize section tracking after DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupSectionTracking);
-} else {
-  setupSectionTracking();
-}
-
-// ============================================================================
-// AUTO-TRACKING: TIME ON PAGE
+// TIME ON PAGE TRACKING (diagnostic, not funnel gate)
 // ============================================================================
 
 const timeIntervals = [30, 60, 120, 300]; // seconds
 let timeOnPage = 0;
-let timeTracked = new Set();
+const timeTracked = new Set();
 
 setInterval(() => {
   timeOnPage += 10;
@@ -365,111 +551,69 @@ setInterval(() => {
       timeTracked.add(interval);
       trackEvent('time_on_page', {
         time_seconds: interval,
-        time_bucket: interval <= 30 ? '30s' : 
-                     interval <= 60 ? '60s' :
-                     interval <= 120 ? '120s' : '300s',
+        page_key: getPageKey(),
       });
     }
   });
 }, 10000); // Check every 10 seconds
 
 // ============================================================================
-// OUTBOUND LINK TRACKING
-// ============================================================================
-
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a[href]');
-  if (!link) return;
-  
-  const href = link.href;
-  const isExternal = href && !href.startsWith(window.location.origin) && !href.startsWith('/');
-  
-  if (isExternal && !link.dataset.gtmId) {
-    // Track outbound link if not already tracked via data-gtm-id
-    trackEvent('outbound_link_click', {
-      link_url: href,
-      link_text: link.textContent?.slice(0, 50),
-      link_domain: new URL(href).hostname,
-    });
-  }
-});
-
-// ============================================================================
-// CONVENIENCE FUNCTIONS (for manual tracking)
+// CONVENIENCE FUNCTIONS (for manual tracking if needed)
 // ============================================================================
 
 /**
- * Track CTA click manually
+ * Manually track a store outbound click
+ * Use this if you need to track programmatic store link clicks
  */
-function trackCTAClick(label, location, destination) {
-  trackEvent('cta_click', {
-    cta_label: label,
-    cta_location: location,
-    cta_destination: destination,
+function trackStoreClick(ctaId, placement, section, destination, url) {
+  trackEvent('store_outbound_click', {
+    event_id: generateEventId(),
+    cta_id: ctaId,
+    placement: placement,
+    section: section,
+    destination: destination,
+    url: url,
+    link_type: 'store',
+    variant: getVariant(),
   });
 }
 
 /**
- * Track form submission manually
+ * Manually track an internal CTA click
  */
-function trackFormSubmit(formId, formType, success = true, errorMessage = null) {
+function trackCTAClick(ctaId, placement, section, url) {
+  trackEvent('cta_click', {
+    event_id: generateEventId(),
+    cta_id: ctaId,
+    placement: placement,
+    section: section,
+    url: sanitizeUrl(url),
+    link_type: 'internal',
+    variant: getVariant(),
+  });
+}
+
+/**
+ * Manually track form submission
+ */
+function trackFormSubmit(formId, success = true, errorMessage = null) {
   if (success) {
     trackEvent('form_submit', {
+      event_id: generateEventId(),
       form_id: formId,
-      form_type: formType,
     });
   } else {
     trackEvent('form_submit_failed', {
+      event_id: generateEventId(),
       form_id: formId,
-      form_type: formType,
       error_message: errorMessage,
     });
   }
 }
 
-/**
- * Track modal open/close
- */
-function trackModalOpen(modalId, modalTitle, trigger) {
-  trackEvent('modal_open', {
-    modal_id: modalId,
-    modal_title: modalTitle,
-    trigger_type: trigger,
-  });
-}
-
-function trackModalClose(modalId, modalTitle, method) {
-  trackEvent('modal_close', {
-    modal_id: modalId,
-    modal_title: modalTitle,
-    close_method: method,
-  });
-}
-
-/**
- * Track blog-related events
- */
-function trackBlogSearch(query, resultsCount) {
-  trackEvent('blog_search', {
-    search_query: query,
-    results_count: resultsCount,
-  });
-}
-
-function trackBlogCardClick(postSlug, postTitle, category) {
-  trackEvent('blog_card_click', {
-    post_slug: postSlug,
-    post_title: postTitle,
-    post_category: category,
-  });
-}
-
 // Export for manual use
 window.trackEvent = trackEvent;
+window.trackStoreClick = trackStoreClick;
 window.trackCTAClick = trackCTAClick;
 window.trackFormSubmit = trackFormSubmit;
-window.trackModalOpen = trackModalOpen;
-window.trackModalClose = trackModalClose;
-window.trackBlogSearch = trackBlogSearch;
-window.trackBlogCardClick = trackBlogCardClick;
-
+window.generateEventId = generateEventId;

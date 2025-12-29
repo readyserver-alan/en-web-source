@@ -3,7 +3,16 @@ Section CTA Component
 
 A centered CTA that appears at the bottom of major sections.
 Includes App Store badges and encourages mobile app download.
+
+Tracking Plan v1.2:
+- Variables can be set before include to customize tracking attributes
+- gtm_section_cta_key: The canonical section key (e.g., 'download.benefits')
+- gtm_cta_placement: Where in the section ('mid' for most uses)
 #}
+
+{% set gtm_prefix = gtm_prefix | default('home') %}
+{% set gtm_section_key = gtm_section_cta_key | default(gtm_prefix + '.section_cta') %}
+{% set gtm_placement = gtm_cta_placement | default('mid') %}
 
 <div class="text-center mt-16 animate-fade-up" style="animation-delay: 0.3s;">
     <p class="text-muted-foreground mb-6">
@@ -13,4 +22,3 @@ Includes App Store badges and encourages mobile app download.
         {% include 'components/app-store-badges.html' %}
     </div>
 </div>
-

@@ -7,11 +7,18 @@ FAQ-style accordion with:
 - Analytics tracking for each expansion
 - Accessible keyboard navigation
 
+Tracking Plan v1.2:
+- faq_open event fires on expand
+- data-gtm-id: "{page}.faq.{index}" format
+- data-gtm-faq-label: Short static label (optional)
+- data-gtm-section: Parent section key
+
 Usage:
 {% set faq_items = [
-    {'question': 'What is VPS?', 'answer': 'A VPS is...'},
-    {'question': 'How do I start?', 'answer': 'Simply...'}
+    {'question': 'What is VPS?', 'answer': 'A VPS is...', 'label': 'vps_basics'},
+    {'question': 'How do I start?', 'answer': 'Simply...', 'label': 'getting_started'}
 ] %}
+{% set faq_section = 'home.faq' %}
 {% include 'components/accordion.html' with context %}
 #}
 
@@ -36,7 +43,9 @@ Usage:
                 @click="toggle({{ item_id }})"
                 :aria-expanded="activeItem === {{ item_id }}"
                 aria-controls="accordion-content-{{ item_id }}"
-                data-gtm-id="faq.item.{{ item_id }}.toggle"
+                data-gtm-id="{{ faq_section | default('home') }}.faq.{{ item_id }}"
+                data-gtm-section="{{ faq_section | default('home.faq') }}"
+                data-gtm-faq-label="{{ item.label | default('') }}"
             >
                 <span class="font-semibold text-foreground text-lg pr-4">
                     {{ item.question }}
