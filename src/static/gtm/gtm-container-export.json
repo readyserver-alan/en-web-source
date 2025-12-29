@@ -811,7 +811,7 @@
           }
         ],
         "firingTriggerId": ["1"],
-        "tagFiringOption": "ONCE_PER_PAGE",
+        "tagFiringOption": "ONCE_PER_EVENT",
         "fingerprint": "1735456800201"
       },
       {
