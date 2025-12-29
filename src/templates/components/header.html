@@ -159,6 +159,15 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
             {# Theme Toggle #}
             {% include 'components/theme-toggle.html' %}
             
+            {# Language Switcher Button - Secondary style with 3D effect #}
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2 text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+                data-gtm-id="nav.language.zh.click"
+            >
+                中文
+            </a>
+            
             {# CTA Button - 10% larger #}
             <a 
                 href="/download-mobile-app"
@@ -285,10 +294,20 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
                 {% endif %}
             {% endfor %}
             
+            {# Mobile Language Switcher - with 3D effect #}
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mt-4"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.language.zh.click"
+            >
+                中文
+            </a>
+            
             {# Mobile CTA #}
             <a 
                 href="/download-mobile-app"
-                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-4"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-2"
                 @click="mobileOpen = false"
                 data-gtm-id="nav.mobile.cta.download-app.click"
             >
