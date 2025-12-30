@@ -1,0 +1,1714 @@
+
+<!DOCTYPE html>
+<html lang="en-SG" x-data x-bind:class="$store.theme.dark ? 'dark' : ''">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>A Beginner&#39;s Guide to Caching: Browser, Page, and Objects - Ready Server Blog</title>
+    
+    <meta name="description" content="Learn how caching improves website performance. Understand browser caching, page caching, and object caching with practical examples and implementation tips.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Ready Server Singapore">
+    <link rel="canonical" href="https://readyserver.sg/blog/beginners-guide-to-caching-browser-page-objects">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://readyserver.sg/">
+    <meta property="og:title" content="A Beginner&#39;s Guide to Caching: Browser, Page, and Objects - Ready Server Blog">
+    <meta property="og:description" content="Learn how caching improves website performance. Understand browser caching, page caching, and object caching with practical examples and implementation tips.">
+    <meta property="og:image" content="https://readyserver.sg/images/blog/2025/12/DSC06181.webp">
+    <meta property="og:locale" content="en-SG">
+    <meta property="og:site_name" content="Ready Server">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@readyserversg">
+    <meta name="twitter:title" content="A Beginner&#39;s Guide to Caching: Browser, Page, and Objects - Ready Server Blog">
+    <meta name="twitter:description" content="Learn how caching improves website performance. Understand browser caching, page caching, and object caching with practical examples and implementation tips.">
+    <meta name="twitter:image" content="https://readyserver.sg/images/blog/2025/12/DSC06181.webp">
+    
+    <link rel="icon" href="/images/logo/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/images/logo/readyserver-logo.jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://t.contentsquare.net">
+    
+    <link rel="preload" href="/css/styles.css?v=2024122202" as="style">
+    
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="/css/styles.css?v=2024122202">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'dark' || (!stored && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function loadGTM() {
+            var j = document.createElement('script');
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-P5CRWLDZ';
+            document.head.appendChild(j);
+            window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadGTM, {timeout: 3000});
+        } else {
+            setTimeout(loadGTM, 2000);
+        }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ready Server",
+        "url": "https://readyserver.sg",
+        "logo": "https://readyserver.sg/images/logo/readyserver-logo.jpeg",
+        "description": "Enterprise-grade VPS and dedicated server hosting in Singapore. 99.99% uptime, NVMe SSD, 24/7 support, and ISO 27001 certified data centers.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Singapore",
+            "addressCountry": "SG"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@readyserver.sg"
+        },
+        "sameAs": [
+            "https://www.facebook.com/readyserver/",
+            "https://www.linkedin.com/company/ready-server-pte-ltd/",
+            "https://x.com/readyserver",
+            "https://www.instagram.com/readyserver.sg/"
+        ]
+    }
+    </script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "A Beginner&#39;s Guide to Caching: Browser, Page, and Objects",
+    "description": "Learn how caching improves website performance. Understand browser caching, page caching, and object caching with practical examples and implementation tips.",
+    "image": "https://readyserver.sg/images/blog/2025/12/DSC06181.webp",
+    "datePublished": "2025-11-25T00:00:00",
+    "author": {
+        "@type": "Person",
+        "name": "Ready Server Team"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ready Server",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://readyserver.sg/images/logo/readyserver-logo.jpeg"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://readyserver.sg/blog/beginners-guide-to-caching-browser-page-objects"
+    }
+}
+</script>
+    
+<meta property="article:published_time" content="2025-11-25T00:00:00">
+<meta property="article:author" content="Ready Server Team">
+<meta property="article:section" content="Engineering">
+<meta property="article:tag" content="caching">
+<meta property="article:tag" content="website performance">
+<meta property="article:tag" content="browser caching">
+<meta property="article:tag" content="page caching">
+<meta property="article:tag" content="object caching">
+<meta property="article:tag" content="web optimization">
+</head>
+
+<body class="bg-background text-foreground antialiased min-h-screen flex flex-col">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5CRWLDZ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    
+
+
+<header 
+    class="fixed top-0 left-0 right-0 z-[9999] bg-background/80 backdrop-blur-xl animate-fade-up"
+    x-data="{ 
+        mobileOpen: false,
+        mobileDropdownOpen: false,
+        currentPath: window.location.pathname
+    }"
+    @keydown.escape.window="mobileOpen = false; $store.mobileMenu?.close()"
+>
+    <div class="container mx-auto px-6 py-5 flex items-center justify-between relative">
+        
+        <a href="/" class="flex items-center gap-3 group" data-gtm-id="nav.logo.click" aria-label="Ready Server - Home">
+            <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                <img 
+                    src="/images/logo/readyserver-logo.jpeg" 
+                    srcset="/images/logo/readyserver-logo.jpeg 1x, /images/logo/readyserver-logo.jpeg 2x"
+                    alt=""
+                    aria-hidden="true"
+                    width="44"
+                    height="44"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+            <span class="font-bold text-[1.375rem] hidden sm:block text-foreground" aria-hidden="true">
+                Ready Server
+            </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 relative">
+                    <div 
+                        class="relative z-[100]"
+                        x-data="{ open: false }"
+                        @mouseenter="open = true"
+                        @mouseleave="open = false"
+                    >
+                        <button
+                            class="flex items-center gap-1.5 font-medium transition-colors py-2 px-1 text-[1.0625rem]"
+                            :class="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)
+                                    ? 'text-primary'
+                                    : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.dropdown.products.open"
+                        >
+                            Products &amp; Services
+                            <svg 
+                                class="w-4 h-4 transition-transform duration-200" 
+                                :class="open ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-150"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-2"
+                            class="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                            style="z-index: 99999;"
+                        >
+                            <div class="bg-card border border-border rounded-xl shadow-2xl overflow-hidden min-w-[220px] backdrop-blur-xl">
+                                    <a
+                                        href="/vps-hosting"
+                                        class="block px-4 py-3 transition-colors"
+                                        :class="currentPath === '/vps-hosting'
+                                            ? 'bg-primary/10 text-primary font-medium'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.vps-hosting.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <span 
+                                                x-show="currentPath === '/vps-hosting'"
+                                                class="w-1.5 h-1.5 rounded-full bg-primary"
+                                            ></span>
+                                            VPS Hosting
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="/windows-vps"
+                                        class="block px-4 py-3 transition-colors"
+                                        :class="currentPath === '/windows-vps'
+                                            ? 'bg-primary/10 text-primary font-medium'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.windows-vps.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <span 
+                                                x-show="currentPath === '/windows-vps'"
+                                                class="w-1.5 h-1.5 rounded-full bg-primary"
+                                            ></span>
+                                            Windows VPS
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="https://dedicated-server.readyserver.sg/dedicatedserver.html"
+target="_blank" rel="noopener noreferrer"                                        class="block px-4 py-3 transition-colors"
+                                        :class="'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.dedicated-servers.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            Dedicated Servers
+                                            <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <a
+                            href="/blog"
+                            class="font-medium transition-colors py-2 px-1 block hover:-translate-y-0.5 transform transition-transform text-[1.0625rem]"
+                            :class="currentPath === '/blog' || currentPath.startsWith('/blog/')
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.link.blog.click"
+                        >
+                            Blog
+                        </a>
+                        <div 
+                            x-show="currentPath === '/blog' || currentPath.startsWith('/blog/')"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+                    </div>
+                    <div class="relative">
+                        <a
+                            href="/contact"
+                            class="font-medium transition-colors py-2 px-1 block hover:-translate-y-0.5 transform transition-transform text-[1.0625rem]"
+                            :class="currentPath === '/contact' || currentPath.startsWith('/contact/')
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.link.contact.click"
+                        >
+                            Contact Us
+                        </a>
+                        <div 
+                            x-show="currentPath === '/contact' || currentPath.startsWith('/contact/')"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+                    </div>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+
+<button
+    class="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+    @click="$store.theme.toggle()"
+    :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+    data-gtm-id="nav.theme-toggle.click"
+    x-data
+>
+    <svg 
+        x-show="$store.theme.dark"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    
+    <svg 
+        x-show="!$store.theme.dark"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+</button>
+            
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2 text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+                data-gtm-id="nav.language.zh.click"
+            >
+                中文
+            </a>
+            
+            <a 
+                href="/download-mobile-app"
+                class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-[0.9375rem] font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                data-gtm-id="nav.download_app"
+                data-gtm-placement="nav"
+                data-gtm-section="nav"
+            >
+                Download App
+            </a>
+        </div>
+
+        <div class="flex md:hidden items-center gap-3">
+
+<button
+    class="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+    @click="$store.theme.toggle()"
+    :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+    data-gtm-id="nav.theme-toggle.click"
+    x-data
+>
+    <svg 
+        x-show="$store.theme.dark"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    
+    <svg 
+        x-show="!$store.theme.dark"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+</button>
+            
+            <button
+                class="text-foreground p-2"
+                @click="mobileOpen = !mobileOpen"
+                :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
+                data-gtm-id="nav.mobile.menu.toggle"
+            >
+                <svg 
+                    x-show="!mobileOpen" 
+                    class="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg 
+                    x-show="mobileOpen" 
+                    x-cloak
+                    class="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div 
+        x-show="mobileOpen"
+        x-collapse
+        class="md:hidden bg-background border-b border-border"
+    >
+        <nav class="flex flex-col p-6 gap-4">
+                    <div>
+                        <button
+                            class="flex items-center justify-between w-full font-medium py-2"
+                            :class="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)
+                                ? 'text-primary'
+                                : 'text-muted-foreground'"
+                            @click="mobileDropdownOpen = !mobileDropdownOpen"
+                        >
+                            <span class="flex items-center gap-2">
+                                <span 
+                                    x-show="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)"
+                                    class="w-1.5 h-1.5 rounded-full bg-primary"
+                                ></span>
+                                Products &amp; Services
+                            </span>
+                            <svg 
+                                class="w-4 h-4 transition-transform duration-200"
+                                :class="mobileDropdownOpen ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <div 
+                            x-show="mobileDropdownOpen"
+                            x-collapse
+                            class="pl-4 flex flex-col gap-2 mt-2"
+                        >
+                                <a
+                                    href="/vps-hosting"
+                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="currentPath === '/vps-hosting'
+                                        ? 'text-primary font-medium'
+                                        : 'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.vps-hosting.click"
+                                >
+                                    <span 
+                                        x-show="currentPath === '/vps-hosting'"
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"
+                                    ></span>
+                                    VPS Hosting
+                                </a>
+                                <a
+                                    href="/windows-vps"
+                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="currentPath === '/windows-vps'
+                                        ? 'text-primary font-medium'
+                                        : 'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.windows-vps.click"
+                                >
+                                    <span 
+                                        x-show="currentPath === '/windows-vps'"
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"
+                                    ></span>
+                                    Windows VPS
+                                </a>
+                                <a
+                                    href="https://dedicated-server.readyserver.sg/dedicatedserver.html"
+target="_blank" rel="noopener noreferrer"                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.dedicated-servers.click"
+                                >
+                                    Dedicated Servers
+                                    <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <a
+                        href="/blog"
+                        class="transition-colors font-medium py-2 flex items-center gap-2"
+                        :class="currentPath === '/blog' || currentPath.startsWith('/blog/')
+                            ? 'text-primary'
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="mobileOpen = false"
+                        data-gtm-id="nav.mobile.blog.click"
+                    >
+                        <span 
+                            x-show="currentPath === '/blog' || currentPath.startsWith('/blog/')"
+                            class="w-1.5 h-1.5 rounded-full bg-primary"
+                        ></span>
+                        Blog
+                    </a>
+                    <a
+                        href="/contact"
+                        class="transition-colors font-medium py-2 flex items-center gap-2"
+                        :class="currentPath === '/contact' || currentPath.startsWith('/contact/')
+                            ? 'text-primary'
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="mobileOpen = false"
+                        data-gtm-id="nav.mobile.contact.click"
+                    >
+                        <span 
+                            x-show="currentPath === '/contact' || currentPath.startsWith('/contact/')"
+                            class="w-1.5 h-1.5 rounded-full bg-primary"
+                        ></span>
+                        Contact Us
+                    </a>
+            
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mt-4"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.language.zh.click"
+            >
+                中文
+            </a>
+            
+            <a 
+                href="/download-mobile-app"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-2"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.download_app"
+                data-gtm-placement="nav"
+                data-gtm-section="nav.mobile"
+            >
+                Download App
+            </a>
+        </nav>
+    </div>
+</header>
+
+<div class="h-[80px]"></div>
+
+<style>
+    [x-cloak] { display: none !important; }
+</style>
+    
+    <main class="flex-1 relative z-1">
+<article class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <header class="max-w-3xl mx-auto mb-12 text-center">
+            <nav class="mb-6 animate-fade-up">
+                <ol class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <li><a href="/" class="hover:text-primary">Home</a></li>
+                    <li>/</li>
+                    <li><a href="/blog" class="hover:text-primary">Blog</a></li>
+                    <li>/</li>
+                    <li class="text-foreground">A Beginner&#39;s Guide to...</li>
+                </ol>
+            </nav>
+            
+            <span 
+                class="inline-block text-xs font-medium text-primary uppercase tracking-wider mb-4 animate-fade-up"
+                style="animation-delay: 0.05s;"
+            >
+                Engineering
+            </span>
+            
+            <h1 
+                class="text-3xl md:text-5xl font-black text-foreground mb-6 animate-fade-up"
+                style="animation-delay: 0.1s;"
+            >
+                A Beginner&#39;s Guide to Caching: Browser, Page, and Objects
+            </h1>
+            
+            <div 
+                class="flex items-center justify-center gap-4 text-muted-foreground animate-fade-up"
+                style="animation-delay: 0.15s;"
+            >
+                <span>Ready Server Team</span>
+                <span>•</span>
+                <span>November 25, 2025</span>
+                <span>•</span>
+                <span>8 min read</span>
+            </div>
+        </header>
+        
+        <div 
+            class="max-w-4xl mx-auto mb-12 rounded-2xl overflow-hidden animate-fade-up"
+            style="animation-delay: 0.2s;"
+        >
+            <img 
+                src="/images/blog/2025/12/DSC06181.webp" 
+                alt="A Beginner&#39;s Guide to Caching: Browser, Page, and Objects"
+                class="w-full h-auto"
+                width="896"
+                height="504"
+                decoding="async"
+                fetchpriority="high"
+            >
+        </div>
+        
+        <div 
+            class="max-w-3xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-a:text-primary prose-img:rounded-xl animate-fade-up"
+            style="animation-delay: 0.25s;"
+        >
+            <p class="mb-4 leading-relaxed">Caching is one of the most important concepts for website performance. It reduces workload for servers, browsers, and databases—creating faster, smoother user experiences that keep visitors engaged and search engines happy.</p>
+<p class="mb-4 leading-relaxed">If your website feels sluggish, implementing proper caching strategies could be the single most impactful performance improvement you make. Yet many website owners don't fully understand what caching is, how it works, or how to leverage it effectively.</p>
+<p class="mb-4 leading-relaxed">This comprehensive guide breaks down the three essential types of caching every website uses: browser caching, page caching, and object caching. By the end, you'll understand exactly how these technologies work together to create lightning-fast websites.</p>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="what-is-caching-the-digital-backpack-analogy">What Is Caching? The Digital Backpack Analogy</h2>
+<p class="mb-4 leading-relaxed">At its core, caching is the practice of storing temporary copies of data so it can be accessed quickly later without repeating expensive operations.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="the-library-analogy">The Library Analogy</h3>
+<p class="mb-4 leading-relaxed">Think of caching as a digital backpack. Imagine you're a student who needs to reference the same textbooks repeatedly:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Without Caching:</strong><br/>
+Every time you need information, you walk to the library (server), search for the book (database query), find the page (processing), read it, then return the book. Tomorrow, you repeat this entire journey for the same information.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">With Caching:</strong><br/>
+After your first library visit, you photocopy the pages you need and keep them in your backpack. Now, whenever you need that information, you simply pull it from your backpack instantly—no library trip required.</p>
+<p class="mb-4 leading-relaxed">This is exactly how web caching works, except it happens at multiple levels simultaneously to maximize speed at every stage of content delivery.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="why-caching-matters-in-2025-2026">Why Caching Matters in 2025-2026</h3>
+<p class="mb-4 leading-relaxed">Modern web performance isn't optional—it directly impacts:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Business Metrics:</strong>
+- <strong class="font-semibold text-foreground">Conversion Rates</strong>: Amazon found every 100ms of latency costs 1% in sales
+- <strong class="font-semibold text-foreground">Bounce Rates</strong>: 53% of mobile users abandon sites taking over 3 seconds to load
+- <strong class="font-semibold text-foreground">Revenue</strong>: Walmart discovered 1-second improvement increased conversions by 2%</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Search Engine Rankings:</strong>
+- Google's Core Web Vitals are direct ranking factors
+- Page speed influences mobile search rankings significantly
+- Faster sites get crawled more frequently by search bots</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">User Experience:</strong>
+- Users expect sub-2-second load times
+- Fast sites feel more professional and trustworthy
+- Speed improvements increase page views per session</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Infrastructure Costs:</strong>
+- Reduced server load = lower hosting costs
+- Fewer database queries = better scalability
+- Caching prevents expensive emergency upgrades</p>
+<p class="mb-4 leading-relaxed">Proper caching implementation addresses all these concerns simultaneously.</p>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="type-1-browser-caching-speed-at-the-client-side">Type 1: Browser Caching - Speed at the Client Side</h2>
+<p class="mb-4 leading-relaxed">Browser caching happens on the <em>user's device</em>—their phone, tablet, or computer. It's the first line of defense against slow page loads for returning visitors.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="what-browser-caching-stores">What Browser Caching Stores</h3>
+<p class="mb-4 leading-relaxed">When you visit a website for the first time, your browser downloads numerous files:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Static Assets:</strong>
+- <strong class="font-semibold text-foreground">Images</strong>: JPG, PNG, WebP, SVG files (logos, photos, icons)
+- <strong class="font-semibold text-foreground">Stylesheets</strong>: CSS files controlling visual design
+- <strong class="font-semibold text-foreground">JavaScript</strong>: Interactive functionality and dynamic features
+- <strong class="font-semibold text-foreground">Fonts</strong>: Web fonts (WOFF, WOFF2, TTF files)
+- <strong class="font-semibold text-foreground">Videos</strong>: Embedded video files
+- <strong class="font-semibold text-foreground">Documents</strong>: PDFs and downloadable resources</p>
+<p class="mb-4 leading-relaxed">These files typically don't change frequently. A company logo might remain identical for years. CSS files update occasionally during redesigns. JavaScript libraries stay stable between updates.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="how-browser-caching-works">How Browser Caching Works</h3>
+<p class="mb-4 leading-relaxed">When you first visit a website:</p>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser requests page</strong> from server</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Server responds</strong> with HTML, CSS, JS, images</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser downloads</strong> all resources (slow—could be megabytes)</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser stores files</strong> in local cache with expiration dates</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Page displays</strong> after everything downloads</li>
+</ol>
+<p class="mb-4 leading-relaxed">On your second visit:</p>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser requests page</strong> from server</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Server responds</strong> with HTML</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser checks cache</strong> for CSS, JS, images</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser loads cached files</strong> instantly (fast—no downloads)</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Page displays immediately</strong> with cached assets</li>
+</ol>
+<h3 class="text-xl font-bold mt-8 mb-4" id="setting-cache-headers">Setting Cache Headers</h3>
+<p class="mb-4 leading-relaxed">Website owners control browser caching through HTTP response headers sent by the server.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Cache-Control Header:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-http text-sm font-mono">Cache-Control: max-age=31536000, public
+</code></pre>
+<p class="mb-4 leading-relaxed">This tells browsers: "Store this file for 31,536,000 seconds (1 year) and allow any cache to store it."</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Common Cache-Control Directives:</strong></p>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">max-age=3600</code>: Cache for 3600 seconds (1 hour)</li>
+<li class="ml-4 mb-2"><code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">public</code>: Any cache can store this (CDNs, proxies, browsers)</li>
+<li class="ml-4 mb-2"><code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">private</code>: Only browser cache (not CDNs—for user-specific content)</li>
+<li class="ml-4 mb-2"><code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">no-cache</code>: Validate with server before using cached version</li>
+<li class="ml-4 mb-2"><code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">no-store</code>: Never cache (for sensitive data)</li>
+<li class="ml-4 mb-2"><code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">immutable</code>: File will never change (perfect for versioned assets)</li>
+</ul>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Expires Header (Legacy):</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-http text-sm font-mono">Expires: Wed, 25 Nov 2026 00:00:00 GMT
+</code></pre>
+<p class="mb-4 leading-relaxed">Older method specifying exact expiration date. <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">Cache-Control</code> is preferred.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">ETag Header:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-http text-sm font-mono">ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
+</code></pre>
+<p class="mb-4 leading-relaxed">Unique identifier for file version. Browser sends ETag back; if unchanged, server responds "304 Not Modified" without re-sending file.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="recommended-browser-cache-duration-by-file-type">Recommended Browser Cache Duration by File Type</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Long Cache (1 year):</strong>
+- Versioned static files (style.v2.css, script.abc123.js)
+- Immutable images with version/hash in filename
+- Web fonts</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Medium Cache (1 week to 1 month):</strong>
+- Logos and branding images
+- CSS and JavaScript without version numbers
+- Favicon</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Short Cache (1 hour to 1 day):</strong>
+- HTML pages
+- Frequently updated content
+- News site images</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">No Cache:</strong>
+- User-specific data (dashboards, account pages)
+- E-commerce cart pages
+- Real-time information (stock prices, live scores)</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="cache-busting-for-updates">Cache Busting for Updates</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Problem:</strong> If you set 1-year caching but need to update a CSS file, users won't see changes until their cache expires.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution: Cache Busting Techniques</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">1. Version Query Strings:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-html text-sm font-mono">&lt;link rel="stylesheet" href="style.css?v=2.1"&gt;
+</code></pre>
+<p class="mb-4 leading-relaxed">When you update CSS, increment version: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">?v=2.2</code>. Browser sees new URL, fetches new file.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">2. Filename Hashing (Recommended):</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-html text-sm font-mono">&lt;link rel="stylesheet" href="style.a3f2b9.css"&gt;
+</code></pre>
+<p class="mb-4 leading-relaxed">Build tools generate unique filenames based on content hash. Any change creates new filename, automatic cache bust.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">3. Modified Timestamp:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-html text-sm font-mono">&lt;script src="script.js?t=1637856000"&gt;&lt;/script&gt;
+</code></pre>
+<p class="mb-4 leading-relaxed">Append file modification timestamp. Updates automatically when file changes.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="clearing-browser-cache">Clearing Browser Cache</h3>
+<p class="mb-4 leading-relaxed">Users sometimes need to manually clear cache when experiencing issues:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Chrome:</strong><br/>
+Settings → Privacy and security → Clear browsing data → Cached images and files</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Firefox:</strong><br/>
+Settings → Privacy &amp; Security → Cookies and Site Data → Clear Data → Cached Web Content</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Safari:</strong><br/>
+Preferences → Advanced → Show Develop menu → Develop → Empty Caches</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Hard Refresh (Force Fresh Download):</strong>
+- Windows: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">Ctrl + F5</code> or <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">Ctrl + Shift + R</code>
+- Mac: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">Cmd + Shift + R</code>
+- Forces browser to ignore cache and download everything fresh</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="browser-caching-best-practices">Browser Caching Best Practices</h3>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Set appropriate expiration times</strong> based on update frequency</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Use cache busting</strong> for CSS/JS that might change</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Enable compression</strong> (Gzip, Brotli) for cached files</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Leverage CDNs</strong> that respect cache headers</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Test with DevTools</strong> (Chrome/Firefox Network tab shows cache hits)</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Version critical assets</strong> to prevent stale cache issues</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Monitor cache hit rates</strong> to optimize policies</li>
+</ol>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="type-2-page-caching-server-side-speed">Type 2: Page Caching - Server-Side Speed</h2>
+<p class="mb-4 leading-relaxed">Page caching happens on the <em>server</em> or in a server-side cache layer. It's crucial for dynamic websites that generate pages on-demand.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="the-problem-page-caching-solves">The Problem Page Caching Solves</h3>
+<p class="mb-4 leading-relaxed">Dynamic websites (WordPress, Drupal, Magento, custom CMS platforms) build pages by assembling components:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Typical Dynamic Page Generation:</strong></p>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">User requests page</strong>: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">https://example.com/product/blue-widget</code></li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Server receives request</strong> and starts processing</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Database queries begin:</strong></li>
+<li class="ml-4 mb-2">Query 1: Fetch product details</li>
+<li class="ml-4 mb-2">Query 2: Get related products</li>
+<li class="ml-4 mb-2">Query 3: Load customer reviews</li>
+<li class="ml-4 mb-2">Query 4: Retrieve category information</li>
+<li class="ml-4 mb-2">Query 5: Get site header/footer content</li>
+<li class="ml-4 mb-2">Query 6: Load navigation menu</li>
+<li class="ml-4 mb-2">Query 7: Fetch recent blog posts for sidebar</li>
+<li class="ml-4 mb-2">Query 8: Check inventory status</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">PHP/Python/Ruby processes data</strong> and assembles HTML</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Server sends fully rendered HTML</strong> to browser</li>
+</ol>
+<p class="mb-4 leading-relaxed">This process might take 500ms to 2 seconds for a complex page. Multiply by thousands of visitors, and your server struggles under the load.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="how-page-caching-works">How Page Caching Works</h3>
+<p class="mb-4 leading-relaxed">Page caching saves the fully rendered HTML output and serves it directly:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">With Page Caching:</strong></p>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">User requests page</strong>: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">https://example.com/product/blue-widget</code></li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Cache checks</strong> if page HTML exists and is fresh</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">If cached</strong>: Server sends pre-built HTML instantly (2-50ms)</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">If not cached</strong>: Generate page normally, save HTML to cache, serve to user</li>
+</ol>
+<p class="mb-4 leading-relaxed">Subsequent visitors get the cached HTML instantly—no database queries, no processing, just pure HTML delivery.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="performance-impact">Performance Impact</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Real-World Results:</strong></p>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">WordPress sites</strong>: 200-500% speed increase</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">E-commerce</strong>: Handle 10x traffic without server upgrades</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Response times</strong>: 2000ms → 50ms</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Server load</strong>: 80% reduction in CPU usage</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="page-caching-solutions">Page Caching Solutions</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">For WordPress:</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">WP Rocket (Premium, $49-249/year):</strong>
+- Easiest setup (plug-and-play)
+- Page caching, browser caching, database optimization
+- CDN integration
+- Lazy loading images
+- Critical CSS generation
+- Best for beginners and non-technical users</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">W3 Total Cache (Free):</strong>
+- Comprehensive caching suite
+- Page, database, object, browser caching
+- CDN support
+- Minification and compression
+- More complex but powerful</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">WP Super Cache (Free):</strong>
+- Simpler than W3 Total Cache
+- Generates static HTML files
+- Mod_rewrite (fastest) or PHP delivery
+- Good middle ground</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">LiteSpeed Cache (Free, requires LiteSpeed server):</strong>
+- Excellent performance with LiteSpeed servers
+- Server-level caching integration
+- Image optimization included
+- Crawler features for pre-warming cache</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">For Other Platforms:</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Varnish Cache:</strong>
+- Standalone HTTP accelerator
+- Sits in front of web server
+- Extremely fast (handles 300,000+ req/sec)
+- Used by high-traffic sites
+- Requires technical setup</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Nginx FastCGI Cache:</strong>
+- Built into Nginx web server
+- Caches PHP/Python/Ruby application output
+- Low resource usage
+- Configuration-based (no plugins needed)</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Redis Page Cache:</strong>
+- Stores cached pages in Redis (in-memory)
+- Faster than file-based caching
+- Great for high-traffic sites
+- Popular with <a class="text-primary hover:underline" href="https://www.readyserver.sg/vps-hosting/">VPS hosting</a> setups</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Application-Level Caching:</strong>
+- Laravel Cache: Built into Laravel framework
+- Django Cache Framework: Python web framework caching
+- Ruby on Rails Caching: Fragment and page caching</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="page-cache-invalidation">Page Cache Invalidation</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">The Challenge:</strong><br/>
+If you cache a product page, what happens when you update the price?</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Cache Invalidation Strategies:</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">1. Time-Based Expiration:</strong>
+- Cache expires after set duration (e.g., 1 hour)
+- Simple but may serve stale content
+- Good for content that updates predictably</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">2. Event-Based Purging:</strong>
+- When you update product, cache automatically purges
+- WordPress plugins do this automatically
+- Keeps cache always fresh</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">3. Selective Invalidation:</strong>
+- Only purge pages related to change
+- Update product: purge product page, category page
+- Leave unrelated pages cached</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">4. Cache Warming:</strong>
+- After purging, automatically regenerate cache
+- First visitor after update doesn't experience slow load
+- Pre-build pages for popular URLs</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="what-not-to-cache">What NOT to Cache</h3>
+<p class="mb-4 leading-relaxed">Some pages must be generated dynamically for each user:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">User-Specific Pages:</strong>
+- Account dashboards
+- Shopping carts
+- Checkout pages
+- User profiles
+- Personalized recommendations</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Real-Time Data:</strong>
+- Stock prices
+- Live sports scores
+- Inventory counts in real-time
+- Social media feeds</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Form Pages:</strong>
+- Contact forms (CSRF tokens)
+- Login pages (security tokens)
+- Comment forms</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solutions for Dynamic Elements on Cached Pages:</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">AJAX Loading:</strong>
+Cache the page structure, load personalized content via JavaScript:</p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-html text-sm font-mono">&lt;!-- Cached HTML --&gt;
+&lt;div id="cart-count"&gt;Loading...&lt;/div&gt;
+
+&lt;script&gt;
+  // Loads dynamically after page loads
+  fetch('/api/cart-count')
+    .then(data =&gt; updateCartCount(data));
+&lt;/script&gt;
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">ESI (Edge Side Includes):</strong>
+Varnish and CDNs support ESI, caching most of page but leaving holes for dynamic content.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Fragment Caching:</strong>
+Cache parts of pages separately—cache product info (static) but not user reviews (dynamic).</p>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="type-3-object-caching-database-query-optimization">Type 3: Object Caching - Database Query Optimization</h2>
+<p class="mb-4 leading-relaxed">Object caching stores database query results in fast memory-based systems like Redis or Memcached. It's the secret weapon for complex, database-heavy applications.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="the-database-bottleneck">The Database Bottleneck</h3>
+<p class="mb-4 leading-relaxed">Databases are slow compared to memory:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Speed Comparison:</strong>
+- <strong class="font-semibold text-foreground">RAM access</strong>: 100 nanoseconds
+- <strong class="font-semibold text-foreground">SSD access</strong>: 50,000 nanoseconds (500x slower)
+- <strong class="font-semibold text-foreground">HDD access</strong>: 10,000,000 nanoseconds (100,000x slower)
+- <strong class="font-semibold text-foreground">Database query</strong>: 10-100+ milliseconds (highly variable)</p>
+<p class="mb-4 leading-relaxed">When a page requires 20 database queries, those queries might take 200-500ms combined—the majority of your page generation time.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="how-object-caching-works">How Object Caching Works</h3>
+<p class="mb-4 leading-relaxed">Object caching stores database query results in memory:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Without Object Cache:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">// Fetch bestsellers from database
+$bestsellers = $db-&gt;query(
+  "SELECT * FROM products 
+   WHERE featured = 1 
+   ORDER BY sales DESC 
+   LIMIT 10"
+);
+</code></pre>
+<p class="mb-4 leading-relaxed">This query runs every single time the page loads. If 1,000 visitors view the homepage, the database executes this query 1,000 times—returning identical results.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">With Object Cache:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">// Check object cache first
+$bestsellers = Cache::get('homepage_bestsellers');
+
+if (!$bestsellers) {
+  // Not in cache, query database
+  $bestsellers = $db-&gt;query(
+    "SELECT * FROM products 
+     WHERE featured = 1 
+     ORDER BY sales DESC 
+     LIMIT 10"
+  );
+
+  // Store in cache for 1 hour
+  Cache::put('homepage_bestsellers', $bestsellers, 3600);
+}
+
+return $bestsellers;
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">First visitor</strong>: Query database, store result in Redis<br/>
+<strong class="font-semibold text-foreground">Next 999 visitors</strong>: Retrieve from Redis instantly</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="perfect-use-cases-for-object-caching">Perfect Use Cases for Object Caching</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">E-commerce:</strong>
+- Product listings by category
+- Bestseller lists
+- "Customers also bought" recommendations
+- Pricing calculations (complex discount rules)
+- Inventory checks (with short expiration)
+- Shipping rate calculations</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Content Sites:</strong>
+- Recent posts lists
+- Popular articles
+- Category post counts
+- Tag clouds
+- Author profile data
+- Comment counts</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">User Dashboards:</strong>
+- User profile data
+- Account settings
+- Order history
+- Saved items / wishlists
+- Activity feeds</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Application Data:</strong>
+- Configuration settings
+- Site options
+- Menu structures
+- Widget content
+- Translation strings
+- API responses from external services</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="object-caching-technologies">Object Caching Technologies</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Redis (Most Popular):</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Advantages:</strong>
+- Extremely fast (in-memory)
+- Persistent (survives server restart)
+- Rich data structures (strings, hashes, lists, sets)
+- Atomic operations
+- Pub/sub messaging
+- Expires keys automatically</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Use Cases:</strong>
+- Object caching
+- Session storage
+- Real-time analytics
+- Leaderboards
+- Queue systems</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Setup on <a class="text-primary hover:underline" href="https://www.readyserver.sg/vps-hosting/">VPS</a>:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-bash text-sm font-mono"># Install Redis
+sudo apt install redis-server
+
+# Start Redis
+sudo systemctl start redis
+
+# Enable on boot
+sudo systemctl enable redis
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">WordPress + Redis:</strong>
+Install Redis Object Cache plugin, configure in <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">wp-config.php</code>:</p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">define('WP_REDIS_HOST', '127.0.0.1');
+define('WP_REDIS_PORT', 6379);
+define('WP_REDIS_TIMEOUT', 1);
+define('WP_REDIS_DATABASE', 0);
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Memcached (Alternative):</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Advantages:</strong>
+- Very fast (pure memory)
+- Simpler than Redis
+- Lower memory overhead
+- Multi-threaded (better for some workloads)</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Limitations:</strong>
+- Not persistent (data lost on restart)
+- Simpler data types (just key-value strings)
+- No built-in replication</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Use Cases:</strong>
+- Simple object caching
+- Session storage (if loss acceptable)
+- Distributed caching across multiple servers</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">When to Use Which:</strong></p>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Redis</strong>: When you need persistence, complex data types, or additional features</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Memcached</strong>: When you want simplest possible caching for ephemeral data</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="object-cache-management">Object Cache Management</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Cache Keys:</strong>
+Use descriptive, hierarchical keys:</p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="text-sm font-mono">Good Keys:
+- product:123:details
+- category:electronics:products
+- user:456:profile
+- blog:recent_posts:10
+
+Bad Keys:
+- prod123
+- catprods
+- userdata
+- posts
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Cache Expiration Strategies:</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Time-Based:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">Cache::put('product:123', $data, 3600); // 1 hour
+Cache::put('category:electronics', $data, 86400); // 24 hours
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Event-Based:</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">// When product updates, invalidate cache
+public function updateProduct($id, $data) {
+  $this-&gt;db-&gt;update('products', $id, $data);
+  Cache::forget("product:{$id}:details");
+  Cache::forget("product:{$id}:full");
+}
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Hierarchical Invalidation:</strong>
+Use cache tags (Redis supports this):</p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">Cache::tags(['products', 'category:5'])-&gt;put('key', $data);
+
+// Later, flush all products in category 5
+Cache::tags(['category:5'])-&gt;flush();
+</code></pre>
+<h3 class="text-xl font-bold mt-8 mb-4" id="monitoring-object-cache-performance">Monitoring Object Cache Performance</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Key Metrics:</strong></p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Hit Rate:</strong><br/>
+Percentage of requests served from cache vs. database.</p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="text-sm font-mono">Hit Rate = Cache Hits / (Cache Hits + Cache Misses)
+
+Good: &gt;85%
+Excellent: &gt;95%
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Memory Usage:</strong><br/>
+Monitor Redis/Memcached memory consumption.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Eviction Rate:</strong><br/>
+How often cached items are removed due to memory limits.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Average Response Time:</strong><br/>
+Cached queries should be &lt;1ms.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Monitoring Tools:</strong></p>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Redis CLI</strong>: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">redis-cli INFO stats</code></li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">RedisInsight</strong>: GUI for Redis monitoring</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Memcached Stats</strong>: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">telnet localhost 11211</code> → <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">stats</code></li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">New Relic</strong>: Application monitoring with cache metrics</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Datadog</strong>: Infrastructure monitoring</li>
+</ul>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="putting-it-all-together-the-caching-lifecycle">Putting It All Together: The Caching Lifecycle</h2>
+<p class="mb-4 leading-relaxed">Let's walk through a complete example showing how all three cache types work together.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="scenario-e-commerce-product-page">Scenario: E-commerce Product Page</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">URL</strong>: <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">https://shop.example.com/products/laptop-stand</code></p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="first-visit-cold-cache-everything-new">First Visit: Cold Cache (Everything New)</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 1: Browser → Server</strong><br/>
+User requests product page, no cache exists anywhere.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 2: Page Cache Check</strong><br/>
+Server checks: Do we have cached HTML for this product page?<br/>
+<strong class="font-semibold text-foreground">Result</strong>: No (cold cache)</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 3: Page Generation Begins</strong><br/>
+Server must build page dynamically.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 4: Object Cache Queries</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">// Product details
+$product = ObjectCache::get('product:stand:details');
+if (!$product) {
+  $product = DB::query('SELECT * FROM products WHERE slug = ?', ['laptop-stand']);
+  ObjectCache::put('product:stand:details', $product, 3600);
+}
+
+// Related products
+$related = ObjectCache::get('product:stand:related');
+if (!$related) {
+  $related = DB::query('SELECT * FROM products WHERE category = ? LIMIT 4', [$product-&gt;category]);
+  ObjectCache::put('product:stand:related', $related, 3600);
+}
+
+// Customer reviews
+$reviews = ObjectCache::get('product:stand:reviews');
+if (!$reviews) {
+  $reviews = DB::query('SELECT * FROM reviews WHERE product_id = ?', [$product-&gt;id]);
+  ObjectCache::put('product:stand:reviews', $reviews, 600); // 10 min expiry
+}
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">First queries hit database</strong> (slow), subsequent queries use object cache.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 5: HTML Generation</strong><br/>
+Server assembles data into HTML template.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 6: Page Cache Store</strong><br/>
+Server saves complete HTML to page cache.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 7: Response Sent with Cache Headers</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-http text-sm font-mono">HTTP/1.1 200 OK
+Cache-Control: max-age=86400, public
+Content-Type: text/html
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="style.v2.css"&gt;
+    &lt;script src="app.v2.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;img src="laptop-stand.jpg" alt="Laptop Stand"&gt;
+    ...
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 8: Browser Caching</strong><br/>
+Browser downloads and caches:
+- style.v2.css
+- app.v2.js
+- laptop-stand.jpg</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Total Time</strong>: ~2000ms<br/>
+- Database queries: 300ms
+- PHP processing: 100ms
+- HTML rendering: 50ms
+- Network transfer: 1550ms</p>
+<hr class="my-8 border-border"/>
+<h3 class="text-xl font-bold mt-8 mb-4" id="second-visit-warm-cache-first-user-returns">Second Visit: Warm Cache (First User Returns)</h3>
+<p class="mb-4 leading-relaxed">Same user visits product page 10 minutes later.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 1: Browser Check</strong><br/>
+Browser has cached CSS, JS, images locally.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 2: Browser → Server (Page Request)</strong><br/>
+Browser requests HTML only, sends cached asset ETags.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 3: Page Cache Hit</strong><br/>
+Server checks page cache: HTML exists and is fresh.<br/>
+<strong class="font-semibold text-foreground">Result</strong>: Serve cached HTML immediately.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 4: Response Sent</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-http text-sm font-mono">HTTP/1.1 200 OK
+Cache-Control: max-age=86400, public
+Content-Type: text/html
+
+[Cached HTML served instantly]
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 5: Browser Serves Static Assets</strong><br/>
+Browser validates cached assets (304 Not Modified) or serves from local cache.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Total Time</strong>: ~50ms<br/>
+- Page cache retrieval: 5ms
+- Network transfer (HTML only): 45ms
+- CSS/JS/Images: 0ms (served from browser cache)</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Speed Improvement</strong>: 40x faster (2000ms → 50ms)</p>
+<hr class="my-8 border-border"/>
+<h3 class="text-xl font-bold mt-8 mb-4" id="third-visit-warm-cache-different-user">Third Visit: Warm Cache (Different User)</h3>
+<p class="mb-4 leading-relaxed">New user visits same product page.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 1: Browser Check</strong><br/>
+New user, no browser cache yet.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 2: Browser → Server</strong><br/>
+Requests full page.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 3: Page Cache Hit</strong><br/>
+HTML served from page cache instantly.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 4: Response with Cache Headers</strong><br/>
+Full HTML sent with static assets.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 5: Browser Caches Assets</strong><br/>
+Browser downloads and stores CSS, JS, images.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Total Time</strong>: ~300ms<br/>
+- Page cache retrieval: 5ms
+- Network transfer (HTML + assets): 295ms</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Speed Improvement</strong>: 6.6x faster than cold cache</p>
+<hr class="my-8 border-border"/>
+<h3 class="text-xl font-bold mt-8 mb-4" id="cache-invalidation-scenario">Cache Invalidation Scenario</h3>
+<p class="mb-4 leading-relaxed">Admin updates product price from $49.99 to $39.99.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 1: Product Update</strong><br/>
+Admin saves new price in database.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 2: Object Cache Invalidation</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">// Clear object caches related to this product
+ObjectCache::forget('product:stand:details');
+ObjectCache::forget('product:stand:related'); // Might show this product
+ObjectCache::forget('category:accessories:products');
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 3: Page Cache Invalidation</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">// Clear page caches containing this product
+PageCache::forget('/products/laptop-stand');
+PageCache::forget('/category/accessories');
+PageCache::forget('/'); // Homepage might feature this product
+</code></pre>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 4: Next Visitor</strong><br/>
+Cold cache again for these pages—but only once. Cache rebuilds with new data.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Step 5: Browser Cache</strong><br/>
+Unchanged (HTML contains new price, CSS/JS/images identical).</p>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="cache-performance-metrics-summary">Cache Performance Metrics Summary</h2>
+<table class="w-full my-6 border-collapse">
+<thead class="bg-muted/50">
+<tr class="hover:bg-muted/30 transition-colors">
+<th class="px-4 py-3 text-left font-semibold border border-border">Cache Type</th>
+<th class="px-4 py-3 text-left font-semibold border border-border">Speed Improvement</th>
+<th class="px-4 py-3 text-left font-semibold border border-border">Resource Saved</th>
+<th class="px-4 py-3 text-left font-semibold border border-border">Ideal Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="hover:bg-muted/30 transition-colors">
+<td class="px-4 py-3 border border-border">Browser Cache</td>
+<td class="px-4 py-3 border border-border">10-50x faster</td>
+<td class="px-4 py-3 border border-border">Bandwidth, CDN costs</td>
+<td class="px-4 py-3 border border-border">Days to year</td>
+</tr>
+<tr class="hover:bg-muted/30 transition-colors">
+<td class="px-4 py-3 border border-border">Page Cache</td>
+<td class="px-4 py-3 border border-border">20-100x faster</td>
+<td class="px-4 py-3 border border-border">CPU, database load</td>
+<td class="px-4 py-3 border border-border">Minutes to day</td>
+</tr>
+<tr class="hover:bg-muted/30 transition-colors">
+<td class="px-4 py-3 border border-border">Object Cache</td>
+<td class="px-4 py-3 border border-border">10-1000x faster</td>
+<td class="px-4 py-3 border border-border">Database queries</td>
+<td class="px-4 py-3 border border-border">Minutes to hours</td>
+</tr>
+</tbody>
+</table>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="implementation-checklist">Implementation Checklist</h2>
+<h3 class="text-xl font-bold mt-8 mb-4" id="for-all-websites">For All Websites:</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">[ ] Enable browser caching with proper <code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">Cache-Control</code> headers</li>
+<li class="ml-4 mb-2">[ ] Implement cache busting for CSS/JS updates</li>
+<li class="ml-4 mb-2">[ ] Set up page caching appropriate for platform</li>
+<li class="ml-4 mb-2">[ ] Configure cache invalidation on content updates</li>
+<li class="ml-4 mb-2">[ ] Test cache with browser DevTools</li>
+<li class="ml-4 mb-2">[ ] Monitor cache hit rates</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="for-wordpress">For WordPress:</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">[ ] Install caching plugin (WP Rocket, W3 Total Cache, etc.)</li>
+<li class="ml-4 mb-2">[ ] Configure page caching</li>
+<li class="ml-4 mb-2">[ ] Enable browser caching</li>
+<li class="ml-4 mb-2">[ ] Set up object caching with Redis/Memcached</li>
+<li class="ml-4 mb-2">[ ] Configure CDN integration</li>
+<li class="ml-4 mb-2">[ ] Test logged-in vs. logged-out caching</li>
+<li class="ml-4 mb-2">[ ] Set up mobile-specific caching if needed</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="for-custom-applications">For Custom Applications:</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">[ ] Implement application-level caching framework</li>
+<li class="ml-4 mb-2">[ ] Set up Redis or Memcached for object caching</li>
+<li class="ml-4 mb-2">[ ] Configure web server caching (Nginx, Varnish)</li>
+<li class="ml-4 mb-2">[ ] Implement cache warming for critical pages</li>
+<li class="ml-4 mb-2">[ ] Set up cache monitoring and alerts</li>
+<li class="ml-4 mb-2">[ ] Document cache invalidation patterns</li>
+<li class="ml-4 mb-2">[ ] Load test with caching enabled</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="for-e-commerce">For E-commerce:</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">[ ] Cache product pages aggressively</li>
+<li class="ml-4 mb-2">[ ] Exclude cart/checkout from page caching</li>
+<li class="ml-4 mb-2">[ ] Implement object caching for product listings</li>
+<li class="ml-4 mb-2">[ ] Set up inventory-aware caching (short expiry)</li>
+<li class="ml-4 mb-2">[ ] Cache API responses from payment gateways</li>
+<li class="ml-4 mb-2">[ ] Configure CDN for product images</li>
+<li class="ml-4 mb-2">[ ] Test cache behavior during flash sales</li>
+</ul>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="common-caching-mistakes-to-avoid">Common Caching Mistakes to Avoid</h2>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">1. Caching User-Specific Pages</strong><br/>
+Never cache logged-in dashboards, carts, or personalized content as full pages.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Use fragment caching, AJAX loading, or ESI.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">2. Too-Long Cache Duration</strong><br/>
+Caching prices for 24 hours means updates take 24 hours to appear.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Use event-based invalidation, not just time-based expiration.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">3. No Cache Busting</strong><br/>
+Users see broken sites after CSS updates due to year-long browser caching.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Version CSS/JS files or use content hashing.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">4. Ignoring Mobile Caching</strong><br/>
+Serving desktop cached pages to mobile causes layout issues.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Separate mobile cache or responsive design with same cache.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">5. Forgetting to Warm Cache</strong><br/>
+First visitor after cache clear experiences slow load.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Implement cache warming scripts that pre-generate popular pages.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">6. Over-Caching Database Queries</strong><br/>
+Caching real-time inventory for 1 hour causes overselling.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Use appropriate expiration times (inventory: 1-5 minutes max).</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">7. No Monitoring</strong><br/>
+You don't know if caching is working or helping.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution</strong>: Track cache hit rates, response times, server load reduction.</p>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="advanced-caching-techniques">Advanced Caching Techniques</h2>
+<h3 class="text-xl font-bold mt-8 mb-4" id="tiered-caching">Tiered Caching</h3>
+<p class="mb-4 leading-relaxed">Implement multiple cache layers:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Layer 1: CDN Cache (Edge)</strong><br/>
+Cloudflare, CloudFront serve static assets globally.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Layer 2: Reverse Proxy Cache (Varnish)</strong><br/>
+Sits in front of web server, caches full pages.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Layer 3: Application Cache (Redis)</strong><br/>
+Application-level object caching.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Layer 4: Database Query Cache</strong><br/>
+MySQL query cache (though Redis is usually better).</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Layer 5: Browser Cache</strong><br/>
+End-user device caching.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="cache-stampede-prevention">Cache Stampede Prevention</h3>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Problem</strong>: Cache expires on popular page, 1000 concurrent requests all query database simultaneously.</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Solution: Lock-Based Caching</strong></p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">$data = Cache::get('popular_data');
+
+if (!$data) {
+  // Try to acquire lock
+  if (Cache::lock('popular_data_lock', 10)-&gt;get()) {
+    // Got lock, query database
+    $data = DB::query('...');
+    Cache::put('popular_data', $data, 3600);
+    Cache::lock('popular_data_lock')-&gt;release();
+  } else {
+    // Another process is building cache, wait
+    sleep(1);
+    $data = Cache::get('popular_data') ?: generateData();
+  }
+}
+</code></pre>
+<h3 class="text-xl font-bold mt-8 mb-4" id="probabilistic-early-expiration">Probabilistic Early Expiration</h3>
+<p class="mb-4 leading-relaxed">Rebuild cache slightly before expiration to prevent stampedes:</p>
+<pre class="codehilite my-6 p-4 bg-muted rounded-lg overflow-x-auto"><code class="language-php text-sm font-mono">$ttl = 3600; // 1 hour
+$beta = 1; // Adjust based on rebuild cost
+
+$now = time();
+$expiry = Cache::get('data_expiry');
+$data = Cache::get('data');
+
+// Probabilistically rebuild early
+if ($now - $expiry &gt; -$beta * log(random(0,1))) {
+  $data = DB::query('...');
+  Cache::put('data', $data, $ttl);
+  Cache::put('data_expiry', $now + $ttl);
+}
+</code></pre>
+<hr class="my-8 border-border"/>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="final-thoughts-caching-as-a-layered-strategy">Final Thoughts: Caching as a Layered Strategy</h2>
+<p class="mb-4 leading-relaxed">Caching isn't a single technique—it's a layered strategy that ensures speed at every stage of content delivery:</p>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">The Caching Stack:</strong></p>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Browser Cache</strong>: Eliminates unnecessary asset downloads for returning visitors</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">CDN Cache</strong>: Serves static assets from geographically distributed edge servers</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Page Cache</strong>: Delivers pre-built HTML without server processing</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Object Cache</strong>: Returns database query results from memory</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Database Cache</strong>: Final layer before actual disk access</li>
+</ol>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Real-World Impact:</strong></p>
+<p class="mb-4 leading-relaxed">When properly implemented, this caching stack delivers:</p>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">4-40x faster page loads</strong> for returning visitors</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">10-100x reduction in server load</strong> supporting more concurrent users</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">50-90% decrease in database queries</strong> improving scalability</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Better SEO rankings</strong> from improved Core Web Vitals</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Higher conversion rates</strong> due to faster user experience</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Lower infrastructure costs</strong> by reducing required server resources</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="getting-started-today">Getting Started Today</h3>
+<ol class="list-decimal list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Audit Current State</strong>: Use Google PageSpeed Insights or GTmetrix to baseline performance</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Implement Quick Wins</strong>: Enable browser caching and page caching (biggest ROI)</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Add Object Caching</strong>: Install Redis for database-heavy sites</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Monitor Results</strong>: Track improvements in speed and server metrics</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Iterate and Optimize</strong>: Fine-tune cache durations and invalidation</li>
+</ol>
+<h3 class="text-xl font-bold mt-8 mb-4" id="vps-hosting-for-optimal-caching">VPS Hosting for Optimal Caching</h3>
+<p class="mb-4 leading-relaxed">Shared hosting often restricts caching capabilities. For full control over caching strategies, consider <a class="text-primary hover:underline" href="https://www.readyserver.sg/vps-hosting/">VPS hosting</a> where you can:</p>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Install Redis or Memcached</li>
+<li class="ml-4 mb-2">Configure Varnish or Nginx caching</li>
+<li class="ml-4 mb-2">Optimize cache storage locations</li>
+<li class="ml-4 mb-2">Tune cache settings for your specific needs</li>
+<li class="ml-4 mb-2">Scale resources as traffic grows</li>
+</ul>
+<p class="mb-4 leading-relaxed">Caching is essential for modern web performance. It's the difference between a sluggish site that frustrates visitors and a lightning-fast experience that delights users, ranks well in search engines, and converts browsers into customers.</p>
+<p class="mb-4 leading-relaxed">Master these three cache types—browser, page, and object—and you'll have the foundation for a fast, scalable, professional web presence that handles growth gracefully.</p>
+<hr class="my-8 border-border"/>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Keywords:</strong> caching guide, browser caching, page caching, object caching, website performance, cache optimization, Redis caching, Memcached, WordPress caching, web caching strategies, cache invalidation, CDN caching, performance optimization, Core Web Vitals, website speed, caching tutorial</p>
+        </div>
+        
+            <div 
+                class="max-w-3xl mx-auto mt-12 pt-8 border-t border-border animate-fade-up"
+                style="animation-delay: 0.3s;"
+            >
+                <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            caching
+                        </span>
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            website performance
+                        </span>
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            browser caching
+                        </span>
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            page caching
+                        </span>
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            object caching
+                        </span>
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            web optimization
+                        </span>
+                </div>
+            </div>
+        
+        <div 
+            class="max-w-3xl mx-auto mt-8 animate-fade-up"
+            style="animation-delay: 0.35s;"
+        >
+            <p class="text-muted-foreground mb-4">Share this article:</p>
+            <div class="flex gap-4">
+                <a 
+                    href="https://twitter.com/intent/tweet?url=https://readyserver.sg/blog/beginners-guide-to-caching-browser-page-objects&text=A%20Beginner%27s%20Guide%20to%20Caching%3A%20Browser%2C%20Page%2C%20and%20Objects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    data-gtm-id="blog.share.twitter.click"
+                >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a 
+                    href="https://www.linkedin.com/shareArticle?mini=true&url=https://readyserver.sg/blog/beginners-guide-to-caching-browser-page-objects&title=A%20Beginner%27s%20Guide%20to%20Caching%3A%20Browser%2C%20Page%2C%20and%20Objects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    data-gtm-id="blog.share.linkedin.click"
+                >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="max-w-3xl mx-auto mt-12">
+            <a 
+                href="/blog"
+                class="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to all posts
+            </a>
+        </div>
+    </div>
+</article>
+    </main>
+    
+
+
+
+<footer class="py-16 border-t border-border">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="lg:col-span-2">
+                <a href="/" class="flex items-center gap-3 group" data-gtm-id="footer.logo.click">
+                    <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                        <img 
+                            src="/images/logo/readyserver-logo.jpeg" 
+                            alt=""
+                            aria-hidden="true"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <span class="font-bold text-xl text-foreground">
+                        Ready Server
+                    </span>
+                </a>
+                
+                <p class="text-muted-foreground mb-6 mt-4 max-w-sm">
+                    Singapore's fastest and most reliable VPS hosting service. Control
+                    your servers from anywhere with our mobile app.
+                </p>
+
+                <div class="flex gap-4">
+                        <a
+                            href="https://www.facebook.com/readyserver/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Facebook"
+                            data-gtm-id="footer.social.facebook.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/company/ready-server-pte-ltd/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Linkedin"
+                            data-gtm-id="footer.social.linkedin.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://x.com/readyserver"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Twitter"
+                            data-gtm-id="footer.social.twitter.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/readyserver.sg/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Instagram"
+                            data-gtm-id="footer.social.instagram.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                </div>
+            </div>
+
+                <div>
+                    <h2 class="text-foreground font-semibold text-base mb-4">ReadyServer Pte Ltd</h2>
+                    <ul class="space-y-3">
+                            <li>
+                                <a
+                                    href="/download-mobile-app"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.download-mobile-app"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Mobile App
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/blog"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.blog"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/coming-soon"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.coming-soon"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Documentation
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/brand-guidelines"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.brand-guidelines"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Brand Guidelines
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/contact"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.contact"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Contact
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-foreground font-semibold text-base mb-4">Legal</h2>
+                    <ul class="space-y-3">
+                            <li>
+                                <a
+                                    href="/privacy-policy"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.privacy-policy"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/terms-of-service"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.terms-of-service"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Terms of Service
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/sla"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.sla"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Service Level Agreement
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+        </div>
+
+        <div class="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-muted-foreground text-sm">
+                © 2025 Ready Server Singapore. All rights reserved.
+            </p>
+            
+            <div class="flex items-center gap-6">
+                <a
+                    href="/privacy-policy"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.privacy.click"
+                >
+                    Privacy
+                </a>
+                <a
+                    href="/terms-of-service"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.terms.click"
+                >
+                    Terms
+                </a>
+                <a
+                    href="/sla"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.sla.click"
+                >
+                    SLA
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <script defer src="/js/app.js"></script>
+    
+    <script defer src="/js/alpine-collapse.min.js"></script>
+    
+    <script defer src="/js/alpine.min.js"></script>
+    
+    <script>
+        function loadNonCriticalScripts() {
+            // Analytics compatibility layer
+            var analyticsScript = document.createElement('script');
+            analyticsScript.src = '/js/analytics.js';
+            document.body.appendChild(analyticsScript);
+            
+            // ContentSquare tracking
+            var csScript = document.createElement('script');
+            csScript.src = 'https://t.contentsquare.net/uxa/4c222aceaa5e8.js';
+            document.body.appendChild(csScript);
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadNonCriticalScripts, {timeout: 5000});
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(loadNonCriticalScripts, 2000);
+            });
+        }
+    </script>
+    
+</body>
+</html>

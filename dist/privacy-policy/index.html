@@ -1,0 +1,1050 @@
+
+<!DOCTYPE html>
+<html lang="en-SG" x-data x-bind:class="$store.theme.dark ? 'dark' : ''">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Privacy Policy - Ready Server</title>
+    
+    <meta name="description" content="Ready Server's privacy policy explains how we collect, use, and protect your personal information in connection with our services.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Ready Server Singapore">
+    <link rel="canonical" href="https://readyserver.sg/privacy-policy">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://readyserver.sg/">
+    <meta property="og:title" content="Privacy Policy - Ready Server">
+    <meta property="og:description" content="Ready Server's privacy policy explains how we collect, use, and protect your personal information in connection with our services.">
+    <meta property="og:image" content="https://readyserver.sg/og/home.svg">
+    <meta property="og:locale" content="en-SG">
+    <meta property="og:site_name" content="Ready Server">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@readyserversg">
+    <meta name="twitter:title" content="Privacy Policy - Ready Server">
+    <meta name="twitter:description" content="Ready Server's privacy policy explains how we collect, use, and protect your personal information in connection with our services.">
+    <meta name="twitter:image" content="https://readyserver.sg/og/home.svg">
+    
+    <link rel="icon" href="/images/logo/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/images/logo/readyserver-logo.jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://t.contentsquare.net">
+    
+    <link rel="preload" href="/css/styles.css?v=2024122202" as="style">
+    
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="/css/styles.css?v=2024122202">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'dark' || (!stored && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function loadGTM() {
+            var j = document.createElement('script');
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-P5CRWLDZ';
+            document.head.appendChild(j);
+            window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadGTM, {timeout: 3000});
+        } else {
+            setTimeout(loadGTM, 2000);
+        }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ready Server",
+        "url": "https://readyserver.sg",
+        "logo": "https://readyserver.sg/images/logo/readyserver-logo.jpeg",
+        "description": "Enterprise-grade VPS and dedicated server hosting in Singapore. 99.99% uptime, NVMe SSD, 24/7 support, and ISO 27001 certified data centers.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Singapore",
+            "addressCountry": "SG"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@readyserver.sg"
+        },
+        "sameAs": [
+            "https://www.facebook.com/readyserver/",
+            "https://www.linkedin.com/company/ready-server-pte-ltd/",
+            "https://x.com/readyserver",
+            "https://www.instagram.com/readyserver.sg/"
+        ]
+    }
+    </script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy - Ready Server Singapore",
+    "description": "Ready Server Privacy Policy describing how we process your Personal Data in connection with the Services.",
+    "url": "https://readyserver.sg/privacy-policy",
+    "datePublished": "2025-01-22T08:14:10+00:00",
+    "dateModified": "2025-05-05T11:11:42+00:00"
+}
+</script>
+    
+</head>
+
+<body class="bg-background text-foreground antialiased min-h-screen flex flex-col">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5CRWLDZ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    
+
+
+<header 
+    class="fixed top-0 left-0 right-0 z-[9999] bg-background/80 backdrop-blur-xl animate-fade-up"
+    x-data="{ 
+        mobileOpen: false,
+        mobileDropdownOpen: false,
+        currentPath: window.location.pathname
+    }"
+    @keydown.escape.window="mobileOpen = false; $store.mobileMenu?.close()"
+>
+    <div class="container mx-auto px-6 py-5 flex items-center justify-between relative">
+        
+        <a href="/" class="flex items-center gap-3 group" data-gtm-id="nav.logo.click" aria-label="Ready Server - Home">
+            <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                <img 
+                    src="/images/logo/readyserver-logo.jpeg" 
+                    srcset="/images/logo/readyserver-logo.jpeg 1x, /images/logo/readyserver-logo.jpeg 2x"
+                    alt=""
+                    aria-hidden="true"
+                    width="44"
+                    height="44"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+            <span class="font-bold text-[1.375rem] hidden sm:block text-foreground" aria-hidden="true">
+                Ready Server
+            </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 relative">
+                    <div 
+                        class="relative z-[100]"
+                        x-data="{ open: false }"
+                        @mouseenter="open = true"
+                        @mouseleave="open = false"
+                    >
+                        <button
+                            class="flex items-center gap-1.5 font-medium transition-colors py-2 px-1 text-[1.0625rem]"
+                            :class="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)
+                                    ? 'text-primary'
+                                    : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.dropdown.products.open"
+                        >
+                            Products &amp; Services
+                            <svg 
+                                class="w-4 h-4 transition-transform duration-200" 
+                                :class="open ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-150"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-2"
+                            class="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                            style="z-index: 99999;"
+                        >
+                            <div class="bg-card border border-border rounded-xl shadow-2xl overflow-hidden min-w-[220px] backdrop-blur-xl">
+                                    <a
+                                        href="/vps-hosting"
+                                        class="block px-4 py-3 transition-colors"
+                                        :class="currentPath === '/vps-hosting'
+                                            ? 'bg-primary/10 text-primary font-medium'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.vps-hosting.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <span 
+                                                x-show="currentPath === '/vps-hosting'"
+                                                class="w-1.5 h-1.5 rounded-full bg-primary"
+                                            ></span>
+                                            VPS Hosting
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="/windows-vps"
+                                        class="block px-4 py-3 transition-colors"
+                                        :class="currentPath === '/windows-vps'
+                                            ? 'bg-primary/10 text-primary font-medium'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.windows-vps.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <span 
+                                                x-show="currentPath === '/windows-vps'"
+                                                class="w-1.5 h-1.5 rounded-full bg-primary"
+                                            ></span>
+                                            Windows VPS
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="https://dedicated-server.readyserver.sg/dedicatedserver.html"
+target="_blank" rel="noopener noreferrer"                                        class="block px-4 py-3 transition-colors"
+                                        :class="'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.dedicated-servers.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            Dedicated Servers
+                                            <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <a
+                            href="/blog"
+                            class="font-medium transition-colors py-2 px-1 block hover:-translate-y-0.5 transform transition-transform text-[1.0625rem]"
+                            :class="currentPath === '/blog' || currentPath.startsWith('/blog/')
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.link.blog.click"
+                        >
+                            Blog
+                        </a>
+                        <div 
+                            x-show="currentPath === '/blog' || currentPath.startsWith('/blog/')"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+                    </div>
+                    <div class="relative">
+                        <a
+                            href="/contact"
+                            class="font-medium transition-colors py-2 px-1 block hover:-translate-y-0.5 transform transition-transform text-[1.0625rem]"
+                            :class="currentPath === '/contact' || currentPath.startsWith('/contact/')
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.link.contact.click"
+                        >
+                            Contact Us
+                        </a>
+                        <div 
+                            x-show="currentPath === '/contact' || currentPath.startsWith('/contact/')"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+                    </div>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+
+<button
+    class="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+    @click="$store.theme.toggle()"
+    :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+    data-gtm-id="nav.theme-toggle.click"
+    x-data
+>
+    <svg 
+        x-show="$store.theme.dark"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    
+    <svg 
+        x-show="!$store.theme.dark"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+</button>
+            
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2 text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+                data-gtm-id="nav.language.zh.click"
+            >
+                中文
+            </a>
+            
+            <a 
+                href="/download-mobile-app"
+                class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-[0.9375rem] font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                data-gtm-id="nav.download_app"
+                data-gtm-placement="nav"
+                data-gtm-section="nav"
+            >
+                Download App
+            </a>
+        </div>
+
+        <div class="flex md:hidden items-center gap-3">
+
+<button
+    class="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+    @click="$store.theme.toggle()"
+    :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+    data-gtm-id="nav.theme-toggle.click"
+    x-data
+>
+    <svg 
+        x-show="$store.theme.dark"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    
+    <svg 
+        x-show="!$store.theme.dark"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+</button>
+            
+            <button
+                class="text-foreground p-2"
+                @click="mobileOpen = !mobileOpen"
+                :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
+                data-gtm-id="nav.mobile.menu.toggle"
+            >
+                <svg 
+                    x-show="!mobileOpen" 
+                    class="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg 
+                    x-show="mobileOpen" 
+                    x-cloak
+                    class="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div 
+        x-show="mobileOpen"
+        x-collapse
+        class="md:hidden bg-background border-b border-border"
+    >
+        <nav class="flex flex-col p-6 gap-4">
+                    <div>
+                        <button
+                            class="flex items-center justify-between w-full font-medium py-2"
+                            :class="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)
+                                ? 'text-primary'
+                                : 'text-muted-foreground'"
+                            @click="mobileDropdownOpen = !mobileDropdownOpen"
+                        >
+                            <span class="flex items-center gap-2">
+                                <span 
+                                    x-show="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)"
+                                    class="w-1.5 h-1.5 rounded-full bg-primary"
+                                ></span>
+                                Products &amp; Services
+                            </span>
+                            <svg 
+                                class="w-4 h-4 transition-transform duration-200"
+                                :class="mobileDropdownOpen ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <div 
+                            x-show="mobileDropdownOpen"
+                            x-collapse
+                            class="pl-4 flex flex-col gap-2 mt-2"
+                        >
+                                <a
+                                    href="/vps-hosting"
+                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="currentPath === '/vps-hosting'
+                                        ? 'text-primary font-medium'
+                                        : 'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.vps-hosting.click"
+                                >
+                                    <span 
+                                        x-show="currentPath === '/vps-hosting'"
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"
+                                    ></span>
+                                    VPS Hosting
+                                </a>
+                                <a
+                                    href="/windows-vps"
+                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="currentPath === '/windows-vps'
+                                        ? 'text-primary font-medium'
+                                        : 'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.windows-vps.click"
+                                >
+                                    <span 
+                                        x-show="currentPath === '/windows-vps'"
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"
+                                    ></span>
+                                    Windows VPS
+                                </a>
+                                <a
+                                    href="https://dedicated-server.readyserver.sg/dedicatedserver.html"
+target="_blank" rel="noopener noreferrer"                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.dedicated-servers.click"
+                                >
+                                    Dedicated Servers
+                                    <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <a
+                        href="/blog"
+                        class="transition-colors font-medium py-2 flex items-center gap-2"
+                        :class="currentPath === '/blog' || currentPath.startsWith('/blog/')
+                            ? 'text-primary'
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="mobileOpen = false"
+                        data-gtm-id="nav.mobile.blog.click"
+                    >
+                        <span 
+                            x-show="currentPath === '/blog' || currentPath.startsWith('/blog/')"
+                            class="w-1.5 h-1.5 rounded-full bg-primary"
+                        ></span>
+                        Blog
+                    </a>
+                    <a
+                        href="/contact"
+                        class="transition-colors font-medium py-2 flex items-center gap-2"
+                        :class="currentPath === '/contact' || currentPath.startsWith('/contact/')
+                            ? 'text-primary'
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="mobileOpen = false"
+                        data-gtm-id="nav.mobile.contact.click"
+                    >
+                        <span 
+                            x-show="currentPath === '/contact' || currentPath.startsWith('/contact/')"
+                            class="w-1.5 h-1.5 rounded-full bg-primary"
+                        ></span>
+                        Contact Us
+                    </a>
+            
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mt-4"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.language.zh.click"
+            >
+                中文
+            </a>
+            
+            <a 
+                href="/download-mobile-app"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-2"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.download_app"
+                data-gtm-placement="nav"
+                data-gtm-section="nav.mobile"
+            >
+                Download App
+            </a>
+        </nav>
+    </div>
+</header>
+
+<div class="h-[80px]"></div>
+
+<style>
+    [x-cloak] { display: none !important; }
+</style>
+    
+    <main class="flex-1 relative z-1">
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-black text-foreground mb-12 text-center">
+                Privacy Policy
+            </h1>
+            
+            <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-table:text-sm">
+                
+                <p class="text-xl font-bold text-foreground">READY SERVER PRIVACY POLICY</p>
+                
+                <p>
+                    This <strong>Privacy Policy</strong> describes how we, Ready Server, process your Personal Data in connection with the Services.
+                </p>
+                
+                <p>
+                    By using the Services, which includes creating an Account and/or accessing the Website or Mobile Application, you consent to the collection, use and disclosure of your Personal Data in accordance with this Privacy Policy. <u>If you do not consent, do not access or use the Services.</u>
+                </p>
+
+                <h2>1. ABOUT US &amp; DPO CONTACT DETAILS</h2>
+                
+                <p>This Privacy Policy applies to the Services and it applies together with the Terms of Use.</p>
+                
+                <p>Ready Server Pte Ltd is a company incorporated in Singapore (UEN 201500017K). When this Privacy Policy mentions "Ready Server", "we", "us" or "our", we are referring to Ready Server Pte Ltd which is responsible for processing your Personal Data.</p>
+                
+                <p>Any capitalised terms used in this Privacy Policy, such as "Website", "Mobile Application" and "Services", have the same meaning as per the Terms of Use unless another definition is provided in this Privacy Policy.</p>
+                
+                <p>If you have any questions about this Privacy Policy or how we process Personal Data in connection with the Platform, please contact our Data Protection Officer via email. The email address and other contact information of the Data Protection Officer are as follows:</p>
+                
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full border-collapse border border-border">
+                        <tbody>
+                            <tr class="bg-muted/50">
+                                <td colspan="2" class="border border-border p-3 font-bold">Contact Details of DPO</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border p-3 font-bold w-1/4">Email Address</td>
+                                <td class="border border-border p-3"><a href="mailto:dpo@readyserver.sg">dpo@readyserver.sg</a></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border p-3 font-bold">Contact Address</td>
+                                <td class="border border-border p-3">
+                                    <p class="mb-1">Ready Server Pte Ltd</p>
+                                    <p class="mb-1">192 Waterloo Street</p>
+                                    <p class="mb-1">#05-01 Skyline</p>
+                                    <p>Singapore 187966</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>2. PERSONAL DATA WE COLLECT</h2>
+                
+                <p>"<strong>Personal Data</strong>" refers to any data from which an individual can be identified, either from that data alone or from that data together with other information to which we have or are likely to have access.</p>
+                
+                <p>In connection with the Services, we may collect, process and use the following categories of data from you, which may constitute Personal Data. This Privacy Policy does not apply to Content collected, processed, used, stored or hosted by you in the course of using the Services.</p>
+                
+                <p>Additionally, you may also provide Personal Data of other individuals to us in some circumstances and if you do so, you warrant that you have obtained their consent for their Personal Data to be collected, used and disclosed in accordance with this Privacy Policy.</p>
+                
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full border-collapse border border-border">
+                        <tbody>
+                            <tr class="bg-muted/50">
+                                <td class="border border-border p-3 font-bold w-1/4">Category</td>
+                                <td class="border border-border p-3 font-bold">Description</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border p-3 font-bold align-top">User Data</td>
+                                <td class="border border-border p-3">
+                                    <p class="mb-2">User data is the data needed to create an Account, for you to access certain functions of the Website and/or Mobile Application, and for you to use the Services.</p>
+                                    <p class="mb-2">We receive this data from you in a variety of ways, such as when you create an Account, log into the Website and/or Mobile Application, edit or submit details on the account settings page, provide us with feedback or contact us about the Services whether via email, letters or telephone calls. These examples are not exhaustive.</p>
+                                    <p class="mb-2">Such data we receive or collect from you includes, but is not limited to:</p>
+                                    <ul class="list-none pl-0 mb-0">
+                                        <li>a. Username</li>
+                                        <li>b. Name</li>
+                                        <li>c. Contact number</li>
+                                        <li>d. Email address</li>
+                                        <li>e. Residential address</li>
+                                        <li>f. Login credentials</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border p-3 font-bold align-top">Payment Data</td>
+                                <td class="border border-border p-3">
+                                    <p class="mb-2">We may collect or receive the following data when you purchase Services:</p>
+                                    <ul class="list-none pl-0 mb-2">
+                                        <li>a. Payment information</li>
+                                        <li>b. Transaction history</li>
+                                    </ul>
+                                    <p class="mb-0">We do not collect, receive or store your payment card details.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border p-3 font-bold align-top">Technical and Usage Data</td>
+                                <td class="border border-border p-3">
+                                    <p class="mb-2">We collect the following data via your interactions with and use of the Services, via automated technologies such as cookies:</p>
+                                    <ul class="list-none pl-0 mb-0">
+                                        <li>a. Login data (e.g., login or access date and time)</li>
+                                        <li>b. Internet Protocol (IP) address</li>
+                                        <li>c. Browser information (e.g., type and version, uses of any plugins)</li>
+                                        <li>d. Location and time zone</li>
+                                        <li>e. Operation system information</li>
+                                        <li>f. Device hardware and software information</li>
+                                        <li>g. Usage data (e.g. interactions with the Website and/or Mobile Application, usage of VPS Services)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border p-3 font-bold align-top">Marketing and Communications Data</td>
+                                <td class="border border-border p-3">
+                                    <p class="mb-2">We collect the following data via your interactions with and use of the Services, e.g. during the Account creation process and via the Account settings page:</p>
+                                    <ul class="list-none pl-0 mb-0">
+                                        <li>a. Email address</li>
+                                        <li>b. Your preference(s) in receiving marketing and other communications from us</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>3. HOW WE USE PERSONAL DATA</h2>
+                
+                <p>We only use and disclose Personal Data as permitted by the laws of Singapore and, where required, with your consent.</p>
+                
+                <p>We may use your Personal Data for the following purposes:</p>
+                
+                <p><strong>(a) To facilitate your access to and use of the Services, including but not limited to:</strong></p>
+                <ul class="list-none pl-8">
+                    <li>i. Creating your Account;</li>
+                    <li>ii. Identification, due diligence and know-your-customer purposes;</li>
+                    <li>iii. Maintaining and managing our relationship with you (e.g. notifying you of changes to the Terms of Use or this Privacy Policy);</li>
+                    <li>iv. Processing of purchases of Services;</li>
+                    <li>v. Providing the Services to you;</li>
+                    <li>vi. Providing customer support (e.g. troubleshooting issues with the VPS Services, Beta Services, Website or Mobile Application, responding to questions or feedback about products or services, etc.);</li>
+                    <li>vii. Facilitating payment, which may also involve sharing your Personal Data to a third party (e.g. payment services gateway provider) where necessary to process payment transactions.</li>
+                </ul>
+                
+                <p><strong>(b) To administer and protect the integrity of our business and the Services, the security of the Website and Mobile Application, including but not limited to:</strong></p>
+                <ul class="list-none pl-8">
+                    <li>i. Ensuring network security;</li>
+                    <li>ii. Preventing or investigating any actual or suspected breaches of the Terms of Use or Privacy Policy, illegal activity, fraud, or other misconduct.</li>
+                </ul>
+                
+                <p><strong>(c) To use data analytics to improve the Services, any of our other products and/or services and the customer experience, including but not limited to:</strong></p>
+                <ul class="list-none pl-8">
+                    <li>i. Tracking of visitor demographics, behaviour, activity and usage of the Services;</li>
+                    <li>ii. Conducting user surveys and research;</li>
+                    <li>iii. Understanding user preferences and usage in order to provide users with targeted or relevant information on the Website and/or Mobile Application;</li>
+                    <li>iv. Improving and developing the Services or our products and/or services.</li>
+                </ul>
+                
+                <p><strong>(d)</strong> To improve and develop the Services or our products and/or services generally;</p>
+                
+                <p><strong>(e) For marketing, promotion and advertising purposes, including but not limited to:</strong></p>
+                <ul class="list-none pl-8">
+                    <li>i. Sending you information about the Services, our business, products and/or services which we believe may be useful or relevant for you;</li>
+                    <li>ii. Notifying you of promotions and discounts.</li>
+                </ul>
+                
+                <p><strong>(f)</strong> For auditing of the Services or the business of Ready Server;</p>
+                
+                <p><strong>(g)</strong> In connection with any proposed transfer, purchase, merger and/or acquisition of all or any part of the business of Ready Server;</p>
+                
+                <p><strong>(h)</strong> For investigation of any actual or potential breaches of the Terms of Use or Privacy Policy;</p>
+                
+                <p><strong>(i)</strong> Any other purpose to which you have consented;</p>
+                
+                <p><strong>(j)</strong> Any other purposes which are permitted by law;</p>
+                
+                <p><strong>(k)</strong> To comply with any legal requirements or requests from government authorities; and</p>
+                
+                <p><strong>(l)</strong> Any other purposes which are incidental or related to the above.</p>
+
+                <h2>4. MARKETING, PROMOTION &amp; ADVERTISING COMMUNICATIONS</h2>
+                
+                <p>If you have consented to us sending you marketing, promotion or advertising communications and provided us with your email address, mobile phone number or other contact details, we may send you such communications based on your indicated preference(s) (e.g. by email, SMS, WhatsApp, etc.).</p>
+                
+                <p>You can choose not to receive such communications at any time, by indicating your preferences in your Account settings page.</p>
+                
+                <p>If you download the Mobile Application, such communications will include push notifications, in-app notifications and other similar modes of notification on your mobile device. You can choose not to receive such communications at any time, by disabling such features in your mobile device settings or the Mobile Application preference page, as may be applicable.</p>
+
+                <h2>5. DISCLOSURES &amp; TRANSFERS OF PERSONAL DATA</h2>
+                
+                <p>We may also disclose and/or transfer personal data to a third party to whom we may choose to sell, transfer or merge parts of or all of our business and/or assets; or if we choose to acquire or merge with other businesses. The new owners of our business may use your personal data in the same way as set out in this Privacy Policy.</p>
+                
+                <p>We will not disclose or transfer your Personal Data outside Singapore except to jurisdictions which have data protection laws which offer at minimum an equivalent level of protection to Singapore law, or we will use tools to ensure that your Personal Data will be given the aforesaid level of protection (e.g. via contractual protections).</p>
+                
+                <p>Except as provided above, we do not disclose and/or transfer Personal Data to any third party unless required by law.</p>
+                
+                <p>We do not, and do not under any circumstances permit third parties to, monetise your Personal Data.</p>
+
+                <h2>6. COOKIES</h2>
+                
+                <p>We deploy cookies or other similar technologies. These are small text files that we store on your browser or on your device. These enable us to recognise a particular browser or device, collect data for the purposes outlined in Section 3 (particularly Section 3(c)) and also to provide some of the Services.</p>
+                
+                <p>You may manage and learn more about cookies by interacting with the cookie prompt on the Website. However, if you disable certain cookies which are required for certain functions of the Website, the availability of certain services or functions on the Website may be adversely affected.</p>
+
+                <h2>7. DATA SECURITY</h2>
+                
+                <p>We have implemented security measures to protect Personal Data from accidental loss and unauthorised access or use. Additionally, access and use of your Personal Data is limited to our employees on a need-to-know basis and subject to confidentiality obligations.</p>
+                
+                <p>Nevertheless, you must also implement reasonable security measures and practices to prevent accidental loss and unauthorised access to or use of your Personal Data, including the mandatory measures described in the Terms of Use and:</p>
+                
+                <ul class="list-none pl-0">
+                    <li>(a) Use a strong and unique password;</li>
+                    <li>(b) Never share your password with anyone, including anyone from Ready Server;</li>
+                    <li>(c) Implement good practices to prevent accidental discovery of your password by unauthorised parties (e.g., do not write your password down and leave it where others can view it);</li>
+                    <li>(d) Limit access to your devices and browsers you use to access your account;</li>
+                    <li>(e) Log out once you have finished using the Website and/or Mobile Application, especially if you are on a shared device.</li>
+                </ul>
+
+                <h2>8. RETENTION OF PERSONAL DATA</h2>
+                
+                <p>We retain personal data only for as long as reasonably necessary for the purposes in Section 3, for any purposes permitted by law, and for the purposes of satisfying any legal, regulatory, tax, accounting or reporting requirements.</p>
+
+                <h2>9. ACCESS &amp; CORRECTION OF PERSONAL DATA</h2>
+                
+                <p>You can access and/or correct some of your Personal Data currently in our possession or control through the Mobile Application.</p>
+                
+                <p>If you wish to access and/or correct your Personal Data that is not available through the Mobile Application (if any), you may request for access to and/or correction of your Personal Data that is within our possession or control by sending an email to our Data Protection Officer:</p>
+                
+                <ul class="list-none pl-0">
+                    <li>(a) In order to process your request, we may require you to provide additional information about your request, to verify your identity and entitlement to exercise access to or correct your Personal Data;</li>
+                    <li>(b) We may charge a reasonable fee before we agree to process your request;</li>
+                    <li>(c) We may refuse your request if it is unfounded, repetitive or excessive, if you refuse to pay the fee, or where we are otherwise permitted to do so by law;</li>
+                    <li>(d) We will inform you within thirty (30) days of the time it will take to process your request.</li>
+                </ul>
+
+                <h2>10. WITHDRAWING CONSENT TO COLLECTION, USE AND/OR DISCLOSURE OF PERSONAL DATA</h2>
+                
+                <p>Where we rely on consent to collect, use and/or disclose your Personal Data, you can withdraw your consent at any time by sending an email to our Data Protection Officer:</p>
+                
+                <ul class="list-none pl-0">
+                    <li>(a) In order to process your request, we may require you to provide additional information about your request, to verify your identity and entitlement to withdraw consent;</li>
+                    <li>(b) We typically process consent withdrawal requests within ten (10) business days. We will notify you if there are any delays or additional time required.</li>
+                </ul>
+                
+                <p>Please be aware that withdrawing your consent may mean that we may be unable to continue providing the Services to you and we may need to terminate your Account and/or other relationship with us.</p>
+
+                <h2>11. PERSONAL DATA OF PERSON(S) UNDER AGE 18</h2>
+                
+                <p>The Services are not intended for person(s) under the age of 18. We do not knowingly collect, use or disclose any data from any such person(s). However, it is impossible to identify the age of all person(s) who access or use the Services. Parent(s) and guardian(s) must be responsible for the Internet activity of person(s) under age 18 and if you become aware that any such person has accessed, used or submitted Personal Data via the Services or to us, please inform us immediately so that we may take the necessary action (e.g., closure of Account, deletion of Personal Data, etc.).</p>
+
+                <h2>12. CHANGES TO THIS PRIVACY POLICY</h2>
+                
+                <p>We may make changes to this Privacy Policy at our discretion. You will be notified of the amended Privacy Policy via the email address associated with your Account and the amended Privacy Policy will be posted to the Website. Your continued use of the Services constitutes your acceptance of the Privacy Policy as amended.</p>
+
+                <h2>13. LINKS TO OTHER WEBSITES</h2>
+                
+                <p>While using or interacting with the Services, you may come across links to third party websites. If you click on or follow any of those links, please be aware that third party websites have their own privacy policies and Ready Server has no responsibility or liability for those policies. It is your responsibility to check those policies before using or submitting any data to any of those websites.</p>
+                
+                <hr class="my-8 border-border">
+                
+                <p class="text-sm text-muted-foreground">
+                    <strong>Version 1.0</strong><br>
+                    Dated 15 January 2025
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+    
+
+
+
+<footer class="py-16 border-t border-border">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="lg:col-span-2">
+                <a href="/" class="flex items-center gap-3 group" data-gtm-id="footer.logo.click">
+                    <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                        <img 
+                            src="/images/logo/readyserver-logo.jpeg" 
+                            alt=""
+                            aria-hidden="true"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <span class="font-bold text-xl text-foreground">
+                        Ready Server
+                    </span>
+                </a>
+                
+                <p class="text-muted-foreground mb-6 mt-4 max-w-sm">
+                    Singapore's fastest and most reliable VPS hosting service. Control
+                    your servers from anywhere with our mobile app.
+                </p>
+
+                <div class="flex gap-4">
+                        <a
+                            href="https://www.facebook.com/readyserver/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Facebook"
+                            data-gtm-id="footer.social.facebook.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/company/ready-server-pte-ltd/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Linkedin"
+                            data-gtm-id="footer.social.linkedin.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://x.com/readyserver"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Twitter"
+                            data-gtm-id="footer.social.twitter.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/readyserver.sg/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Instagram"
+                            data-gtm-id="footer.social.instagram.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                </div>
+            </div>
+
+                <div>
+                    <h2 class="text-foreground font-semibold text-base mb-4">ReadyServer Pte Ltd</h2>
+                    <ul class="space-y-3">
+                            <li>
+                                <a
+                                    href="/download-mobile-app"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.download-mobile-app"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Mobile App
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/blog"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.blog"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/coming-soon"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.coming-soon"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Documentation
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/brand-guidelines"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.brand-guidelines"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Brand Guidelines
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/contact"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.contact"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Contact
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-foreground font-semibold text-base mb-4">Legal</h2>
+                    <ul class="space-y-3">
+                            <li>
+                                <a
+                                    href="/privacy-policy"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.privacy-policy"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/terms-of-service"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.terms-of-service"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Terms of Service
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/sla"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.sla"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Service Level Agreement
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+        </div>
+
+        <div class="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-muted-foreground text-sm">
+                © 2025 Ready Server Singapore. All rights reserved.
+            </p>
+            
+            <div class="flex items-center gap-6">
+                <a
+                    href="/privacy-policy"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.privacy.click"
+                >
+                    Privacy
+                </a>
+                <a
+                    href="/terms-of-service"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.terms.click"
+                >
+                    Terms
+                </a>
+                <a
+                    href="/sla"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.sla.click"
+                >
+                    SLA
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <script defer src="/js/app.js"></script>
+    
+    <script defer src="/js/alpine-collapse.min.js"></script>
+    
+    <script defer src="/js/alpine.min.js"></script>
+    
+    <script>
+        function loadNonCriticalScripts() {
+            // Analytics compatibility layer
+            var analyticsScript = document.createElement('script');
+            analyticsScript.src = '/js/analytics.js';
+            document.body.appendChild(analyticsScript);
+            
+            // ContentSquare tracking
+            var csScript = document.createElement('script');
+            csScript.src = 'https://t.contentsquare.net/uxa/4c222aceaa5e8.js';
+            document.body.appendChild(csScript);
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadNonCriticalScripts, {timeout: 5000});
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(loadNonCriticalScripts, 2000);
+            });
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Redirects for Cloudflare Pages
+# Documentation: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Redirect www to non-www (configure in Cloudflare DNS instead for better performance)
+# https://www.readyserver.sg/* https://readyserver.sg/:splat 301
+
+# Dedicated Servers - redirect to external subdomain
+/dedicated-servers https://dedicated-server.readyserver.sg/dedicatedserver.html 301
+/dedicated-servers/ https://dedicated-server.readyserver.sg/dedicatedserver.html 301
+
+# Trailing slash normalization (Cloudflare Pages handles this automatically)
+# /vps-hosting /vps-hosting/ 301
+# /windows-vps /windows-vps/ 301
+# /blog /blog/ 301
+# /contact /contact/ 301
+
+# Legacy URL redirects (add any old URLs that need to redirect)
+# /old-page /new-page 301
+
+# Note: This is a static site with pre-rendered HTML pages
+# Each route has its own index.html file, so no SPA fallback is needed
+# Cloudflare Pages will automatically serve /vps-hosting/index.html for /vps-hosting/
+

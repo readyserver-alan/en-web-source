@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html>
+<html lang="en-SG" x-data x-bind:class="$store.theme.dark ? 'dark' : ''">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Understanding Domain Hosting vs. Web Hosting - Ready Server Blog</title>
+    
+    <meta name="description" content="When launching a website, understanding the difference is crucial. Explore the roles in Domain Hosting vs. Web Hosting for clarity.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Ready Server Singapore">
+    <link rel="canonical" href="https://readyserver.sg/blog/understanding-domain-hosting-vs-web-hosting">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://readyserver.sg/">
+    <meta property="og:title" content="Understanding Domain Hosting vs. Web Hosting - Ready Server Blog">
+    <meta property="og:description" content="When launching a website, understanding the difference is crucial. Explore the roles in Domain Hosting vs. Web Hosting for clarity.">
+    <meta property="og:image" content="https://readyserver.sg/images/blog/2025/09/Understanding-domain-hosting-vs-web-hosting-1024x768.jpg">
+    <meta property="og:locale" content="en-SG">
+    <meta property="og:site_name" content="Ready Server">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@readyserversg">
+    <meta name="twitter:title" content="Understanding Domain Hosting vs. Web Hosting - Ready Server Blog">
+    <meta name="twitter:description" content="When launching a website, understanding the difference is crucial. Explore the roles in Domain Hosting vs. Web Hosting for clarity.">
+    <meta name="twitter:image" content="https://readyserver.sg/images/blog/2025/09/Understanding-domain-hosting-vs-web-hosting-1024x768.jpg">
+    
+    <link rel="icon" href="/images/logo/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/images/logo/readyserver-logo.jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://t.contentsquare.net">
+    
+    <link rel="preload" href="/css/styles.css?v=2024122202" as="style">
+    
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="/css/styles.css?v=2024122202">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'dark' || (!stored && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function loadGTM() {
+            var j = document.createElement('script');
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-P5CRWLDZ';
+            document.head.appendChild(j);
+            window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadGTM, {timeout: 3000});
+        } else {
+            setTimeout(loadGTM, 2000);
+        }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ready Server",
+        "url": "https://readyserver.sg",
+        "logo": "https://readyserver.sg/images/logo/readyserver-logo.jpeg",
+        "description": "Enterprise-grade VPS and dedicated server hosting in Singapore. 99.99% uptime, NVMe SSD, 24/7 support, and ISO 27001 certified data centers.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Singapore",
+            "addressCountry": "SG"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support@readyserver.sg"
+        },
+        "sameAs": [
+            "https://www.facebook.com/readyserver/",
+            "https://www.linkedin.com/company/ready-server-pte-ltd/",
+            "https://x.com/readyserver",
+            "https://www.instagram.com/readyserver.sg/"
+        ]
+    }
+    </script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Understanding Domain Hosting vs. Web Hosting",
+    "description": "When launching a website, understanding the difference is crucial. Explore the roles in Domain Hosting vs. Web Hosting for clarity.",
+    "image": "https://readyserver.sg/images/blog/2025/09/Understanding-domain-hosting-vs-web-hosting-1024x768.jpg",
+    "datePublished": "2025-09-05T00:00:00",
+    "author": {
+        "@type": "Person",
+        "name": "Ready Server Team"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ready Server",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://readyserver.sg/images/logo/readyserver-logo.jpeg"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://readyserver.sg/blog/understanding-domain-hosting-vs-web-hosting"
+    }
+}
+</script>
+    
+<meta property="article:published_time" content="2025-09-05T00:00:00">
+<meta property="article:author" content="Ready Server Team">
+<meta property="article:section" content="Product">
+<meta property="article:tag" content="hosting">
+</head>
+
+<body class="bg-background text-foreground antialiased min-h-screen flex flex-col">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5CRWLDZ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    
+
+
+<header 
+    class="fixed top-0 left-0 right-0 z-[9999] bg-background/80 backdrop-blur-xl animate-fade-up"
+    x-data="{ 
+        mobileOpen: false,
+        mobileDropdownOpen: false,
+        currentPath: window.location.pathname
+    }"
+    @keydown.escape.window="mobileOpen = false; $store.mobileMenu?.close()"
+>
+    <div class="container mx-auto px-6 py-5 flex items-center justify-between relative">
+        
+        <a href="/" class="flex items-center gap-3 group" data-gtm-id="nav.logo.click" aria-label="Ready Server - Home">
+            <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                <img 
+                    src="/images/logo/readyserver-logo.jpeg" 
+                    srcset="/images/logo/readyserver-logo.jpeg 1x, /images/logo/readyserver-logo.jpeg 2x"
+                    alt=""
+                    aria-hidden="true"
+                    width="44"
+                    height="44"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+            <span class="font-bold text-[1.375rem] hidden sm:block text-foreground" aria-hidden="true">
+                Ready Server
+            </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 relative">
+                    <div 
+                        class="relative z-[100]"
+                        x-data="{ open: false }"
+                        @mouseenter="open = true"
+                        @mouseleave="open = false"
+                    >
+                        <button
+                            class="flex items-center gap-1.5 font-medium transition-colors py-2 px-1 text-[1.0625rem]"
+                            :class="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)
+                                    ? 'text-primary'
+                                    : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.dropdown.products.open"
+                        >
+                            Products &amp; Services
+                            <svg 
+                                class="w-4 h-4 transition-transform duration-200" 
+                                :class="open ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-150"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-2"
+                            class="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                            style="z-index: 99999;"
+                        >
+                            <div class="bg-card border border-border rounded-xl shadow-2xl overflow-hidden min-w-[220px] backdrop-blur-xl">
+                                    <a
+                                        href="/vps-hosting"
+                                        class="block px-4 py-3 transition-colors"
+                                        :class="currentPath === '/vps-hosting'
+                                            ? 'bg-primary/10 text-primary font-medium'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.vps-hosting.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <span 
+                                                x-show="currentPath === '/vps-hosting'"
+                                                class="w-1.5 h-1.5 rounded-full bg-primary"
+                                            ></span>
+                                            VPS Hosting
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="/windows-vps"
+                                        class="block px-4 py-3 transition-colors"
+                                        :class="currentPath === '/windows-vps'
+                                            ? 'bg-primary/10 text-primary font-medium'
+                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.windows-vps.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <span 
+                                                x-show="currentPath === '/windows-vps'"
+                                                class="w-1.5 h-1.5 rounded-full bg-primary"
+                                            ></span>
+                                            Windows VPS
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="https://dedicated-server.readyserver.sg/dedicatedserver.html"
+target="_blank" rel="noopener noreferrer"                                        class="block px-4 py-3 transition-colors"
+                                        :class="'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.dedicated-servers.click"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            Dedicated Servers
+                                            <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <a
+                            href="/blog"
+                            class="font-medium transition-colors py-2 px-1 block hover:-translate-y-0.5 transform transition-transform text-[1.0625rem]"
+                            :class="currentPath === '/blog' || currentPath.startsWith('/blog/')
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.link.blog.click"
+                        >
+                            Blog
+                        </a>
+                        <div 
+                            x-show="currentPath === '/blog' || currentPath.startsWith('/blog/')"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+                    </div>
+                    <div class="relative">
+                        <a
+                            href="/contact"
+                            class="font-medium transition-colors py-2 px-1 block hover:-translate-y-0.5 transform transition-transform text-[1.0625rem]"
+                            :class="currentPath === '/contact' || currentPath.startsWith('/contact/')
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground'"
+                            data-gtm-id="nav.link.contact.click"
+                        >
+                            Contact Us
+                        </a>
+                        <div 
+                            x-show="currentPath === '/contact' || currentPath.startsWith('/contact/')"
+                            class="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        ></div>
+                    </div>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+
+<button
+    class="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+    @click="$store.theme.toggle()"
+    :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+    data-gtm-id="nav.theme-toggle.click"
+    x-data
+>
+    <svg 
+        x-show="$store.theme.dark"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    
+    <svg 
+        x-show="!$store.theme.dark"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+</button>
+            
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2 text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+                data-gtm-id="nav.language.zh.click"
+            >
+                中文
+            </a>
+            
+            <a 
+                href="/download-mobile-app"
+                class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-[0.9375rem] font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                data-gtm-id="nav.download_app"
+                data-gtm-placement="nav"
+                data-gtm-section="nav"
+            >
+                Download App
+            </a>
+        </div>
+
+        <div class="flex md:hidden items-center gap-3">
+
+<button
+    class="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+    @click="$store.theme.toggle()"
+    :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+    data-gtm-id="nav.theme-toggle.click"
+    x-data
+>
+    <svg 
+        x-show="$store.theme.dark"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+    
+    <svg 
+        x-show="!$store.theme.dark"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -rotate-90 scale-0"
+        x-transition:enter-end="opacity-100 rotate-0 scale-100"
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+</button>
+            
+            <button
+                class="text-foreground p-2"
+                @click="mobileOpen = !mobileOpen"
+                :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
+                data-gtm-id="nav.mobile.menu.toggle"
+            >
+                <svg 
+                    x-show="!mobileOpen" 
+                    class="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg 
+                    x-show="mobileOpen" 
+                    x-cloak
+                    class="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div 
+        x-show="mobileOpen"
+        x-collapse
+        class="md:hidden bg-background border-b border-border"
+    >
+        <nav class="flex flex-col p-6 gap-4">
+                    <div>
+                        <button
+                            class="flex items-center justify-between w-full font-medium py-2"
+                            :class="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)
+                                ? 'text-primary'
+                                : 'text-muted-foreground'"
+                            @click="mobileDropdownOpen = !mobileDropdownOpen"
+                        >
+                            <span class="flex items-center gap-2">
+                                <span 
+                                    x-show="['/vps-hosting', '/windows-vps', 'https://dedicated-server.readyserver.sg/dedicatedserver.html'].includes(currentPath)"
+                                    class="w-1.5 h-1.5 rounded-full bg-primary"
+                                ></span>
+                                Products &amp; Services
+                            </span>
+                            <svg 
+                                class="w-4 h-4 transition-transform duration-200"
+                                :class="mobileDropdownOpen ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <div 
+                            x-show="mobileDropdownOpen"
+                            x-collapse
+                            class="pl-4 flex flex-col gap-2 mt-2"
+                        >
+                                <a
+                                    href="/vps-hosting"
+                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="currentPath === '/vps-hosting'
+                                        ? 'text-primary font-medium'
+                                        : 'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.vps-hosting.click"
+                                >
+                                    <span 
+                                        x-show="currentPath === '/vps-hosting'"
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"
+                                    ></span>
+                                    VPS Hosting
+                                </a>
+                                <a
+                                    href="/windows-vps"
+                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="currentPath === '/windows-vps'
+                                        ? 'text-primary font-medium'
+                                        : 'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.windows-vps.click"
+                                >
+                                    <span 
+                                        x-show="currentPath === '/windows-vps'"
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"
+                                    ></span>
+                                    Windows VPS
+                                </a>
+                                <a
+                                    href="https://dedicated-server.readyserver.sg/dedicatedserver.html"
+target="_blank" rel="noopener noreferrer"                                    class="transition-colors py-1 flex items-center gap-2"
+                                    :class="'text-muted-foreground hover:text-foreground'"
+                                    @click="mobileOpen = false"
+                                    data-gtm-id="nav.mobile.dedicated-servers.click"
+                                >
+                                    Dedicated Servers
+                                    <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <a
+                        href="/blog"
+                        class="transition-colors font-medium py-2 flex items-center gap-2"
+                        :class="currentPath === '/blog' || currentPath.startsWith('/blog/')
+                            ? 'text-primary'
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="mobileOpen = false"
+                        data-gtm-id="nav.mobile.blog.click"
+                    >
+                        <span 
+                            x-show="currentPath === '/blog' || currentPath.startsWith('/blog/')"
+                            class="w-1.5 h-1.5 rounded-full bg-primary"
+                        ></span>
+                        Blog
+                    </a>
+                    <a
+                        href="/contact"
+                        class="transition-colors font-medium py-2 flex items-center gap-2"
+                        :class="currentPath === '/contact' || currentPath.startsWith('/contact/')
+                            ? 'text-primary'
+                            : 'text-muted-foreground hover:text-foreground'"
+                        @click="mobileOpen = false"
+                        data-gtm-id="nav.mobile.contact.click"
+                    >
+                        <span 
+                            x-show="currentPath === '/contact' || currentPath.startsWith('/contact/')"
+                            class="w-1.5 h-1.5 rounded-full bg-primary"
+                        ></span>
+                        Contact Us
+                    </a>
+            
+            <a 
+                href="https://zh.readyserver.sg/"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground border-2 border-foreground/20 dark:border-white/20 bg-background hover:bg-muted shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 mt-4"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.language.zh.click"
+            >
+                中文
+            </a>
+            
+            <a 
+                href="/download-mobile-app"
+                class="inline-flex items-center justify-center w-full rounded-lg px-4 py-3 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-2"
+                @click="mobileOpen = false"
+                data-gtm-id="nav.mobile.download_app"
+                data-gtm-placement="nav"
+                data-gtm-section="nav.mobile"
+            >
+                Download App
+            </a>
+        </nav>
+    </div>
+</header>
+
+<div class="h-[80px]"></div>
+
+<style>
+    [x-cloak] { display: none !important; }
+</style>
+    
+    <main class="flex-1 relative z-1">
+<article class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <header class="max-w-3xl mx-auto mb-12 text-center">
+            <nav class="mb-6 animate-fade-up">
+                <ol class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <li><a href="/" class="hover:text-primary">Home</a></li>
+                    <li>/</li>
+                    <li><a href="/blog" class="hover:text-primary">Blog</a></li>
+                    <li>/</li>
+                    <li class="text-foreground">Understanding Domain...</li>
+                </ol>
+            </nav>
+            
+            <span 
+                class="inline-block text-xs font-medium text-primary uppercase tracking-wider mb-4 animate-fade-up"
+                style="animation-delay: 0.05s;"
+            >
+                Product
+            </span>
+            
+            <h1 
+                class="text-3xl md:text-5xl font-black text-foreground mb-6 animate-fade-up"
+                style="animation-delay: 0.1s;"
+            >
+                Understanding Domain Hosting vs. Web Hosting
+            </h1>
+            
+            <div 
+                class="flex items-center justify-center gap-4 text-muted-foreground animate-fade-up"
+                style="animation-delay: 0.15s;"
+            >
+                <span>Ready Server Team</span>
+                <span>•</span>
+                <span>September 05, 2025</span>
+                <span>•</span>
+                <span>5 min read</span>
+            </div>
+        </header>
+        
+        <div 
+            class="max-w-4xl mx-auto mb-12 rounded-2xl overflow-hidden animate-fade-up"
+            style="animation-delay: 0.2s;"
+        >
+            <img 
+                src="/images/blog/2025/09/Understanding-domain-hosting-vs-web-hosting-1024x768.jpg" 
+                alt="Understanding Domain Hosting vs. Web Hosting"
+                class="w-full h-auto"
+                width="896"
+                height="504"
+                decoding="async"
+                fetchpriority="high"
+            >
+        </div>
+        
+        <div 
+            class="max-w-3xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-a:text-primary prose-img:rounded-xl animate-fade-up"
+            style="animation-delay: 0.25s;"
+        >
+            <h2 class="text-2xl font-bold mt-10 mb-4" id="why-this-distinction-matters">Why This Distinction Matters</h2>
+<p class="mb-4 leading-relaxed">When you’re launching a website, two terms pop up immediately: <strong class="font-semibold text-foreground">domain hosting</strong> and <strong class="font-semibold text-foreground">web hosting</strong>. They sound similar, but they play very different roles. Mixing them up is like confusing your shop’s street address with the shop itself—both are essential, but they’re not the same thing. Understanding <strong class="font-semibold text-foreground">Domain Hosting vs. Web Hosting</strong> is crucial for making informed decisions.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="common-misconceptions-that-cost-time-and-money">Common Misconceptions That Cost Time and Money</h3>
+<p class="mb-4 leading-relaxed">People often buy whatever a splashy checkout page recommends—extra email, security, backups—without knowing which service actually needs which add-on. Clarifying the difference helps you buy only what you need and set things up correctly the first time.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="the-quick-10-second-answer">The Quick 10-Second Answer</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Domain hosting (registration + DNS) = your website’s address on the Internet.</li>
+<li class="ml-4 mb-2">Web hosting = the building that stores your site’s files and serves them to visitors.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="what-is-a-domain-name">What Is a Domain Name?</h2>
+<p class="mb-4 leading-relaxed">A <strong class="font-semibold text-foreground">domain name</strong> is the human-friendly address people type into a browser, like example.com. It maps to the technical location of your website so humans don’t have to remember strings of numbers.</p>
+<h4 class="text-lg font-semibold mt-6 mb-3" id="anatomy-of-a-domain-tld-sld-subdomain">Anatomy of a Domain (TLD, SLD, Subdomain)</h4>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">TLD (Top-Level Domain): the ending, like .com, .org, .co.uk.</li>
+<li class="ml-4 mb-2">SLD (Second-Level Domain): the main name, e.g., example.</li>
+<li class="ml-4 mb-2">Subdomain: a prefix to organise content, e.g., blog.example.com.</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="how-domain-registration-works">How Domain Registration Works</h3>
+<p class="mb-4 leading-relaxed">You purchase the right to use a domain from a <strong class="font-semibold text-foreground">registrar</strong> (for a fixed period, typically 1–10 years). The registrar records your ownership with the global <strong class="font-semibold text-foreground">registry</strong> for that TLD. You must renew it to keep ownership active.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="what-is-domain-hosting-aka-domain-registration-dns">What Is Domain Hosting (a.k.a. Domain Registration &amp; DNS)?</h2>
+<p class="mb-4 leading-relaxed">“Domain hosting” usually refers to your <strong class="font-semibold text-foreground">registrar account</strong> and the <strong class="font-semibold text-foreground">DNS (Domain Name System)</strong> services attached to it. This is where you set <strong class="font-semibold text-foreground">nameservers</strong> and manage <strong class="font-semibold text-foreground">DNS records</strong>.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="registrars-resellers-and-the-registry">Registrars, Resellers, and the Registry</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Registry runs the TLD (e.g., for .com).</li>
+<li class="ml-4 mb-2">Registrar sells domains to the public and provides control panels.</li>
+<li class="ml-4 mb-2">Resellers sell on behalf of registrars, often bundled with hosting.</li>
+</ul>
+<h4 class="text-lg font-semibold mt-6 mb-3" id="nameservers-dns-records-and-propagation">Nameservers, DNS Records, and Propagation</h4>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">Nameservers</strong>: tell the world where to fetch your DNS records.</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">DNS records</strong>: map your domain to services:</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">A/AAAA</strong> → your web server's IP</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">CNAME</strong> → alias to another hostname</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">MX</strong> → email provider</li>
+<li class="ml-4 mb-2"><strong class="font-semibold text-foreground">TXT</strong> → verification, SPF, and security policies</li>
+</ul>
+<p class="mb-4 leading-relaxed">When you change DNS, the update spreads worldwide within minutes to hours (called propagation).</p>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="what-is-web-hosting">What Is Web Hosting?</h2>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Web hosting</strong> is where your website actually lives. It’s the server that stores your pages, images, scripts, and database, and responds when someone visits your domain.</p>
+<h4 class="text-lg font-semibold mt-6 mb-3" id="shared-vps-cloud-dedicated-and-managed-wordpress">Shared, VPS, Cloud, Dedicated, and Managed WordPress</h4>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Shared hosting: low cost; resources shared with other sites—good for simple sites.</li>
+<li class="ml-4 mb-2">VPS (Virtual Private Server): more control and performance—great for growing sites.</li>
+<li class="ml-4 mb-2">Cloud hosting: scalable resources across multiple servers—good for reliability.</li>
+<li class="ml-4 mb-2"><a class="text-primary hover:underline" href="/dedicated-servers">Dedicated server</a>: all resources are yours—best for heavy, predictable loads.</li>
+<li class="ml-4 mb-2">Managed WordPress: WordPress-specific performance, updates, and support—ideal if you want convenience and speed for WordPress sites.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="how-domain-hosting-and-web-hosting-work-together">How Domain Hosting and Web Hosting Work Together</h2>
+<p class="mb-4 leading-relaxed">Think of a user typing your domain into a browser:</p>
+<h4 class="text-lg font-semibold mt-6 mb-3" id="ssltls-and-why-https-matters">SSL/TLS and Why HTTPS Matters</h4>
+<p class="mb-4 leading-relaxed">Install an <strong class="font-semibold text-foreground">SSL/TLS certificate</strong> on your web host so the site loads via <strong class="font-semibold text-foreground">HTTPS</strong>. This encrypts traffic, boosts user trust, and is a basic ranking signal for search engines.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="key-differences-at-a-glance">Key Differences at a Glance</h2>
+<h3 class="text-xl font-bold mt-8 mb-4" id="ownership-vs-storage">Ownership vs. Storage</h3>
+<p class="mb-4 leading-relaxed">Your <strong class="font-semibold text-foreground">domain</strong> is the lease to a name; your <strong class="font-semibold text-foreground">hosting</strong> is the rental of computing resources. You can switch hosts without changing your domain.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="renewal-cycles-pricing-and-upsells">Renewal Cycles, Pricing, and Upsells</h3>
+<p class="mb-4 leading-relaxed">Domains are usually cheaper per year than hosting. Be mindful of <strong class="font-semibold text-foreground">introductory pricing</strong> that increases on renewal—for both domains and hosting.</p>
+<h3 class="text-xl font-bold mt-8 mb-4" id="security-responsibilities">Security Responsibilities</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Domain side: enable 2FA, use WHOIS privacy, and consider DNSSEC where supported.</li>
+<li class="ml-4 mb-2">Hosting side: keep software updated, deploy SSL, enable firewalls, and keep off-site backups.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="choosing-the-right-combination">Choosing the Right Combination</h2>
+<h3 class="text-xl font-bold mt-8 mb-4" id="solo-creator-or-small-business">Solo Creator or Small Business</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Domain from a reputable registrar.</li>
+<li class="ml-4 mb-2">Web hosting: shared or managed WordPress for simplicity.</li>
+<li class="ml-4 mb-2">Add a CDN if you have global audiences.</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="growing-company-or-high-traffic-store">Growing Company or High-Traffic Store</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Domain at a registrar with strong DNS features (or use a premium DNS provider).</li>
+<li class="ml-4 mb-2">Web hosting: VPS or cloud for performance and scalability.</li>
+<li class="ml-4 mb-2">Add staging, automated backups, WAF, and monitoring.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="practical-setup-checklist">Practical Setup Checklist</h2>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">A/AAAA to your server IP</li>
+<li class="ml-4 mb-2">CNAME for www</li>
+<li class="ml-4 mb-2">MX records if using custom email</li>
+</ul>
+<h4 class="text-lg font-semibold mt-6 mb-3" id="avoid-these-common-pitfalls">Avoid These Common Pitfalls</h4>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Forgetting to renew the domain—set auto-renew and a backup payment method.</li>
+<li class="ml-4 mb-2">Pointing only example.com but not www.example.com (or vice versa).</li>
+<li class="ml-4 mb-2">Skipping SSL—modern browsers flag non-HTTPS pages.</li>
+<li class="ml-4 mb-2">No backups—assume things will break and plan the recovery.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="typical-costs-and-budgeting">Typical Costs and Budgeting</h2>
+<h3 class="text-xl font-bold mt-8 mb-4" id="domain-fees">Domain Fees</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Standard TLDs (e.g., .com) are typically modest per year. Premium names cost more.</li>
+<li class="ml-4 mb-2">Multi-year registrations can reduce admin hassle (but still track expiry).</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="hosting-fees">Hosting Fees</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Shared: low monthly cost.</li>
+<li class="ml-4 mb-2">VPS/Managed WordPress: mid-range with better speed and support.</li>
+<li class="ml-4 mb-2">Cloud/Dedicated: higher cost, higher control and performance.</li>
+</ul>
+<h3 class="text-xl font-bold mt-8 mb-4" id="add-ons-worth-paying-for-and-those-to-skip">Add-ons Worth Paying For (and Those to Skip)</h3>
+<ul class="list-disc list-outside ml-6 my-4">
+<li class="ml-4 mb-2">Worth it: SSL (often free), backups, staging, malware scanning, WAF, CDN.</li>
+<li class="ml-4 mb-2">Maybe skip: generic upsells you don’t understand—check if you already get them elsewhere (e.g., email might be with Microsoft 365 or Google Workspace rather than your host).</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4" id="conclusion">Conclusion</h2>
+<p class="mb-4 leading-relaxed"><strong class="font-semibold text-foreground">Domain hosting</strong> and <a class="text-primary hover:underline" href="https://www.readyserver.sg/"><strong class="font-semibold text-foreground">web hosting</strong></a> are two halves of the same website puzzle—your <strong class="font-semibold text-foreground">address</strong> and your <strong class="font-semibold text-foreground">building</strong>. Get the pair right, and you’ll enjoy a smoother launch, fewer surprises, and better performance. Start with a solid registrar, pick hosting that fits your current needs (with room to grow), wire them together via DNS, and protect everything with SSL, backups, and sensible security. Do that, and your website will be set up on firm ground—ready to load fast, scale cleanly, and serve visitors with confidence.</p>
+        </div>
+        
+            <div 
+                class="max-w-3xl mx-auto mt-12 pt-8 border-t border-border animate-fade-up"
+                style="animation-delay: 0.3s;"
+            >
+                <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full">
+                            hosting
+                        </span>
+                </div>
+            </div>
+        
+        <div 
+            class="max-w-3xl mx-auto mt-8 animate-fade-up"
+            style="animation-delay: 0.35s;"
+        >
+            <p class="text-muted-foreground mb-4">Share this article:</p>
+            <div class="flex gap-4">
+                <a 
+                    href="https://twitter.com/intent/tweet?url=https://readyserver.sg/blog/understanding-domain-hosting-vs-web-hosting&text=Understanding%20Domain%20Hosting%20vs.%20Web%20Hosting"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    data-gtm-id="blog.share.twitter.click"
+                >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a 
+                    href="https://www.linkedin.com/shareArticle?mini=true&url=https://readyserver.sg/blog/understanding-domain-hosting-vs-web-hosting&title=Understanding%20Domain%20Hosting%20vs.%20Web%20Hosting"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    data-gtm-id="blog.share.linkedin.click"
+                >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="max-w-3xl mx-auto mt-12">
+            <a 
+                href="/blog"
+                class="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to all posts
+            </a>
+        </div>
+    </div>
+</article>
+    </main>
+    
+
+
+
+<footer class="py-16 border-t border-border">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="lg:col-span-2">
+                <a href="/" class="flex items-center gap-3 group" data-gtm-id="footer.logo.click">
+                    <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                        <img 
+                            src="/images/logo/readyserver-logo.jpeg" 
+                            alt=""
+                            aria-hidden="true"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <span class="font-bold text-xl text-foreground">
+                        Ready Server
+                    </span>
+                </a>
+                
+                <p class="text-muted-foreground mb-6 mt-4 max-w-sm">
+                    Singapore's fastest and most reliable VPS hosting service. Control
+                    your servers from anywhere with our mobile app.
+                </p>
+
+                <div class="flex gap-4">
+                        <a
+                            href="https://www.facebook.com/readyserver/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Facebook"
+                            data-gtm-id="footer.social.facebook.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/company/ready-server-pte-ltd/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Linkedin"
+                            data-gtm-id="footer.social.linkedin.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://x.com/readyserver"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Twitter"
+                            data-gtm-id="footer.social.twitter.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/readyserver.sg/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 hover:scale-110"
+                            aria-label="Follow us on Instagram"
+                            data-gtm-id="footer.social.instagram.click"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                </div>
+            </div>
+
+                <div>
+                    <h2 class="text-foreground font-semibold text-base mb-4">ReadyServer Pte Ltd</h2>
+                    <ul class="space-y-3">
+                            <li>
+                                <a
+                                    href="/download-mobile-app"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.download-mobile-app"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Mobile App
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/blog"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.blog"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/coming-soon"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.coming-soon"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Documentation
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/brand-guidelines"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.brand-guidelines"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Brand Guidelines
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/contact"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.contact"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Contact
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-foreground font-semibold text-base mb-4">Legal</h2>
+                    <ul class="space-y-3">
+                            <li>
+                                <a
+                                    href="/privacy-policy"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.privacy-policy"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/terms-of-service"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.terms-of-service"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Terms of Service
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/sla"
+                                    class="text-muted-foreground hover:text-primary transition-colors"
+                                    data-gtm-id="footer.sla"
+                                    data-gtm-placement="footer"
+                                    data-gtm-section="footer"
+                                >
+                                    Service Level Agreement
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+        </div>
+
+        <div class="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-muted-foreground text-sm">
+                © 2025 Ready Server Singapore. All rights reserved.
+            </p>
+            
+            <div class="flex items-center gap-6">
+                <a
+                    href="/privacy-policy"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.privacy.click"
+                >
+                    Privacy
+                </a>
+                <a
+                    href="/terms-of-service"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.terms.click"
+                >
+                    Terms
+                </a>
+                <a
+                    href="/sla"
+                    class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    data-gtm-id="footer.link.sla.click"
+                >
+                    SLA
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <script defer src="/js/app.js"></script>
+    
+    <script defer src="/js/alpine-collapse.min.js"></script>
+    
+    <script defer src="/js/alpine.min.js"></script>
+    
+    <script>
+        function loadNonCriticalScripts() {
+            // Analytics compatibility layer
+            var analyticsScript = document.createElement('script');
+            analyticsScript.src = '/js/analytics.js';
+            document.body.appendChild(analyticsScript);
+            
+            // ContentSquare tracking
+            var csScript = document.createElement('script');
+            csScript.src = 'https://t.contentsquare.net/uxa/4c222aceaa5e8.js';
+            document.body.appendChild(csScript);
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadNonCriticalScripts, {timeout: 5000});
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(loadNonCriticalScripts, 2000);
+            });
+        }
+    </script>
+    
+</body>
+</html>

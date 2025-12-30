@@ -1,0 +1,9 @@
+# Ready Server - robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://readyserver.sg/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /api/
+Disallow: /_next/

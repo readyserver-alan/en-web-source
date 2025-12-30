@@ -1,0 +1,635 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Ready Server - Cash App Inspired Design System with Blue Accent
+ * 
+ * MIGRATED FROM: app/globals.css (Next.js version)
+ * 
+ * Performance Optimizations:
+ * - CSS containment for layout isolation
+ * - content-visibility for off-screen rendering optimization
+ * - GPU-accelerated animations
+ * - Reduced motion support
+ */
+
+@layer base {
+  :root {
+    /* Light theme - Optimized for readability and polish */
+    
+    /* Cool-tinted off-white background for reduced eye strain */
+    --background: 220 20% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Cards with visible elevation against background */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Blue accent - slightly deeper for light mode contrast */
+    --primary: 217 91% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 60%;
+
+    /* Subtle blue-tinted secondary */
+    --secondary: 214 32% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted areas with blue undertone */
+    --muted: 214 25% 94%;
+    /* Improved contrast: 220 13% 35% provides 5.1:1 ratio (WCAG AA compliant) */
+    --muted-foreground: 220 13% 35%;
+
+    --accent: 217 91% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Stronger borders for definition */
+    --border: 214 25% 85%;
+    --input: 214 25% 88%;
+    --ring: 217 91% 52%;
+
+    --radius: 1rem;
+
+    /* Custom variables - optimized for light mode */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 52%), hsl(200 85% 52%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 20% 98%), hsl(220 25% 96%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(217 91% 60% / 0.12), transparent 70%);
+    
+    /* Softer glows for light mode */
+    --shadow-glow: 0 0 40px hsl(217 91% 52% / 0.2);
+    /* Stronger card shadows for depth */
+    --shadow-card: 0 4px 6px -1px hsl(220 20% 0% / 0.06), 
+                   0 10px 15px -3px hsl(220 20% 0% / 0.08),
+                   0 20px 25px -5px hsl(220 20% 0% / 0.04);
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 220 25% 97%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 217 91% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 32% 94%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 25% 88%;
+    --sidebar-ring: 217 91% 52%;
+  }
+
+  .dark {
+    /* Dark theme */
+    --background: 222 47% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Blue accent */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 70%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 91% 60%));
+    --gradient-dark: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 5%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(217 91% 60% / 0.2), transparent 70%);
+    
+    --shadow-glow: 0 0 60px hsl(217 91% 60% / 0.4);
+    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Prevent layout shift from scrollbar */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Inter font with system fallback stack to prevent layout shift */
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Optimize text rendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 
+   * Performance: content-visibility for off-screen sections
+   * This dramatically reduces initial render time by skipping off-screen content
+   * IMPORTANT: Exclude hero section to ensure LCP element is rendered immediately
+   */
+  section:not(.hero-section) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+  
+  /* Hero section must render immediately for LCP */
+  .hero-section {
+    content-visibility: visible;
+  }
+
+  /* Performance: Isolate sticky elements from main layout */
+  /* Note: Don't apply contain to fixed elements as it breaks z-index stacking */
+  [class*="sticky"]:not(header):not(nav) {
+    contain: layout style;
+  }
+  
+  /* Ensure main content doesn't overlap header dropdowns */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Optimize images */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-elevated {
+    @apply bg-card border border-border rounded-2xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Blog CTA Button - used in markdown content */
+  /* Important: Uses !important to override prose-a:text-primary from Tailwind Typography */
+  .blog-cta {
+    @apply inline-flex items-center justify-center gap-2 bg-primary font-semibold px-6 py-3 rounded-full transition-all duration-300 no-underline;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  .blog-cta:hover {
+    @apply scale-105 no-underline;
+    box-shadow: var(--shadow-glow);
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  /* Blog CTA Container - centers the button */
+  .blog-cta-container {
+    @apply flex justify-center my-8;
+  }
+
+  .phone-mockup {
+    filter: drop-shadow(0 50px 100px hsl(217 91% 60% / 0.2));
+  }
+}
+
+@layer utilities {
+  /* ============================================================
+   * SCROLL ANIMATIONS (Replaces Framer Motion)
+   * 
+   * Usage with Alpine.js x-animate directive:
+   * <div x-animate class="opacity-0 animate-on-scroll">Content</div>
+   * ============================================================ */
+  
+  /* Fade up animation (most common) */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+  
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Slide in from left */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.7s ease-out forwards;
+  }
+  
+  /* Slide in from right */
+  .animate-slide-in-right {
+    animation: slideInRight 0.7s ease-out forwards;
+  }
+  
+  /* Scale up animation */
+  .animate-scale-up {
+    animation: scaleUp 0.5s ease-out forwards;
+  }
+
+  /* Keyframes for scroll animations */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Stagger children animation classes */
+  .stagger-children > * {
+    opacity: 0;
+  }
+  
+  .stagger-children.animate > *:nth-child(1) {
+    animation: fadeUp 0.6s ease-out 0.1s forwards;
+  }
+  .stagger-children.animate > *:nth-child(2) {
+    animation: fadeUp 0.6s ease-out 0.2s forwards;
+  }
+  .stagger-children.animate > *:nth-child(3) {
+    animation: fadeUp 0.6s ease-out 0.3s forwards;
+  }
+  .stagger-children.animate > *:nth-child(4) {
+    animation: fadeUp 0.6s ease-out 0.4s forwards;
+  }
+  .stagger-children.animate > *:nth-child(5) {
+    animation: fadeUp 0.6s ease-out 0.5s forwards;
+  }
+  .stagger-children.animate > *:nth-child(6) {
+    animation: fadeUp 0.6s ease-out 0.6s forwards;
+  }
+  .stagger-children.animate > *:nth-child(7) {
+    animation: fadeUp 0.6s ease-out 0.7s forwards;
+  }
+  .stagger-children.animate > *:nth-child(8) {
+    animation: fadeUp 0.6s ease-out 0.8s forwards;
+  }
+
+  /* ============================================================
+   * EXISTING ANIMATIONS (Preserved from Next.js)
+   * ============================================================ */
+
+  /* 3D Border Effect Classes */
+  .border-3d {
+    @apply relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .border-3d::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none;
+    background: linear-gradient(135deg, 
+      rgba(255,255,255,0.1) 0%, 
+      transparent 50%, 
+      rgba(0,0,0,0.1) 100%);
+    z-index: 1;
+  }
+  
+  .border-3d::after {
+    content: '';
+    @apply absolute -inset-[2px] rounded-[inherit] pointer-events-none -z-10;
+    background: linear-gradient(135deg,
+      hsl(var(--primary) / 0.1) 0%,
+      transparent 50%,
+      hsl(var(--primary) / 0.05) 100%);
+    filter: blur(4px);
+  }
+  
+  .border-3d:hover {
+    transform: perspective(1000px) rotateX(2deg) translateY(-2px);
+    box-shadow: 
+      0 10px 20px -5px rgba(0, 0, 0, 0.1),
+      0 20px 40px -10px hsl(var(--primary) / 0.1);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient-shift 8s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(217 91% 60% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(217 91% 60% / 0.5);
+    }
+  }
+
+  /* Glow pulse animation - matches Next.js original for hero phone glow */
+  @keyframes glow-pulse {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* Subtle scale animation for badges */
+  @keyframes subtle-scale {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+
+  .animate-subtle-scale {
+    animation: subtle-scale 2s ease-in-out infinite;
+  }
+
+  /* Slow bounce for scroll indicator */
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  /* Scroll indicator animation */
+  @keyframes scroll-indicator {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 0.5;
+    }
+  }
+
+  .animate-scroll-indicator {
+    animation: scroll-indicator 2s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Shimmer animation for badges and highlights */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  /* Marquee animation for horizontal scrolling logos */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    /* Speed reduced by 50% (from 40s to 80s) for slower scroll */
+    animation: marquee 80s linear infinite;
+    /* GPU acceleration for smooth scrolling */
+    will-change: transform;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Hide scrollbar for horizontal scroll areas */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-pulse-glow,
+    .animate-gradient,
+    .animate-marquee,
+    .animate-fade-up,
+    .animate-fade-in,
+    .animate-slide-in-left,
+    .animate-slide-in-right,
+    .animate-scale-up {
+      animation: none;
+    }
+    
+    .stagger-children > * {
+      opacity: 1;
+    }
+  }
+
+  /* Performance: Pause animations when not visible */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-float,
+    .animate-pulse-glow,
+    .animate-gradient {
+      animation-play-state: running;
+    }
+  }
+
+  /* GPU acceleration hints for animated elements */
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-fade-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Gradient radial for glow effects */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 70%);
+  }
+
+  /* ============================================================
+   * ACCESSIBILITY UTILITIES
+   * Screen reader only content for SEO & accessibility
+   * ============================================================ */
+  
+  /* Visually hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Skip to main content link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Focus visible for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Remove focus outline for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
