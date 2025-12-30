@@ -37,9 +37,12 @@
     <link rel="preload" href="/css/styles.css?v=2024122202" as="style">
     
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
     
     <link rel="stylesheet" href="/css/styles.css?v=2024122202">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     
@@ -59,13 +62,18 @@
             var j = document.createElement('script');
             j.async = true;
             j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-P5CRWLDZ';
+            j.onload = function() {
+                window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            };
             document.head.appendChild(j);
-            window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
         }
+        // Defer GTM loading until after critical content is loaded
         if ('requestIdleCallback' in window) {
-            requestIdleCallback(loadGTM, {timeout: 3000});
+            requestIdleCallback(loadGTM, {timeout: 4000});
         } else {
-            setTimeout(loadGTM, 2000);
+            window.addEventListener('load', function() {
+                setTimeout(loadGTM, 3000);
+            });
         }
     </script>
     
@@ -201,13 +209,13 @@
                         <div 
                             x-show="open"
                             x-transition:enter="transition ease-out duration-150"
-                            x-transition:enter-start="opacity-0 -translate-y-2"
-                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-100"
-                            x-transition:leave-start="opacity-100 translate-y-0"
-                            x-transition:leave-end="opacity-0 -translate-y-2"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95"
                             class="absolute top-full left-1/2 -translate-x-1/2 pt-4"
-                            style="z-index: 99999;"
+                            style="z-index: 99999; will-change: transform, opacity;"
                         >
                             <div class="bg-card border border-border rounded-xl shadow-2xl overflow-hidden min-w-[220px] backdrop-blur-xl">
                                     <a
@@ -956,21 +964,24 @@ target="_blank" rel="noopener noreferrer"                                    cla
     
     <script>
         function loadNonCriticalScripts() {
-            // Analytics compatibility layer
+            // Analytics compatibility layer (minified for better performance)
             var analyticsScript = document.createElement('script');
-            analyticsScript.src = '/js/analytics.js';
+            analyticsScript.src = '/js/analytics.min.js';
+            analyticsScript.async = true;
             document.body.appendChild(analyticsScript);
             
-            // ContentSquare tracking
+            // ContentSquare tracking - deferred to reduce main thread blocking
             var csScript = document.createElement('script');
             csScript.src = 'https://t.contentsquare.net/uxa/4c222aceaa5e8.js';
+            csScript.async = true;
             document.body.appendChild(csScript);
         }
+        // Use requestIdleCallback for better performance, fallback to load event
         if ('requestIdleCallback' in window) {
             requestIdleCallback(loadNonCriticalScripts, {timeout: 5000});
         } else {
             window.addEventListener('load', function() {
-                setTimeout(loadNonCriticalScripts, 2000);
+                setTimeout(loadNonCriticalScripts, 3000);
             });
         }
     </script>
