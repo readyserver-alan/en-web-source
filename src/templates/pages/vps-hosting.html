@@ -21,10 +21,10 @@ Technical SEO Optimizations:
 {% extends 'base.html' %}
 
 {# SEO-Optimized Title: 58 chars, primary keyword front-loaded #}
-{% block title %}VPS Hosting Singapore | From $0.009/hr | {{ site.title }}{% endblock %}
+{% block title %}VPS Hosting Singapore | Pay-As-You-Go | {{ site.title }}{% endblock %}
 
 {# SEO-Optimized Description: 155 chars, includes keyword + value prop + CTA #}
-{% block description %}Best VPS hosting in Singapore. Deploy in under 3 minutes from $0.009/hr. NVMe SSD, full root access, 99.9% Network Uptime, 24/7 support. Start free today!{% endblock %}
+{% block description %}Best VPS hosting in Singapore. Deploy in under 3 minutes with pay-as-you-go billing. NVMe SSD, full root access, unmetered bandwidth, 99.9% Network Uptime, 24/7 support. No lock-in contracts!{% endblock %}
 
 {% block canonical %}/vps-hosting{% endblock %}
 
@@ -52,7 +52,7 @@ Technical SEO Optimizations:
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "VPS Hosting Singapore",
-    "description": "Singapore's best VPS hosting service with instant deployment, full root access, NVMe storage, and 24/7 support. Starting from $0.009/hour with no contracts.",
+    "description": "Singapore's best VPS hosting service with instant deployment, full root access, NVMe storage, unmetered bandwidth, and 24/7 support. Pay-as-you-go with no lock-in contracts.",
     "brand": {
         "@type": "Brand",
         "name": "ReadyServer",
@@ -138,7 +138,7 @@ Technical SEO Optimizations:
             "name": "How does hourly billing work?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "You're billed for the time your VPS is running, calculated to the second. A $0.009/hr server running 24/7 costs about $6.57/month. Stop your server anytime — you only pay for actual uptime. We accept credit/debit cards, Apple Pay, and Alipay."
+                "text": "Pure pay-as-you-go with no lock-in contracts. You only pay for the time your VPS is actually running. Stop your server anytime and billing stops immediately. Enjoy unmetered bandwidth with no overage charges or hidden fees — transfer as much data as you need. We accept credit/debit cards, Apple Pay, and Alipay."
             }
         },
         {
@@ -234,7 +234,7 @@ Technical SEO Optimizations:
                 {# Subheadline with keyword in first 100 words #}
                 <p class="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style="animation-delay: 0.2s;" itemprop="description">
                     Deploy high-performance <strong>VPS hosting in Singapore</strong> from your phone. 
-                    Start at <span class="text-foreground font-bold text-2xl" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price">$0.009</span><meta itemprop="priceCurrency" content="USD"></span><span class="text-muted-foreground">/hour</span>. No contracts. No surprises.
+                    <span class="text-foreground font-bold text-2xl">Pay-as-you-go</span> with <span class="text-foreground font-semibold">unmetered bandwidth</span>. No lock-in contracts. No surprises.
                 </p>
 
                 {# App Store Badges CTA #}
@@ -324,7 +324,7 @@ Technical SEO Optimizations:
             {% set benefits = [
                 {'icon': 'smartphone', 'title': 'Mobile-first control', 'description': 'Full server management from your pocket. Deploy, resize, monitor, and restart — all from our iOS and Android apps.'},
                 {'icon': 'zap', 'title': 'Instant deployment', 'description': 'Go from zero to running server in under 3 minutes. No waiting, no provisioning queues. Just deploy.'},
-                {'icon': 'receipt', 'title': 'Transparent hourly billing', 'description': 'Pay $0.009/hour for what you use. No hidden fees, no complex tiers. Stop anytime, pay only for uptime.'},
+                {'icon': 'receipt', 'title': 'Pay-as-you-go billing', 'description': 'No lock-in contracts. Pay only for what you use with unmetered bandwidth. Stop anytime, billing stops immediately.'},
                 {'icon': 'upload', 'title': 'Unmetered Bandwidth', 'description': 'No bandwidth caps or overage charges. Transfer as much data as you need with our generous fair-use policy.'}
             ] %}
             
@@ -436,7 +436,7 @@ Technical SEO Optimizations:
                     {% set comparisons = [
                         {'feature': 'Mobile app control', 'readyserver': 'Full iOS & Android apps', 'other': 'Desktop-only dashboard'},
                         {'feature': 'Deploy time', 'readyserver': 'Under 3 minutes', 'other': '5-10 minutes'},
-                        {'feature': 'Billing model', 'readyserver': '$0.009/hr, pay-as-you-go', 'other': 'Complex tier pricing'},
+                        {'feature': 'Billing model', 'readyserver': 'Pay-as-you-go, no lock-in', 'other': 'Complex tier pricing'},
                         {'feature': 'Data centers', 'readyserver': 'Singapore, Hong Kong & Tokyo', 'other': 'US/EU focused'},
                         {'feature': 'IPv4 address', 'readyserver': 'Included free', 'other': '$3-5/mo add-on'}
                     ] %}
@@ -671,7 +671,7 @@ Technical SEO Optimizations:
 {# Note: FAQ Schema already in structured_data block above #}
 {# ========================================================================== #}
 {% set faq_items = [
-    {'question': 'How does hourly billing work?', 'answer': "You're billed for the time your VPS is running, calculated to the second. A $0.009/hr server running 24/7 costs about $6.57/month. Stop your server anytime — you only pay for actual uptime. We accept credit/debit cards, Apple Pay, and Alipay."},
+    {'question': 'How does hourly billing work?', 'answer': "Pure pay-as-you-go with no lock-in contracts. You only pay for the time your VPS is actually running. Stop your server anytime and billing stops immediately. Enjoy unmetered bandwidth with no overage charges or hidden fees — transfer as much data as you need. We accept credit/debit cards, Apple Pay, and Alipay."},
     {'question': 'How fast can I deploy a new VPS?', 'answer': 'Most VPS instances are ready in under 3 minutes. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You\'ll have SSH access immediately.'},
     {'question': 'Can I resize my VPS after deployment?', 'answer': 'Absolutely. Scale your vCPU and RAM up or down anytime through the dashboard or mobile app. Most resizes complete within minutes. Storage upgrades are also available but are one-way (you can increase, not decrease).'},
     {'question': 'What operating systems are available?', 'answer': 'We offer Ubuntu (20.04, 22.04, 24.04), Debian, CentOS, Rocky Linux, AlmaLinux, and Windows Server. You can also upload custom ISO images for specialized deployments. For Windows, check out our Windows VPS hosting page.'},
@@ -767,7 +767,7 @@ Technical SEO Optimizations:
                         class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-[0_0_40px_hsl(217_91%_60%/0.4)]"
                         data-gtm-id="vps-hosting.final-cta.deploy.click"
                     >
-                        Start now — from $0.009/hr
+                        Start now — pay-as-you-go
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
