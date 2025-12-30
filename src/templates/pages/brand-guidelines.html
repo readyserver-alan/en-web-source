@@ -1,56 +1,528 @@
-{# Brand Guidelines Page #}
+{# Brand Guidelines Page - Design System / 1 Pager #}
 {% extends 'base.html' %}
 
 {% block title %}Brand Guidelines - {{ site.title }}{% endblock %}
-{% block description %}Official brand guidelines for Ready Server. Download logos, colors, and usage guidelines.{% endblock %}
+{% block description %}Official brand guidelines for Ready Server. The visual language that defines our brand - energetic, modern, fresh, and young.{% endblock %}
 {% block canonical %}/brand-guidelines{% endblock %}
 {% block og_image %}/og/home.svg{% endblock %}
 
 {% block content %}
+{# ============================================================
+   HERO SECTION - Brand Introduction
+   ============================================================ #}
+<section class="py-16 md:py-24 border-b border-border">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Header with Logo #}
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                    <span class="text-primary-foreground font-black text-lg">RS</span>
+                </div>
+                <span class="text-muted-foreground font-medium">Design System / 1 Pager</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-black text-foreground mb-6">Brand</h1>
+            <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                The visual language that defines <strong class="text-foreground">Ready Server</strong>. 
+                <span class="text-gradient">Energetic, modern, fresh, and young.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   COLOR SYSTEM
+   ============================================================ #}
+<section class="py-16 md:py-24 border-b border-border">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Section Label #}
+            <span class="text-sm uppercase tracking-wider font-semibold text-primary mb-4 block">Color System</span>
+            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-4">Color</h2>
+            <p class="text-lg text-muted-foreground mb-12">A vibrant blue-driven palette that conveys trust, speed, and innovation</p>
+            
+            {# Primary Colors #}
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                {# Primary Blue #}
+                <div class="card-elevated p-6">
+                    <div class="w-full h-24 rounded-2xl mb-4" style="background-color: hsl(217 91% 52%);"></div>
+                    <h3 class="text-lg font-bold text-foreground mb-2">Primary Blue</h3>
+                    <div class="space-y-1 text-sm">
+                        <p class="text-muted-foreground">HEX: <span class="font-mono text-foreground">#2563EB</span></p>
+                        <p class="text-muted-foreground">HSL: <span class="font-mono text-foreground">217 91% 52%</span></p>
+                    </div>
+                    <p class="text-xs text-muted-foreground mt-3">CTAs, links, interactive elements</p>
+                </div>
+                
+                {# Light Blue #}
+                <div class="card-elevated p-6">
+                    <div class="w-full h-24 rounded-2xl mb-4" style="background-color: hsl(217 91% 78%);"></div>
+                    <h3 class="text-lg font-bold text-foreground mb-2">Light Blue</h3>
+                    <div class="space-y-1 text-sm">
+                        <p class="text-muted-foreground">HEX: <span class="font-mono text-foreground">#93C5FD</span></p>
+                        <p class="text-muted-foreground">HSL: <span class="font-mono text-foreground">217 91% 78%</span></p>
+                    </div>
+                    <p class="text-xs text-muted-foreground mt-3">Backgrounds, glows, accents</p>
+                </div>
+                
+                {# Slate Gray #}
+                <div class="card-elevated p-6">
+                    <div class="w-full h-24 rounded-2xl mb-4" style="background-color: hsl(215 16% 47%);"></div>
+                    <h3 class="text-lg font-bold text-foreground mb-2">Slate Gray</h3>
+                    <div class="space-y-1 text-sm">
+                        <p class="text-muted-foreground">HEX: <span class="font-mono text-foreground">#64748B</span></p>
+                        <p class="text-muted-foreground">HSL: <span class="font-mono text-foreground">215 16% 47%</span></p>
+                    </div>
+                    <p class="text-xs text-muted-foreground mt-3">Body text, secondary content</p>
+                </div>
+            </div>
+            
+            {# Secondary Palette #}
+            <h3 class="text-xl font-bold text-foreground mb-6">Secondary Palette</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="text-center">
+                    <div class="w-full h-20 rounded-2xl mb-3" style="background-color: #0F172A;"></div>
+                    <p class="text-sm font-semibold text-foreground">Deep Navy</p>
+                    <p class="text-xs font-mono text-muted-foreground">#0F172A</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-full h-20 rounded-2xl mb-3" style="background-color: #38BDF8;"></div>
+                    <p class="text-sm font-semibold text-foreground">Sky Blue</p>
+                    <p class="text-xs font-mono text-muted-foreground">#38BDF8</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-full h-20 rounded-2xl mb-3 border border-border" style="background-color: #FFFFFF;"></div>
+                    <p class="text-sm font-semibold text-foreground">White</p>
+                    <p class="text-xs font-mono text-muted-foreground">#FFFFFF</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-full h-20 rounded-2xl mb-3 border border-border" style="background-color: #F8FAFC;"></div>
+                    <p class="text-sm font-semibold text-foreground">Off-White</p>
+                    <p class="text-xs font-mono text-muted-foreground">#F8FAFC</p>
+                </div>
+            </div>
+            
+            {# Gradients #}
+            <h3 class="text-xl font-bold text-foreground mb-6">Gradients</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <div class="w-full h-32 rounded-2xl mb-3" style="background: linear-gradient(135deg, hsl(217 91% 52%), hsl(200 85% 52%));"></div>
+                    <p class="text-sm font-semibold text-foreground">Primary Gradient</p>
+                    <p class="text-xs text-muted-foreground">Blue to Cyan (135°)</p>
+                </div>
+                <div>
+                    <div class="w-full h-32 rounded-2xl mb-3" style="background: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 5%));"></div>
+                    <p class="text-sm font-semibold text-foreground">Dark Gradient</p>
+                    <p class="text-xs text-muted-foreground">Deep Navy (180°)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   TYPOGRAPHY SYSTEM
+   ============================================================ #}
+<section class="py-16 md:py-24 border-b border-border">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Section Label #}
+            <span class="text-sm uppercase tracking-wider font-semibold text-primary mb-4 block">Type System</span>
+            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-4">Typography</h2>
+            <p class="text-lg text-muted-foreground mb-12">Clean, modern typography for maximum readability and impact</p>
+            
+            {# Section A - Headings (Inter) #}
+            <div class="mb-16">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Section A</span>
+                    <span class="text-muted-foreground">Headings</span>
+                </div>
+                
+                <div class="bg-muted/50 rounded-2xl p-6 mb-8">
+                    <p class="text-4xl font-bold text-foreground tracking-tight">Inter</p>
+                </div>
+                
+                {# H1 / Hero #}
+                <div class="border-b border-border pb-8 mb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">H1 / Hero</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Black (900) • Size: 64px • Line Height: 120%</span>
+                    </div>
+                    <p class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight leading-tight">
+                        Deploy Fast. Trade Fast. Build Fast.
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Hero headlines, landing page claims</p>
+                </div>
+                
+                {# H2 #}
+                <div class="border-b border-border pb-8 mb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">H2</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Bold (700) • Size: 48px • Line Height: 120%</span>
+                    </div>
+                    <p class="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+                        Ultra-Low Latency VPS
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Section headers</p>
+                </div>
+                
+                {# H3 #}
+                <div class="border-b border-border pb-8 mb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">H3</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Semibold (600) • Size: 32px • Line Height: 125%</span>
+                    </div>
+                    <p class="text-2xl md:text-3xl font-semibold text-foreground">
+                        Performance engineered for traders & builders.
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Sub-headers</p>
+                </div>
+                
+                {# H4 #}
+                <div class="pb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">H4</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Medium (500) • Size: 24px • Line Height: 130%</span>
+                    </div>
+                    <p class="text-xl font-medium text-foreground">
+                        99.9% Uptime Guaranteed
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Card titles, pricing headers</p>
+                </div>
+            </div>
+            
+            {# Section B - Body Text (Inter) #}
+            <div class="mb-16">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Section B</span>
+                    <span class="text-muted-foreground">Body Text</span>
+                </div>
+                
+                {# Body Large #}
+                <div class="border-b border-border pb-8 mb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">Body Large</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Regular (400) • Size: 18px • Line Height: 155%</span>
+                    </div>
+                    <p class="text-lg text-muted-foreground leading-relaxed">
+                        ReadyServer delivers high-performance compute with predictable pricing.
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Key paragraphs, product descriptions</p>
+                </div>
+                
+                {# Body #}
+                <div class="border-b border-border pb-8 mb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">Body</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Regular (400) • Size: 16px • Line Height: 160%</span>
+                    </div>
+                    <p class="text-base text-muted-foreground">
+                        Deploy servers in under a minute and scale easily.
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Standard paragraph text</p>
+                </div>
+                
+                {# Caption #}
+                <div class="pb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">Caption</span>
+                        <span class="text-xs text-muted-foreground">Font: Inter • Weight: Regular (400) • Size: 13px • Line Height: 140%</span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">
+                        Last updated: Just now
+                    </p>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Metadata, timestamps, helper text</p>
+                </div>
+            </div>
+            
+            {# Section C - Code (JetBrains Mono) #}
+            <div>
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">Section C</span>
+                    <span class="text-muted-foreground">Code</span>
+                </div>
+                
+                <div class="bg-muted/50 rounded-2xl p-6 mb-8">
+                    <p class="text-2xl font-mono text-foreground">JetBrains Mono</p>
+                </div>
+                
+                <div class="pb-8">
+                    <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                        <span class="text-sm font-semibold text-primary">Code Inline</span>
+                        <span class="text-xs text-muted-foreground">Font: JetBrains Mono • Weight: Regular (400) • Size: 14px</span>
+                    </div>
+                    <div class="bg-[#0F172A] rounded-xl p-4">
+                        <code class="text-sm font-mono text-green-400">$ systemctl status readyserver</code>
+                    </div>
+                    <p class="text-xs text-muted-foreground mt-4">Usage: Inline code references, terminal commands</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   BRAND VOICE & PERSONALITY
+   ============================================================ #}
+<section class="py-16 md:py-24 border-b border-border">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Section Label #}
+            <span class="text-sm uppercase tracking-wider font-semibold text-primary mb-4 block">Brand Voice</span>
+            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-4">Our Personality</h2>
+            <p class="text-lg text-gradient font-semibold mb-12">Energetic • Modern • Fresh • Young</p>
+            
+            {# Personality Traits #}
+            <div class="grid md:grid-cols-2 gap-6 mb-16">
+                <div class="card-elevated p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Energetic</h3>
+                    <p class="text-muted-foreground">We move fast and help you move faster. Our brand pulses with energy and momentum.</p>
+                </div>
+                
+                <div class="card-elevated p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Modern</h3>
+                    <p class="text-muted-foreground">Cutting-edge technology deserves cutting-edge design. We embrace the new.</p>
+                </div>
+                
+                <div class="card-elevated p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Fresh</h3>
+                    <p class="text-muted-foreground">Clean, crisp, and clear. Our visuals breathe and our message resonates.</p>
+                </div>
+                
+                <div class="card-elevated p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Young</h3>
+                    <p class="text-muted-foreground">Bold, optimistic, and unafraid. We speak to the builders of tomorrow.</p>
+                </div>
+            </div>
+            
+            {# Tone of Voice #}
+            <h3 class="text-2xl font-bold text-foreground mb-8">Tone of Voice</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <span class="w-6 h-6 bg-green-500/10 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </span>
+                        We Are
+                    </h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Direct and clear
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Confident but not arrogant
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Technical yet accessible
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Enthusiastic and helpful
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Forward-thinking
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <span class="w-6 h-6 bg-red-500/10 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </span>
+                        We Avoid
+                    </h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            Corporate jargon
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            Overly complex explanations
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            Passive voice
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            Being boring or stiff
+                        </li>
+                        <li class="flex items-center gap-2 text-muted-foreground">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            Making promises we can't keep
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   COMPONENTS PREVIEW
+   ============================================================ #}
+<section class="py-16 md:py-24 border-b border-border">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            {# Section Label #}
+            <span class="text-sm uppercase tracking-wider font-semibold text-primary mb-4 block">UI Components</span>
+            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-4">Components</h2>
+            <p class="text-lg text-muted-foreground mb-12">Core UI building blocks used across our products</p>
+            
+            {# Buttons #}
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-foreground mb-6">Buttons</h3>
+                <div class="flex flex-wrap gap-4">
+                    <button class="btn-primary">Primary Button</button>
+                    <button class="bg-secondary text-secondary-foreground font-semibold px-8 py-4 rounded-full hover:bg-secondary/80 transition-all">Secondary</button>
+                    <button class="text-foreground font-semibold px-8 py-4 rounded-full border-2 border-border hover:border-primary hover:text-primary transition-all">Ghost</button>
+                </div>
+            </div>
+            
+            {# Cards #}
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-foreground mb-6">Cards</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card-elevated p-6">
+                        <h4 class="text-lg font-bold text-foreground mb-2">Elevated Card</h4>
+                        <p class="text-muted-foreground text-sm">Standard card with shadow elevation for content containers.</p>
+                    </div>
+                    <div class="bg-card/50 backdrop-blur rounded-2xl p-6 border border-border/30">
+                        <h4 class="text-lg font-bold text-foreground mb-2">Glassmorphic Card</h4>
+                        <p class="text-muted-foreground text-sm">Translucent card with backdrop blur for layered interfaces.</p>
+                    </div>
+                </div>
+            </div>
+            
+            {# Badges #}
+            <div>
+                <h3 class="text-xl font-bold text-foreground mb-6">Badges & Pills</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">Primary</span>
+                    <span class="bg-green-500/10 text-green-600 dark:text-green-400 px-4 py-2 rounded-full text-sm font-semibold">Success</span>
+                    <span class="bg-orange-500/10 text-orange-600 dark:text-orange-400 px-4 py-2 rounded-full text-sm font-semibold">Warning</span>
+                    <span class="bg-destructive/10 text-destructive px-4 py-2 rounded-full text-sm font-semibold">Error</span>
+                    <span class="px-3 py-1.5 bg-muted text-muted-foreground text-xs font-medium rounded-full">Chip/Tag</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   USAGE GUIDELINES
+   ============================================================ #}
 <section class="py-16 md:py-24">
     <div class="container mx-auto px-6">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-black text-foreground mb-8">Brand Guidelines</h1>
+        <div class="max-w-4xl mx-auto">
+            {# Section Label #}
+            <span class="text-sm uppercase tracking-wider font-semibold text-primary mb-4 block">Guidelines</span>
+            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-4">Usage Guidelines</h2>
+            <p class="text-lg text-muted-foreground mb-12">Best practices for using our brand assets</p>
             
-            <div class="prose prose-lg dark:prose-invert">
-                <h2>Logo</h2>
-                <div class="p-8 bg-card border border-border rounded-2xl mb-8">
-                    <img src="/images/logo/readyserver-logo.jpeg" alt="Ready Server Logo" class="w-24 h-24 rounded-xl" width="96" height="96" loading="lazy" decoding="async">
+            <div class="grid md:grid-cols-2 gap-8">
+                {# Do's #}
+                <div class="card-elevated p-6">
+                    <h3 class="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                        <span class="w-8 h-8 bg-green-500/10 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </span>
+                        Do
+                    </h3>
+                    <ul class="space-y-3 text-muted-foreground">
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></span>
+                            Always maintain clear space around the logo
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></span>
+                            Use approved color variations only
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></span>
+                            Ensure proper contrast ratios (WCAG AA)
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></span>
+                            Use Inter font for all communications
+                        </li>
+                    </ul>
                 </div>
                 
-                <h2>Colors</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-primary rounded-xl mx-auto mb-2"></div>
-                        <p class="text-sm font-medium">Primary Blue</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-foreground rounded-xl mx-auto mb-2"></div>
-                        <p class="text-sm font-medium">Foreground</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-muted rounded-xl mx-auto mb-2"></div>
-                        <p class="text-sm font-medium">Muted</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-background border border-border rounded-xl mx-auto mb-2"></div>
-                        <p class="text-sm font-medium">Background</p>
-                    </div>
+                {# Don'ts #}
+                <div class="card-elevated p-6">
+                    <h3 class="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                        <span class="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </span>
+                        Don't
+                    </h3>
+                    <ul class="space-y-3 text-muted-foreground">
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2"></span>
+                            Alter or distort the logo
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2"></span>
+                            Use unapproved colors or gradients
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2"></span>
+                            Place logo on busy backgrounds
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2"></span>
+                            Use logo smaller than minimum size (32px)
+                        </li>
+                    </ul>
                 </div>
-                
-                <h2>Typography</h2>
-                <p>We use <strong>Inter</strong> as our primary typeface for all communications.</p>
-                
-                <h2>Usage Guidelines</h2>
-                <ul>
-                    <li>Always maintain clear space around the logo</li>
-                    <li>Do not alter or distort the logo</li>
-                    <li>Use approved color variations only</li>
-                    <li>Contact us for partnership logo usage</li>
-                </ul>
+            </div>
+            
+            {# Contact for Partnership #}
+            <div class="mt-12 p-6 bg-primary/5 border border-primary/20 rounded-2xl text-center">
+                <p class="text-foreground mb-4">Need brand assets for partnership or press?</p>
+                <a href="/contact" class="btn-primary inline-flex items-center gap-2">
+                    Contact Us
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
 </section>
 {% endblock %}
-
