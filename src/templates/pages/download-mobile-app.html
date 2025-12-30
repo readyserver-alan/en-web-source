@@ -401,64 +401,6 @@ SEO Target Keywords:
 </section>
 
 {# ========================================================================== #}
-{# LOCATIONS SECTION - Singapore, Hong Kong, Japan #}
-{# ========================================================================== #}
-<section id="locations" class="py-20 md:py-32 relative overflow-hidden">
-    {# Background glow #}
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/[0.02] dark:bg-primary/[0.03] blur-3xl"></div>
-
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center mb-16 animate-fade-up">
-            <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
-                Infrastructure
-            </span>
-            <h2 class="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                Strategically located for <span class="text-gradient">APAC</span>
-            </h2>
-            <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Low-latency datacenters where your users are. Not where legacy clouds decided to build.
-            </p>
-        </div>
-
-        {# Location Cards #}
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {% set locations = [
-                {'flag': '🇸🇬', 'name': 'Singapore', 'code': 'SG1', 'description': 'Our primary APAC hub. Direct peering with major SEA networks for ultra-low latency across Southeast Asia.'},
-                {'flag': '🇭🇰', 'name': 'Hong Kong', 'code': 'HK1', 'description': 'Strategic gateway for China and East Asia. CN2 GIA connectivity for optimal mainland performance.'},
-                {'flag': '🇯🇵', 'name': 'Japan', 'code': 'JP1', 'description': 'Premium connectivity for Japan and Northeast Asia. Direct peering with major Japanese carriers for blazing-fast performance.'}
-            ] %}
-            
-            {% for location in locations %}
-            <div class="group relative border-2 border-white/90 dark:border-white/20 rounded-3xl p-8 transition-all duration-500 hover:bg-primary hover:border-primary animate-fade-up" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
-                <div class="relative z-10">
-                    {# Header #}
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-5xl">{{ location.flag }}</span>
-                        <div>
-                            <h3 class="text-2xl font-bold text-foreground group-hover:text-white transition-colors">
-                                {{ location.name }}
-                            </h3>
-                            <p class="text-sm text-muted-foreground group-hover:text-white/70 transition-colors">
-                                {{ location.code }}
-                            </p>
-                        </div>
-                    </div>
-
-                    {# Description #}
-                    <p class="text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors">
-                        {{ location.description }}
-                    </p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        {# Section CTA #}
-        {% include 'components/section-cta.html' %}
-    </div>
-</section>
-
-{# ========================================================================== #}
 {# FEATURES SECTION - Technical specs grid #}
 {# ========================================================================== #}
 <section id="features" class="py-20 md:py-32">
@@ -479,7 +421,7 @@ SEO Target Keywords:
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {% set features = [
                 {'icon': 'hdd', 'label': 'NVMe SSD storage', 'description': 'Enterprise-grade speed'},
-                {'icon': 'gauge', 'label': '99% Network Uptime', 'description': 'Backed by service credits'},
+                {'icon': 'gauge', 'label': '99.9% Network Uptime', 'description': 'Backed by service credits'},
                 {'icon': 'refresh', 'label': 'Weekly backups', 'description': 'Automatic & free'},
                 {'icon': 'terminal', 'label': 'Full root access', 'description': 'SSH & console'},
                 {'icon': 'wifi', 'label': 'Unmetered bandwidth*', 'description': 'Fair use policy'},
@@ -546,7 +488,7 @@ SEO Target Keywords:
 {# FAQ SECTION #}
 {# ========================================================================== #}
 {% set faq_items = [
-    {'question': 'How does hourly billing work?', 'answer': "You're billed for the time your VPS is running, calculated to the second. A $0.009/hr server running 24/7 costs about $6.57/month. Stop your server anytime — you only pay for actual uptime. We accept credit cards, PayPal, and various local payment methods."},
+    {'question': 'How does hourly billing work?', 'answer': "You're billed for the time your VPS is running, calculated to the second. A $0.009/hr server running 24/7 costs about $6.57/month. Stop your server anytime — you only pay for actual uptime. We accept credit/debit cards, Apple Pay, and Alipay."},
     {'question': 'How fast can I deploy a new VPS?', 'answer': 'Most VPS instances are ready in under 3 minutes. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You\'ll have SSH access immediately.'},
     {'question': 'Can I resize my VPS after deployment?', 'answer': 'Absolutely. Scale your vCPU and RAM up or down anytime through the dashboard or mobile app. Most resizes complete within minutes. Storage upgrades are also available but are one-way (you can increase, not decrease).'},
     {'question': 'What operating systems are available?', 'answer': 'We offer Ubuntu (20.04, 22.04, 24.04), Debian, CentOS, Rocky Linux, AlmaLinux, and Windows Server. You can also upload custom ISO images for specialized deployments.'},
