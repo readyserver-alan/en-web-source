@@ -1,8 +1,8 @@
 ---
 category: Engineering
 date: '2025-11-25'
-featured_image: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop
-og_image: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop
+featured_image: /images/blog/2025/12/DSC06181.webp
+og_image: /images/blog/2025/12/DSC06181.webp
 read_time: 8
 seo_description: Learn how caching improves website performance. Understand browser
   caching, page caching, and object caching with practical examples and implementation

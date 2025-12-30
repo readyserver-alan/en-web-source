@@ -1,8 +1,8 @@
 ---
 category: Engineering
 date: '2025-11-11'
-featured_image: /images/blog/2025/12/windows-vps-management.png
-og_image: /images/blog/2025/12/windows-vps-management.png
+featured_image: /images/blog/2025/12/DSC06178.webp
+og_image: /images/blog/2025/12/DSC06178.webp
 read_time: 8
 seo_description: "Complete Windows VPS management guide. Learn RDP security, server configuration, IIS setup, SQL Server, monitoring, and backups for business."
 seo_title: "Windows VPS Management: Complete Business Guide 2026"

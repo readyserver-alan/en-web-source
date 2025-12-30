@@ -5,8 +5,8 @@ date: "2025-12-08"
 category: "Product"
 seo_title: "Cheap VPS Singapore: Best Budget Hosting 2026"
 seo_description: "Find affordable VPS hosting in Singapore without sacrificing performance. Compare cheap VPS plans, features, and get the best value for your budget."
-og_image: "/images/blog/2025/12/cheap-vps-singapore-value.jpg"
-featured_image: "/images/blog/2025/12/cheap-vps-singapore-value.jpg"
+og_image: "/images/blog/2025/12/DSC06189.webp"
+featured_image: "/images/blog/2025/12/DSC06189.webp"
 read_time: 10
 tags:
   - "cheap vps singapore"

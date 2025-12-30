@@ -12,11 +12,11 @@ Features:
 #}
 
 {% set logos = [
-    {'src': '/images/home/download_512.svg', 'alt': 'Featured Partner'},
-    {'src': '/images/home/Baidu-Logo_512.svg', 'alt': 'Baidu'},
-    {'src': '/images/home/images_512.svg', 'alt': 'Media Partner'},
-    {'src': '/images/home/images (1)_512.svg', 'alt': 'Industry Partner'},
-    {'src': '/images/home/images (2)_512.svg', 'alt': 'Technology Partner'}
+    {'src': '/images/social-proof/download_512.svg', 'alt': 'Featured Partner'},
+    {'src': '/images/social-proof/Baidu-Logo_512.svg', 'alt': 'Baidu'},
+    {'src': '/images/social-proof/images_512.svg', 'alt': 'Media Partner'},
+    {'src': '/images/social-proof/ANTARA-en.svg', 'alt': 'ANTARA News Agency'},
+    {'src': '/images/social-proof/images (2)_512.svg', 'alt': 'Technology Partner'}
 ] %}
 
 <section class="py-4 md:py-6 relative overflow-hidden bg-background border-y border-border/30">
@@ -47,7 +47,7 @@ Features:
                                     alt="{{ logo.alt }}"
                                     width="600"
                                     height="240"
-                                    class="h-24 md:h-[120px] lg:h-36 w-auto max-w-[300px] md:max-w-[390px] lg:max-w-[480px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 dark:brightness-0 dark:invert"
+                                    class="{% if 'ANTARA' in logo.src %}h-16 md:h-20 lg:h-24{% else %}h-24 md:h-[120px] lg:h-36{% endif %} w-auto max-w-[300px] md:max-w-[390px] lg:max-w-[480px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 dark:brightness-0 dark:invert"
                                     loading="lazy"
                                     decoding="async"
                                 >
@@ -66,7 +66,7 @@ Features:
                                     alt="{{ logo.alt }}"
                                     width="600"
                                     height="240"
-                                    class="h-24 md:h-[120px] lg:h-36 w-auto max-w-[300px] md:max-w-[390px] lg:max-w-[480px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 dark:brightness-0 dark:invert"
+                                    class="{% if 'ANTARA' in logo.src %}h-16 md:h-20 lg:h-24{% else %}h-24 md:h-[120px] lg:h-36{% endif %} w-auto max-w-[300px] md:max-w-[390px] lg:max-w-[480px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 dark:brightness-0 dark:invert"
                                     loading="lazy"
                                     decoding="async"
                                 >
