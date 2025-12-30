@@ -24,7 +24,7 @@ Technical SEO Optimizations:
 {% block title %}VPS Hosting Singapore | From $0.009/hr | {{ site.title }}{% endblock %}
 
 {# SEO-Optimized Description: 155 chars, includes keyword + value prop + CTA #}
-{% block description %}Best VPS hosting in Singapore. Deploy in 30 seconds from $0.009/hr. NVMe SSD, full root access, 99.95% uptime SLA, 24/7 support. Start free today!{% endblock %}
+{% block description %}Best VPS hosting in Singapore. Deploy in under 3 minutes from $0.009/hr. NVMe SSD, full root access, 99% Network Uptime, 24/7 support. Start free today!{% endblock %}
 
 {% block canonical %}/vps-hosting{% endblock %}
 
@@ -146,7 +146,7 @@ Technical SEO Optimizations:
             "name": "How fast can I deploy a new VPS?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Most VPS instances are ready in under 30 seconds. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You'll have SSH access immediately."
+                "text": "Most VPS instances are ready in under 3 minutes. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You'll have SSH access immediately."
             }
         },
         {
@@ -228,7 +228,7 @@ Technical SEO Optimizations:
                 <h1 id="hero-heading" class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.05] mb-8 tracking-tight animate-fade-up" style="animation-delay: 0.1s;" itemprop="headline">
                     <span class="sr-only">VPS Hosting Singapore - </span>Your server.
                     <br>
-                    Live in <span class="text-gradient">30 seconds.</span>
+                    Live in <span class="text-gradient">under 3 minutes.</span>
                 </h1>
 
                 {# Subheadline with keyword in first 100 words #}
@@ -263,10 +263,10 @@ Technical SEO Optimizations:
                     <div class="flex items-center gap-2 text-muted-foreground">
                         <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                             <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
                             </svg>
                         </div>
-                        <span class="text-sm font-medium">DDoS Protected</span>
+                        <span class="text-sm font-medium">Unmetered Bandwidth</span>
                     </div>
                 </div>
             </div>
@@ -276,120 +276,8 @@ Technical SEO Optimizations:
                 {# Glow behind phone #}
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none animate-pulse-glow" style="background: radial-gradient(circle, hsl(217 91% 60% / 0.15) 0%, transparent 60%);"></div>
 
-                {# Phone mockup - exact replica from Next.js HeroSectionDramatic #}
-                <div class="relative animate-fade-up animate-float" style="animation-delay: 0.2s; perspective: 1000px;">
-                    {# Phone frame #}
-                    <div class="relative w-[280px] h-[580px] bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-[3rem] p-2 shadow-2xl"
-                         style="box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 50px 100px -20px rgba(0,0,0,0.5), 0 0 100px hsl(217 91% 60% / 0.15);">
-                        
-                        {# Screen bezel #}
-                        <div class="relative w-full h-full bg-black rounded-[2.5rem] overflow-hidden">
-                            {# Dynamic Island #}
-                            <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-20 flex items-center justify-center gap-2">
-                                <div class="w-2 h-2 rounded-full bg-zinc-800"></div>
-                                <div class="w-3 h-3 rounded-full bg-zinc-800 ring-1 ring-zinc-700"></div>
-                            </div>
-
-                            {# Screen content #}
-                            <div class="absolute inset-0 bg-gradient-to-b from-background to-background/95 pt-14 px-4 pb-8">
-                                {# Status bar #}
-                                <div class="flex justify-between items-center mb-6 px-2">
-                                    <span class="text-xs font-medium text-foreground">9:41</span>
-                                    <div class="flex items-center gap-1">
-                                        {# Wifi icon #}
-                                        <svg class="w-4 h-4 text-foreground" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73s3.15.25 4.6.73v3.1c0 .4.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/>
-                                        </svg>
-                                        {# Battery #}
-                                        <div class="w-6 h-3 rounded-sm border border-foreground/50 p-0.5">
-                                            <div class="h-full w-[70%] bg-green-500 rounded-sm"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {# Welcome header #}
-                                <div class="mb-6 animate-fade-up" style="animation-delay: 0.6s;">
-                                    <p class="text-xs text-muted-foreground mb-1">Welcome back</p>
-                                    <h3 class="text-xl font-bold text-foreground">Ready Server</h3>
-                                </div>
-
-                                {# Quick stats #}
-                                <div class="grid grid-cols-2 gap-3 mb-6 animate-fade-up" style="animation-delay: 0.7s;">
-                                    <div class="bg-primary/10 rounded-2xl p-3">
-                                        <p class="text-[10px] text-muted-foreground mb-1">Active Servers</p>
-                                        <p class="text-2xl font-black text-primary">3</p>
-                                    </div>
-                                    <div class="bg-green-500/10 rounded-2xl p-3">
-                                        <p class="text-[10px] text-muted-foreground mb-1">Uptime</p>
-                                        <p class="text-2xl font-black text-green-500">99.9%</p>
-                                    </div>
-                                </div>
-
-                                {# Menu items #}
-                                <div class="space-y-3">
-                                    {# VPS Hosting #}
-                                    <div class="bg-card/50 backdrop-blur rounded-2xl p-4 border border-border/30 flex items-center gap-3 animate-fade-up" style="animation-delay: 0.8s;">
-                                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
-                                            </svg>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-sm font-semibold text-foreground">VPS Hosting</p>
-                                            <p class="text-[10px] text-muted-foreground">From $0.009/hr</p>
-                                        </div>
-                                        <svg class="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
-                                    </div>
-
-                                    {# Instant Deploy #}
-                                    <div class="bg-card/50 backdrop-blur rounded-2xl p-4 border border-border/30 flex items-center gap-3 animate-fade-up" style="animation-delay: 0.9s;">
-                                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-sm font-semibold text-foreground">Instant Deploy</p>
-                                            <p class="text-[10px] text-muted-foreground">Live in 30 seconds</p>
-                                        </div>
-                                        <svg class="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
-                                    </div>
-
-                                    {# Unmetered Bandwidth #}
-                                    <div class="bg-card/50 backdrop-blur rounded-2xl p-4 border border-border/30 flex items-center gap-3 animate-fade-up" style="animation-delay: 1s;">
-                                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
-                                            </svg>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-sm font-semibold text-foreground">Unmetered Bandwidth</p>
-                                            <p class="text-[10px] text-muted-foreground">No traffic limits</p>
-                                        </div>
-                                        <svg class="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {# Screen reflection #}
-                            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, transparent 100%);"></div>
-                        </div>
-
-                        {# Side buttons #}
-                        <div class="absolute -left-0.5 top-28 w-0.5 h-8 bg-zinc-700 rounded-l"></div>
-                        <div class="absolute -left-0.5 top-44 w-0.5 h-16 bg-zinc-700 rounded-l"></div>
-                        <div class="absolute -right-0.5 top-36 w-0.5 h-12 bg-zinc-700 rounded-r"></div>
-                    </div>
-
-                    {# Glow effect under phone #}
-                    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[200px] h-[100px] blur-3xl" style="background: radial-gradient(ellipse at center, hsl(217 91% 60% / 0.3), transparent 70%);"></div>
-                </div>
+                {# Phone mockup - standardized component #}
+                {% include 'components/phone-mockup.html' %}
             </div>
         </div>
     </div>
@@ -435,7 +323,7 @@ Technical SEO Optimizations:
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {% set benefits = [
                 {'icon': 'smartphone', 'title': 'Mobile-first control', 'description': 'Full server management from your pocket. Deploy, resize, monitor, and restart — all from our iOS and Android apps.'},
-                {'icon': 'zap', 'title': 'Instant deployment', 'description': 'Go from zero to running server in under 30 seconds. No waiting, no provisioning queues. Just deploy.'},
+                {'icon': 'zap', 'title': 'Instant deployment', 'description': 'Go from zero to running server in under 3 minutes. No waiting, no provisioning queues. Just deploy.'},
                 {'icon': 'receipt', 'title': 'Transparent hourly billing', 'description': 'Pay $0.009/hour for what you use. No hidden fees, no complex tiers. Stop anytime, pay only for uptime.'},
                 {'icon': 'upload', 'title': 'Unmetered Bandwidth', 'description': 'No bandwidth caps or overage charges. Transfer as much data as you need with our generous fair-use policy.'}
             ] %}
@@ -547,7 +435,7 @@ Technical SEO Optimizations:
                     {# Table Rows #}
                     {% set comparisons = [
                         {'feature': 'Mobile app control', 'readyserver': 'Full iOS & Android apps', 'other': 'Desktop-only dashboard'},
-                        {'feature': 'Deploy time', 'readyserver': 'Under 30 seconds', 'other': '2-5 minutes'},
+                        {'feature': 'Deploy time', 'readyserver': 'Under 3 minutes', 'other': '5-10 minutes'},
                         {'feature': 'Billing model', 'readyserver': '$0.009/hr, pay-as-you-go', 'other': 'Complex tier pricing'},
                         {'feature': 'Data centers', 'readyserver': 'Singapore, Hong Kong & Tokyo', 'other': 'US/EU focused'},
                         {'feature': 'IPv4 address', 'readyserver': 'Included free', 'other': '$3-5/mo add-on'}
@@ -607,48 +495,31 @@ Technical SEO Optimizations:
         {# Location Cards #}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {% set locations = [
-                {'flag': '🇸🇬', 'name': 'Singapore', 'code': 'SG1', 'latency': '<5ms from SG', 'description': 'Our primary APAC hub. Direct peering with major SEA networks for ultra-low latency across Southeast Asia.', 'features': ['Tier IV datacenter', 'Direct peering', '24/7 local NOC']},
-                {'flag': '🇭🇰', 'name': 'Hong Kong', 'code': 'HK1', 'latency': '<10ms from HK', 'description': 'Strategic gateway for China and East Asia. CN2 GIA connectivity for optimal mainland performance.', 'features': ['CN2 GIA network', 'Low latency to China', 'Enterprise hardware']},
-                {'flag': '🇯🇵', 'name': 'Japan', 'code': 'JP1', 'latency': '<8ms from Tokyo', 'description': 'Premium connectivity for Japan and Northeast Asia. Direct peering with major Japanese carriers for blazing-fast performance.', 'features': ['NTT & KDDI peering', 'Low latency to Korea', 'Enterprise SSD']}
+                {'flag': '🇸🇬', 'name': 'Singapore', 'code': 'SG1', 'description': 'Our primary APAC hub. Direct peering with major SEA networks for ultra-low latency across Southeast Asia.'},
+                {'flag': '🇭🇰', 'name': 'Hong Kong', 'code': 'HK1', 'description': 'Strategic gateway for China and East Asia. CN2 GIA connectivity for optimal mainland performance.'},
+                {'flag': '🇯🇵', 'name': 'Japan', 'code': 'JP1', 'description': 'Premium connectivity for Japan and Northeast Asia. Direct peering with major Japanese carriers for blazing-fast performance.'}
             ] %}
             
             {% for location in locations %}
             <div class="group relative border-2 border-white/90 dark:border-white/20 rounded-3xl p-8 transition-all duration-500 hover:bg-primary hover:border-primary animate-fade-up" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
                 <div class="relative z-10">
                     {# Header #}
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="flex items-center gap-4">
-                            <span class="text-5xl">{{ location.flag }}</span>
-                            <div>
-                                <h3 class="text-2xl font-bold text-foreground group-hover:text-white transition-colors">
-                                    {{ location.name }}
-                                </h3>
-                                <p class="text-sm text-muted-foreground group-hover:text-white/70 transition-colors">
-                                    {{ location.code }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 bg-green-500/15 text-green-600 dark:text-green-400 px-4 py-2 rounded-full group-hover:bg-white/20 group-hover:text-white transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12z"/>
-                            </svg>
-                            <span class="text-sm font-semibold">{{ location.latency }}</span>
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-5xl">{{ location.flag }}</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-foreground group-hover:text-white transition-colors">
+                                {{ location.name }}
+                            </h3>
+                            <p class="text-sm text-muted-foreground group-hover:text-white/70 transition-colors">
+                                {{ location.code }}
+                            </p>
                         </div>
                     </div>
 
                     {# Description #}
-                    <p class="text-muted-foreground mb-6 leading-relaxed group-hover:text-white/90 transition-colors">
+                    <p class="text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors">
                         {{ location.description }}
                     </p>
-
-                    {# Features #}
-                    <div class="flex flex-wrap gap-2">
-                        {% for feature in location.features %}
-                        <span class="px-3 py-1.5 bg-muted text-muted-foreground text-xs font-medium rounded-full group-hover:bg-white/20 group-hover:text-white transition-colors">
-                            {{ feature }}
-                        </span>
-                        {% endfor %}
-                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -681,11 +552,11 @@ Technical SEO Optimizations:
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {% set features = [
                 {'icon': 'hdd', 'label': 'NVMe SSD storage', 'description': 'Enterprise-grade speed'},
-                {'icon': 'gauge', 'label': '99.95% SLA uptime', 'description': 'Backed by service credits'},
+                {'icon': 'gauge', 'label': '99% Network Uptime', 'description': 'Backed by service credits'},
                 {'icon': 'refresh', 'label': 'Weekly backups', 'description': 'Automatic & free'},
                 {'icon': 'terminal', 'label': 'Full root access', 'description': 'SSH & console'},
                 {'icon': 'wifi', 'label': 'Unmetered bandwidth*', 'description': 'Fair use policy'},
-                {'icon': 'clock', 'label': 'Instant provisioning', 'description': 'Under 30 seconds'},
+                {'icon': 'clock', 'label': 'Instant provisioning', 'description': 'Under 3 minutes'},
                 {'icon': 'globe', 'label': 'IPv4', 'description': 'Compliant standards'}
             ] %}
             
@@ -778,7 +649,7 @@ Technical SEO Optimizations:
                 </div>
             </a>
 
-            <a href="/dedicated-servers" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.2s;">
+            <a href="https://dedicated-server.readyserver.sg/dedicatedserver.html" target="_blank" rel="noopener noreferrer" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.2s;">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                         <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -786,7 +657,12 @@ Technical SEO Optimizations:
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Dedicated Servers</h3>
+                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
+                            Dedicated Servers
+                            <svg class="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </h3>
                         <p class="text-sm text-muted-foreground">Bare-metal power for enterprise workloads</p>
                     </div>
                 </div>
@@ -855,7 +731,7 @@ Technical SEO Optimizations:
 {# ========================================================================== #}
 {% set faq_items = [
     {'question': 'How does hourly billing work?', 'answer': "You're billed for the time your VPS is running, calculated to the second. A $0.009/hr server running 24/7 costs about $6.57/month. Stop your server anytime — you only pay for actual uptime. We accept credit cards, PayPal, and various local payment methods."},
-    {'question': 'How fast can I deploy a new VPS?', 'answer': 'Most VPS instances are ready in under 30 seconds. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You\'ll have SSH access immediately.'},
+    {'question': 'How fast can I deploy a new VPS?', 'answer': 'Most VPS instances are ready in under 3 minutes. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You\'ll have SSH access immediately.'},
     {'question': 'Can I resize my VPS after deployment?', 'answer': 'Absolutely. Scale your vCPU and RAM up or down anytime through the dashboard or mobile app. Most resizes complete within minutes. Storage upgrades are also available but are one-way (you can increase, not decrease).'},
     {'question': 'What operating systems are available?', 'answer': 'We offer Ubuntu (20.04, 22.04, 24.04), Debian, CentOS, Rocky Linux, AlmaLinux, and Windows Server. You can also upload custom ISO images for specialized deployments. For Windows, check out our Windows VPS hosting page.'},
     {'question': 'Is there a mobile app for server management?', 'answer': "Yes! Our native iOS and Android apps provide full server control. Deploy new servers, monitor resources, restart instances, resize specs, and manage billing — all from your pocket. Download the app to get started."},
@@ -936,7 +812,7 @@ Technical SEO Optimizations:
             {# Main CTA Card #}
             <div class="text-center p-10 md:p-16 border-2 border-white/90 dark:border-white/20 rounded-3xl mb-12 animate-fade-up">
                 <h2 id="cta-heading" class="text-3xl md:text-5xl font-black text-foreground mb-6 tracking-tight">
-                    Deploy your next VPS in <span class="text-gradient">under 30 seconds</span>
+                    Deploy your next VPS in <span class="text-gradient">under 3 minutes</span>
                 </h2>
 
                 <p class="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">

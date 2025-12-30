@@ -14,6 +14,7 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
 #}
 
 {# Navigation Configuration #}
+{# Note: Dedicated Servers links to external dedicated-server.readyserver.sg subdomain #}
 {% set nav_items = [
     {
         'label': 'Products & Services',
@@ -21,7 +22,7 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
         'children': [
             {'label': 'VPS Hosting', 'href': '/vps-hosting'},
             {'label': 'Windows VPS', 'href': '/windows-vps'},
-            {'label': 'Dedicated Servers', 'href': '/dedicated-servers'}
+            {'label': 'Dedicated Servers', 'href': 'https://dedicated-server.readyserver.sg/dedicatedserver.html', 'external': true}
         ]
     },
     {'label': 'Blog', 'href': '/blog'},
@@ -113,18 +114,26 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
                                 {% for child in item.children %}
                                     <a
                                         href="{{ child.href }}"
+                                        {% if child.external %}target="_blank" rel="noopener noreferrer"{% endif %}
                                         class="block px-4 py-3 transition-colors"
-                                        :class="currentPath === '{{ child.href }}'
+                                        :class="{% if not child.external %}currentPath === '{{ child.href }}'
                                             ? 'bg-primary/10 text-primary font-medium'
-                                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'"
-                                        data-gtm-id="nav.link.{{ child.href.split('/')[-1] }}.click"
+                                            : {% endif %}'text-muted-foreground hover:bg-muted hover:text-foreground'"
+                                        data-gtm-id="nav.link.{{ child.label | lower | replace(' ', '-') }}.click"
                                     >
                                         <span class="flex items-center gap-2">
+                                            {% if not child.external %}
                                             <span 
                                                 x-show="currentPath === '{{ child.href }}'"
                                                 class="w-1.5 h-1.5 rounded-full bg-primary"
                                             ></span>
+                                            {% endif %}
                                             {{ child.label }}
+                                            {% if child.external %}
+                                            <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            </svg>
+                                            {% endif %}
                                         </span>
                                     </a>
                                 {% endfor %}
@@ -260,18 +269,26 @@ Uses Alpine.js for interactivity (replaces Framer Motion)
                             {% for child in item.children %}
                                 <a
                                     href="{{ child.href }}"
+                                    {% if child.external %}target="_blank" rel="noopener noreferrer"{% endif %}
                                     class="transition-colors py-1 flex items-center gap-2"
-                                    :class="currentPath === '{{ child.href }}'
+                                    :class="{% if not child.external %}currentPath === '{{ child.href }}'
                                         ? 'text-primary font-medium'
-                                        : 'text-muted-foreground hover:text-foreground'"
+                                        : {% endif %}'text-muted-foreground hover:text-foreground'"
                                     @click="mobileOpen = false"
-                                    data-gtm-id="nav.mobile.{{ child.href.split('/')[-1] }}.click"
+                                    data-gtm-id="nav.mobile.{{ child.label | lower | replace(' ', '-') }}.click"
                                 >
+                                    {% if not child.external %}
                                     <span 
                                         x-show="currentPath === '{{ child.href }}'"
                                         class="w-1.5 h-1.5 rounded-full bg-primary"
                                     ></span>
+                                    {% endif %}
                                     {{ child.label }}
+                                    {% if child.external %}
+                                    <svg class="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                    {% endif %}
                                 </a>
                             {% endfor %}
                         </div>

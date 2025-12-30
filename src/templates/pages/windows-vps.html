@@ -141,14 +141,6 @@ Technical SEO Optimizations:
         },
         {
             "@type": "Question",
-            "name": "Is the Windows license included?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, a genuine Windows Server license is included in the price. No additional licensing fees or BYOL hassles. Choose between Windows Server 2019 and 2022."
-            }
-        },
-        {
-            "@type": "Question",
             "name": "How do I connect to my Windows VPS?",
             "acceptedAnswer": {
                 "@type": "Answer",
@@ -161,14 +153,6 @@ Technical SEO Optimizations:
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Absolutely! Use IIS (Internet Information Services) to host multiple websites and applications on a single server. Perfect for agencies and developers."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "What about SQL Server?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "SQL Server Express is available at no additional cost. For SQL Server Standard or Enterprise, you can bring your own license (BYOL) or contact us for licensing options."
             }
         },
         {
@@ -227,7 +211,7 @@ Technical SEO Optimizations:
 
                 {# Subheadline with keyword in first 100 words #}
                 <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style="animation-delay: 0.2s;" itemprop="description">
-                    Run Windows apps, RDP sessions, and .NET workloads on high-performance <strong>Windows VPS hosting</strong> — starting from <span class="text-foreground font-semibold" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price">$15</span><meta itemprop="priceCurrency" content="USD"></span>/mo.
+                    Run Windows apps, RDP sessions, and .NET workloads on high-performance <strong>Windows VPS hosting</strong> — deploy today.
                 </p>
 
                 {# CTA #}
@@ -398,7 +382,7 @@ Technical SEO Optimizations:
                 {'icon': 'database', 'title': 'SQL Server Support', 'description': 'Run Microsoft SQL Server with enterprise-grade performance. Express edition included.'},
                 {'icon': 'shield', 'title': 'License Included', 'description': 'Windows Server license included in the price. No additional fees or BYOL hassles.'},
                 {'icon': 'zap', 'title': 'NVMe Performance', 'description': 'Enterprise NVMe storage for blazing-fast application performance and boot times.'},
-                {'icon': 'clock', 'title': 'Instant Deployment', 'description': 'Your Windows VPS is ready in under 2 minutes. Pre-configured and optimized.'}
+                {'icon': 'clock', 'title': 'Instant Deployment', 'description': 'Your Windows VPS is ready in under 3 minutes. Pre-configured and optimized.'}
             ] %}
             
             {% for benefit in windows_benefits %}
@@ -516,7 +500,7 @@ Technical SEO Optimizations:
                 </div>
             </a>
 
-            <a href="/dedicated-servers" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.2s;">
+            <a href="https://dedicated-server.readyserver.sg/dedicatedserver.html" target="_blank" rel="noopener noreferrer" class="group p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 animate-fade-up" style="animation-delay: 0.2s;">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                         <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -524,7 +508,12 @@ Technical SEO Optimizations:
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Dedicated Servers</h3>
+                        <h3 class="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
+                            Dedicated Servers
+                            <svg class="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </h3>
                         <p class="text-sm text-muted-foreground">Bare-metal power for enterprise Windows workloads</p>
                     </div>
                 </div>
@@ -593,10 +582,8 @@ Technical SEO Optimizations:
 {# ========================================================================== #}
 {% set faq_items = [
     {'question': 'Do I get full administrator access?', 'answer': 'Yes! You get complete administrator (root) access via Remote Desktop Protocol (RDP). Install any software, configure services, and manage your server exactly as you would a physical Windows machine.'},
-    {'question': 'Is the Windows license included?', 'answer': 'Yes, a genuine Windows Server license is included in the price. No additional licensing fees or BYOL hassles. Choose between Windows Server 2019 and 2022.'},
     {'question': 'How do I connect to my Windows VPS?', 'answer': 'Use the built-in Remote Desktop Connection on Windows, Microsoft Remote Desktop on Mac/iOS, or any RDP client on Linux/Android. We provide the IP address and credentials after deployment. Download our mobile app for on-the-go management.'},
     {'question': 'Can I run multiple websites on one Windows VPS?', 'answer': 'Absolutely! Use IIS (Internet Information Services) to host multiple websites and applications on a single server. Perfect for agencies and developers. Learn more in our multi-site hosting guide.'},
-    {'question': 'What about SQL Server?', 'answer': 'SQL Server Express is available at no additional cost. For SQL Server Standard or Enterprise, you can bring your own license (BYOL) or contact us for licensing options.'},
     {'question': 'Is there a mobile app for management?', 'answer': 'Yes! Our iOS and Android apps let you manage, restart, and monitor your Windows VPS from anywhere. You can even connect via RDP apps directly from your phone. Download the app to get started.'},
     {'question': 'Need more power than VPS?', 'answer': 'If you need dedicated resources without virtualization overhead, consider our dedicated server hosting. Get bare-metal performance with the same great support.'}
 ] %}

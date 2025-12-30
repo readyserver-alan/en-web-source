@@ -13,7 +13,7 @@ SEO Target Keywords:
 
 {% extends 'base.html' %}
 
-{% block title %}Best VPS Hosting Singapore | Deploy in 30 Seconds | {{ site.title }}{% endblock %}
+{% block title %}Best VPS Hosting Singapore | Deploy in Under 3 Minutes | {{ site.title }}{% endblock %}
 
 {% block description %}Singapore's #1 VPS hosting service. Deploy cheap VPS Singapore from $0.009/hr with instant setup, full root access & 24/7 support. No contracts. Try now!{% endblock %}
 
@@ -100,7 +100,7 @@ SEO Target Keywords:
                 <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-[1.05] mb-8 tracking-tight animate-fade-up" style="animation-delay: 0.1s;">
                     Your server.
                     <br>
-                    Live in <span class="text-gradient">30 seconds.</span>
+                    Live in <span class="text-gradient">under 3 minutes.</span>
                 </h1>
 
                 {# Subheadline #}
@@ -138,10 +138,10 @@ SEO Target Keywords:
                     <div class="flex items-center gap-2 text-muted-foreground">
                         <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                             <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
                             </svg>
                         </div>
-                        <span class="text-sm font-medium">DDoS Protected</span>
+                        <span class="text-sm font-medium">Unmetered Bandwidth</span>
                     </div>
                 </div>
             </div>
@@ -153,40 +153,8 @@ SEO Target Keywords:
 
                 {# Phone + QR Codes container #}
                 <div class="flex items-center gap-6 md:gap-8">
-                    {# Phone mockup #}
-                    <div class="relative w-[220px] md:w-[280px] animate-fade-up" style="animation-delay: 0.2s;">
-                        <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] p-3 shadow-2xl">
-                            <div class="bg-background rounded-[2.5rem] overflow-hidden aspect-[9/19]">
-                                <div class="p-4 h-full flex flex-col">
-                                    {# Phone header #}
-                                    <div class="flex items-center justify-between mb-4">
-                                        <span class="text-xs text-muted-foreground">9:41</span>
-                                        <div class="flex items-center gap-1">
-                                            <svg class="w-4 h-4 text-muted-foreground" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                                        </div>
-                                    </div>
-                                    {# App content mockup #}
-                                    <div class="flex-1 flex flex-col gap-3">
-                                        <div class="bg-primary/20 rounded-xl p-3">
-                                            <div class="text-xs text-primary font-medium mb-1">Server Status</div>
-                                            <div class="flex items-center gap-2">
-                                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                                <span class="text-sm text-foreground font-semibold">Running</span>
-                                            </div>
-                                        </div>
-                                        <div class="bg-muted rounded-xl p-3">
-                                            <div class="text-xs text-muted-foreground mb-1">Singapore SG1</div>
-                                            <div class="text-sm text-foreground font-semibold">2 vCPU • 4GB RAM</div>
-                                        </div>
-                                        <div class="bg-muted rounded-xl p-3">
-                                            <div class="text-xs text-muted-foreground mb-1">This Month</div>
-                                            <div class="text-lg text-foreground font-bold">$4.32</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {# Phone mockup - standardized component #}
+                    {% include 'components/phone-mockup.html' %}
 
                     {# QR Codes Column #}
                     <div class="flex flex-col gap-4 animate-fade-up" style="animation-delay: 0.3s;">
@@ -285,7 +253,7 @@ SEO Target Keywords:
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {% set benefits = [
                 {'icon': 'smartphone', 'title': 'Mobile-first control', 'description': 'Full server management from your pocket. Deploy, resize, monitor, and restart — all from our iOS and Android apps.'},
-                {'icon': 'zap', 'title': 'Instant deployment', 'description': 'Go from zero to running server in under 30 seconds. No waiting, no provisioning queues. Just deploy.'},
+                {'icon': 'zap', 'title': 'Instant deployment', 'description': 'Go from zero to running server in under 3 minutes. No waiting, no provisioning queues. Just deploy.'},
                 {'icon': 'receipt', 'title': 'Transparent hourly billing', 'description': 'Pay $0.009/hour for what you use. No hidden fees, no complex tiers. Stop anytime, pay only for uptime.'},
                 {'icon': 'upload', 'title': 'Unmetered Bandwidth', 'description': 'No bandwidth caps or overage charges. Transfer as much data as you need with our generous fair-use policy.'}
             ] %}
@@ -396,7 +364,7 @@ SEO Target Keywords:
                     {# Table Rows #}
                     {% set comparisons = [
                         {'feature': 'Mobile app control', 'readyserver': 'Full iOS & Android apps', 'other': 'Desktop-only dashboard'},
-                        {'feature': 'Deploy time', 'readyserver': 'Under 30 seconds', 'other': '2-5 minutes'},
+                        {'feature': 'Deploy time', 'readyserver': 'Under 3 minutes', 'other': '2-5 minutes'},
                         {'feature': 'Billing model', 'readyserver': '$0.009/hr, pay-as-you-go', 'other': 'Complex tier pricing'},
                         {'feature': 'Data centers', 'readyserver': 'Singapore, Hong Kong & Tokyo', 'other': 'US/EU focused'},
                         {'feature': 'IPv4 address', 'readyserver': 'Included free', 'other': '$3-5/mo add-on'}
@@ -455,48 +423,31 @@ SEO Target Keywords:
         {# Location Cards #}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {% set locations = [
-                {'flag': '🇸🇬', 'name': 'Singapore', 'code': 'SG1', 'latency': '<5ms from SG', 'description': 'Our primary APAC hub. Direct peering with major SEA networks for ultra-low latency across Southeast Asia.', 'features': ['Tier IV datacenter', 'Direct peering', '24/7 local NOC']},
-                {'flag': '🇭🇰', 'name': 'Hong Kong', 'code': 'HK1', 'latency': '<10ms from HK', 'description': 'Strategic gateway for China and East Asia. CN2 GIA connectivity for optimal mainland performance.', 'features': ['CN2 GIA network', 'Low latency to China', 'Enterprise hardware']},
-                {'flag': '🇯🇵', 'name': 'Japan', 'code': 'JP1', 'latency': '<8ms from Tokyo', 'description': 'Premium connectivity for Japan and Northeast Asia. Direct peering with major Japanese carriers for blazing-fast performance.', 'features': ['NTT & KDDI peering', 'Low latency to Korea', 'Enterprise SSD']}
+                {'flag': '🇸🇬', 'name': 'Singapore', 'code': 'SG1', 'description': 'Our primary APAC hub. Direct peering with major SEA networks for ultra-low latency across Southeast Asia.'},
+                {'flag': '🇭🇰', 'name': 'Hong Kong', 'code': 'HK1', 'description': 'Strategic gateway for China and East Asia. CN2 GIA connectivity for optimal mainland performance.'},
+                {'flag': '🇯🇵', 'name': 'Japan', 'code': 'JP1', 'description': 'Premium connectivity for Japan and Northeast Asia. Direct peering with major Japanese carriers for blazing-fast performance.'}
             ] %}
             
             {% for location in locations %}
             <div class="group relative border-2 border-white/90 dark:border-white/20 rounded-3xl p-8 transition-all duration-500 hover:bg-primary hover:border-primary animate-fade-up" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
                 <div class="relative z-10">
                     {# Header #}
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="flex items-center gap-4">
-                            <span class="text-5xl">{{ location.flag }}</span>
-                            <div>
-                                <h3 class="text-2xl font-bold text-foreground group-hover:text-white transition-colors">
-                                    {{ location.name }}
-                                </h3>
-                                <p class="text-sm text-muted-foreground group-hover:text-white/70 transition-colors">
-                                    {{ location.code }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 bg-green-500/15 text-green-600 dark:text-green-400 px-4 py-2 rounded-full group-hover:bg-white/20 group-hover:text-white transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12z"/>
-                            </svg>
-                            <span class="text-sm font-semibold">{{ location.latency }}</span>
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-5xl">{{ location.flag }}</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-foreground group-hover:text-white transition-colors">
+                                {{ location.name }}
+                            </h3>
+                            <p class="text-sm text-muted-foreground group-hover:text-white/70 transition-colors">
+                                {{ location.code }}
+                            </p>
                         </div>
                     </div>
 
                     {# Description #}
-                    <p class="text-muted-foreground mb-6 leading-relaxed group-hover:text-white/90 transition-colors">
+                    <p class="text-muted-foreground leading-relaxed group-hover:text-white/90 transition-colors">
                         {{ location.description }}
                     </p>
-
-                    {# Features #}
-                    <div class="flex flex-wrap gap-2">
-                        {% for feature in location.features %}
-                        <span class="px-3 py-1.5 bg-muted text-muted-foreground text-xs font-medium rounded-full group-hover:bg-white/20 group-hover:text-white transition-colors">
-                            {{ feature }}
-                        </span>
-                        {% endfor %}
-                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -528,11 +479,11 @@ SEO Target Keywords:
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {% set features = [
                 {'icon': 'hdd', 'label': 'NVMe SSD storage', 'description': 'Enterprise-grade speed'},
-                {'icon': 'gauge', 'label': '99.95% SLA uptime', 'description': 'Backed by service credits'},
+                {'icon': 'gauge', 'label': '99% Network Uptime', 'description': 'Backed by service credits'},
                 {'icon': 'refresh', 'label': 'Weekly backups', 'description': 'Automatic & free'},
                 {'icon': 'terminal', 'label': 'Full root access', 'description': 'SSH & console'},
                 {'icon': 'wifi', 'label': 'Unmetered bandwidth*', 'description': 'Fair use policy'},
-                {'icon': 'clock', 'label': 'Instant provisioning', 'description': 'Under 30 seconds'},
+                {'icon': 'clock', 'label': 'Instant provisioning', 'description': 'Under 3 minutes'},
                 {'icon': 'globe', 'label': 'IPv4', 'description': 'Compliant standards'}
             ] %}
             
@@ -596,7 +547,7 @@ SEO Target Keywords:
 {# ========================================================================== #}
 {% set faq_items = [
     {'question': 'How does hourly billing work?', 'answer': "You're billed for the time your VPS is running, calculated to the second. A $0.009/hr server running 24/7 costs about $6.57/month. Stop your server anytime — you only pay for actual uptime. We accept credit cards, PayPal, and various local payment methods."},
-    {'question': 'How fast can I deploy a new VPS?', 'answer': 'Most VPS instances are ready in under 30 seconds. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You\'ll have SSH access immediately.'},
+    {'question': 'How fast can I deploy a new VPS?', 'answer': 'Most VPS instances are ready in under 3 minutes. Select your datacenter (Singapore or Hong Kong), choose your OS and resources, and hit deploy. No queues, no waiting. You\'ll have SSH access immediately.'},
     {'question': 'Can I resize my VPS after deployment?', 'answer': 'Absolutely. Scale your vCPU and RAM up or down anytime through the dashboard or mobile app. Most resizes complete within minutes. Storage upgrades are also available but are one-way (you can increase, not decrease).'},
     {'question': 'What operating systems are available?', 'answer': 'We offer Ubuntu (20.04, 22.04, 24.04), Debian, CentOS, Rocky Linux, AlmaLinux, and Windows Server. You can also upload custom ISO images for specialized deployments.'},
     {'question': 'Is there a mobile app for server management?', 'answer': "Yes! Our native iOS and Android apps provide full server control. Deploy new servers, monitor resources, restart instances, resize specs, and manage billing — all from your pocket. It's not a stripped-down version; it's how we built ReadyServer."},
@@ -675,7 +626,7 @@ SEO Target Keywords:
             {# Main CTA Card #}
             <div class="text-center p-10 md:p-16 border-2 border-white/90 dark:border-white/20 rounded-3xl mb-12 animate-fade-up">
                 <h2 class="text-3xl md:text-5xl font-black text-foreground mb-6 tracking-tight">
-                    Deploy your next VPS in <span class="text-gradient">under 30 seconds</span>
+                    Deploy your next VPS in <span class="text-gradient">under 3 minutes</span>
                 </h2>
 
                 <p class="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">

@@ -4,10 +4,13 @@
 # Redirect www to non-www (configure in Cloudflare DNS instead for better performance)
 # https://www.readyserver.sg/* https://readyserver.sg/:splat 301
 
+# Dedicated Servers - redirect to external subdomain
+/dedicated-servers https://dedicated-server.readyserver.sg/dedicatedserver.html 301
+/dedicated-servers/ https://dedicated-server.readyserver.sg/dedicatedserver.html 301
+
 # Trailing slash normalization (Cloudflare Pages handles this automatically)
 # /vps-hosting /vps-hosting/ 301
 # /windows-vps /windows-vps/ 301
-# /dedicated-servers /dedicated-servers/ 301
 # /blog /blog/ 301
 # /contact /contact/ 301
 

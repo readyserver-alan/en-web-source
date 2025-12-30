@@ -348,12 +348,13 @@ def build_pages(env: Environment, data: Dict[str, Any], posts: List[Dict[str, An
     posts_context = {'posts': posts or []}
     
     # Page definitions: (template, output, extra_context)
+    # Note: Dedicated Servers page removed - users redirected to https://dedicated-server.readyserver.sg/dedicatedserver.html
     pages = [
         # Marketing pages - home page needs posts for blog highlights
         ("pages/home.html", "index.html", posts_context),
         ("pages/vps-hosting.html", "vps-hosting/index.html", {}),
         ("pages/windows-vps.html", "windows-vps/index.html", {}),
-        ("pages/dedicated-servers.html", "dedicated-servers/index.html", {}),
+        # ("pages/dedicated-servers.html", "dedicated-servers/index.html", {}),  # Removed - external link
         ("pages/products.html", "products/index.html", {}),
         ("pages/download-mobile-app.html", "download-mobile-app/index.html", {}),
         ("pages/coming-soon.html", "coming-soon/index.html", {}),
@@ -399,11 +400,12 @@ def build_sitemap(posts: List[Dict[str, Any]]):
     now = datetime.now().strftime('%Y-%m-%d')
     
     # Static pages with priorities
+    # Note: Dedicated Servers removed - external link to dedicated-server.readyserver.sg
     static_pages = [
         ('/', 1.0, 'daily'),
         ('/vps-hosting', 0.9, 'weekly'),
         ('/windows-vps', 0.9, 'weekly'),
-        ('/dedicated-servers', 0.9, 'weekly'),
+        # ('/dedicated-servers', 0.9, 'weekly'),  # Removed - external link
         ('/products', 0.8, 'weekly'),
         ('/download-mobile-app', 0.8, 'monthly'),
         ('/blog', 0.7, 'daily'),

@@ -27,13 +27,14 @@ window.dataLayer = window.dataLayer || [];
 /**
  * Page key mapping for funnel tracking
  * Used in page_view, scroll_depth, and time_on_page events
+ * Note: Dedicated Servers removed - now redirects to external dedicated-server.readyserver.sg
  */
 const PAGE_KEY_MAP = {
   '/': 'home',
   '/download-mobile-app': 'download_mobile_app',
   '/vps-hosting': 'vps_hosting',
   '/windows-vps': 'windows_vps',
-  '/dedicated-servers': 'dedicated_servers',
+  // '/dedicated-servers': 'dedicated_servers',  // Removed - external link
   '/contact': 'contact',
   '/blog': 'blog',
   '/brand-guidelines': 'brand_guidelines',
@@ -44,13 +45,14 @@ const PAGE_KEY_MAP = {
 
 /**
  * Page type mapping
+ * Note: Dedicated Servers removed - now redirects to external dedicated-server.readyserver.sg
  */
 const PAGE_TYPE_MAP = {
   '/': 'landing',
   '/download-mobile-app': 'landing',
   '/vps-hosting': 'product',
   '/windows-vps': 'product',
-  '/dedicated-servers': 'product',
+  // '/dedicated-servers': 'product',  // Removed - external link
   '/contact': 'support',
   '/blog': 'blog',
   '/brand-guidelines': 'other',
